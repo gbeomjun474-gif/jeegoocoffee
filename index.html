@@ -77,23 +77,59 @@
         .form-control:focus { border-color: var(--primary-color); background-color: var(--pure-white); }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-        /* 반응형 */
+        /* --- 기존 태블릿 반응형 --- */
         @media (max-width: 968px) {
             .hero-grid, .calc-grid, .form-row { grid-template-columns: 1fr; }
             .hero { padding: 120px 0 60px 0; text-align: center; }
             .hero-image-box { height: 320px; }
         }
+
+        /* --- 추가된 모바일 폰 전용 반응형 --- */
+        @media (max-width: 768px) {
+            /* 헤더 메뉴 모바일 정렬 */
+            .nav-container { height: auto; padding: 15px 0; flex-direction: column; gap: 12px; }
+            .nav-container > div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+            
+            /* 히어로 섹션 텍스트 축소 */
+            .hero { padding: 150px 0 50px 0; }
+            .hero h1 { font-size: 30px; margin-bottom: 15px; }
+            .hero p.lead { font-size: 16px; margin-bottom: 30px; }
+            .hero-badge { font-size: 13px; padding: 5px 12px; }
+            
+            /* 전체 섹션 여백 및 제목 축소 */
+            .section { padding: 60px 0; }
+            .section-title { font-size: 24px; }
+            .section-subtitle { font-size: 15px; margin-bottom: 40px; }
+            
+            /* 계산기 모바일 최적화 */
+            .calculator-box { padding: 25px 20px; border-radius: 16px; }
+            .calc-grid { gap: 30px; }
+            .slider-label { font-size: 15px; flex-direction: column; align-items: flex-start; gap: 5px; }
+            .slider-label span.val { font-size: 18px; }
+            
+            /* 결과창 모바일 최적화 */
+            .result-panel { padding: 20px; }
+            .result-item { padding-bottom: 15px; margin-bottom: 15px; flex-direction: column; align-items: flex-start; gap: 5px; }
+            .result-item .label { font-size: 14px; }
+            .result-item .price { font-size: 18px; align-self: flex-end; }
+            .result-item.highlight { align-items: center; text-align: center; background-color: rgba(125, 142, 116, 0.1); padding: 15px; border-radius: 12px; }
+            .result-item.highlight .price-save { font-size: 26px; align-self: center; }
+            
+            /* 폼 모바일 최적화 */
+            .form-box { padding: 30px 20px; }
+            .btn { font-size: 16px; padding: 15px 20px; }
+        }
     </style>
 </head>
 <body>
 
-<header>
+    <header>
         <div class="container nav-container">
             <div class="logo">
                 <img src="jeegoo.png" alt="지구카페 로고" style="height: 45px; width: auto; object-fit: contain;">
             </div>
             <div style="display: flex; gap: 10px;">
-                <a href="tel:1551-2776" class="nav-booth" style="background-color: var(--primary-color); text-decoration: none; color: var(--pure-white);">
+                <a href="tel:15512776" class="nav-booth" style="background-color: var(--primary-color); text-decoration: none; color: var(--pure-white);">
                     <i class="fa-solid fa-phone"></i> 가맹문의 1551-2776
                 </a>
                 <div class="nav-booth">
