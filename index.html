@@ -14,7 +14,6 @@
         :root {
             --primary-color: #7D8E74;
             --primary-dark: #5E7A5E;
-			
             --bg-cream: #FDFCF0;
             --text-dark: #2C332B;
             --text-muted: #6B7280;
@@ -39,7 +38,7 @@
         .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
         .logo { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 700; color: var(--accent-brown); display: flex; align-items: center; gap: 8px; }
         .logo i { color: var(--primary-color); }
-        .nav-booth { background-color: var(--accent-brown); color: var(--bg-cream); padding: 6px 14px; border-radius: 4px; font-size: 14px; font-weight: 700; }
+        .nav-booth { background-color: var(--accent-brown); color: var(--bg-cream); padding: 6px 14px; border-radius: 4px; font-size: 14px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
 
         /* 히어로 섹션 */
         .hero { padding: 160px 0 100px 0; background: linear-gradient(135deg, #F9F8EB 0%, #EAECE6 100%); position: relative; }
@@ -94,9 +93,9 @@
                 <img src="jeegoo.png" alt="지구카페 로고" style="height: 45px; width: auto; object-fit: contain;">
             </div>
             <div style="display: flex; gap: 10px;">
-                <div class="nav-booth" style="background-color: var(--primary-color);">
-                    <i class="fa-solid fa-phone"></i> 가맹문의 1551-2776
-                </div>
+                <a href="tel:1544-0000" class="nav-booth" style="background-color: var(--primary-color); text-decoration: none; color: var(--pure-white);">
+                    <i class="fa-solid fa-phone"></i> 가맹문의 1544-0000
+                </a>
                 <div class="nav-booth">
                     <i class="fa-solid fa-location-dot"></i> COEX C홀 호
                 </div>
@@ -110,12 +109,10 @@
                 <span class="hero-badge">2026 창업박람회 공식 참가 기념 특전</span>
                 <h1>치솟는 원두 가격 돌파구,<br>본사 마진 없는 <span>오픈 원두 플랫폼</span></h1>
                 <p class="lead">"지구커피"만의 물류시스템으로 프리미엄 원두를 합리적인 금액에 안정적으로 공급합니다.</p>
-                <a href="#apply-" class="btn"><i class="fa-solid fa-calendar-check"></i> 박람회 한정 1:1 상담 예약하기</a>
+                <a href="#apply-form" class="btn"><i class="fa-solid fa-calendar-check"></i> 박람회 한정 1:1 상담 예약하기</a>
             </div>
             <div class="hero-image-box">
-                <div class="hero-image-box">
-    <img src="shop3.jpg" alt="지구카페 실제 매장 전경">
-</div>
+                <img src="shop3.jpg" alt="지구카페 실제 매장 전경">
             </div>
         </div>
     </section>
@@ -138,56 +135,56 @@
                         <div class="slider-group">
                             <div class="slider-label">
                                 <span>타사 프랜차이즈 원두 단가 (1kg 기준)</span>
-                                <span class="val" id="competitor-price-txt">19,800 원</span>
+                                <span class="val" id="competitor-price-txt">25,000 원</span>
                             </div>
                             <input type="range" id="competitor-price" class="range-slider" min="20000" max="35000" step="500" value="25000">
                         </div>
                     </div>
-                 <div class="result-panel">
-  			  <div class="result-item">
-        			<span class="label">월간 예상 원두 소모량</span>
-        			<span class="price" id="bean-weight-txt">150 kg</span>
-    		</div>
-    			<div class="result-item">
-        			<span class="label">타사 브랜드 원두 비용</span>
-        			<span class="price" id="competitor-total-txt">3,750,000 원</span>
-   		</div>
-    			<div class="result-item">
-        			<span class="label">지구카페 원두 비용 (19,800원/kg)</span>
-        			<span class="price" id="earth-total-txt">2,970,000 원</span>
-    		</div>
-    				<div class="result-item highlight">
-        			<span class="label">월 순수익 증가액 (원가 절감)</span>
-        			<span class="price-save" id="save-total-txt">780,000 원</span>
-    			</div>
-		</div>
+                    <div class="result-panel">
+                        <div class="result-item">
+                            <span class="label">월간 예상 원두 소모량</span>
+                            <span class="price" id="bean-weight-txt">150 kg</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">타사 브랜드 원두 비용</span>
+                            <span class="price" id="competitor-total-txt">3,750,000 원</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">지구카페 원두 비용 (19,800원/kg)</span>
+                            <span class="price" id="earth-total-txt">2,970,000 원</span>
+                        </div>
+                        <div class="result-item highlight">
+                            <span class="label">월 순수익 증가액 (원가 절감)</span>
+                            <span class="price-save" id="save-total-txt">780,000 원</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section cta-section" id="apply-">
+    <section class="section cta-section" id="apply-form">
         <div class="container">
             <h2 class="section-title">지구카페 성공 파트너 신청하기</h2>
             <div class="form-box">
-               <form action="https://formspree.io/f/mrevkqaj" method="POST">
-    <div class="form-row">
-        <div class="form-group">
-            <label>성함</label>
-            <input type="text" name="name" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>연락처</label>
-            <input type="tel" name="phone" class="form-control" required>
-        </div>
-    </div>
-    <button type="submit" class="btn" style="width: 100%; border-radius: 12px;">무료 프리미엄 창업 상담 신청하기</button>
-</form>
+                <form action="https://formspree.io/f/mrevkqaj" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>성함</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>연락처</label>
+                            <input type="tel" name="phone" class="form-control" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; border-radius: 12px;">무료 프리미엄 창업 상담 신청하기</button>
+                </form>
             </div>
         </div>
     </section>
 
-   <script>
+    <script>
         const salesSlider = document.getElementById('sales-volume');
         const priceSlider = document.getElementById('competitor-price');
         
@@ -198,15 +195,12 @@
             document.getElementById('sales-volume-txt').innerText = dailyCups + " 잔";
             document.getElementById('competitor-price-txt').innerText = compPricePerKg.toLocaleString() + " 원";
             
-            // 1. 원두 소모량 계산 수정 (1kg = 40잔 기준 -> 1잔당 0.025kg 소모)
-            // 하루 판매잔수 * 0.025kg * 30일
+            // 1kg당 40잔 기준 추출 공식 적용 (1잔당 0.025kg 소모)
             const monthlyKg = Math.round(dailyCups * 0.025 * 30);
-            
             const competitorTotal = monthlyKg * compPricePerKg;
             
-            // 2. 지구카페 원두 단가 20,000원으로 수정
-            const earthTotal = monthlyKg * 19800; 
-            
+            // 지구카페 원두 단가 19,800원 적용
+            const earthTotal = monthlyKg * 19800;
             const savings = competitorTotal - earthTotal;
             
             document.getElementById('bean-weight-txt').innerText = monthlyKg + " kg";
