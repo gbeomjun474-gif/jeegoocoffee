@@ -27,7 +27,7 @@
         body { background-color: var(--bg-cream); color: var(--text-dark); line-height: 1.6; }
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 100px 0; }
-        .section-title { text-align: center; font-size: 32px; font-weight: 700; margin-bottom: 15px; color: var(--accent-brown); }
+        .section-title { text-align: center; font-size: 20px; font-weight: 700; margin-bottom: 15px; color: var(--accent-brown); }
         .section-subtitle { text-align: center; font-size: 18px; color: var(--text-muted); margin-bottom: 60px; }
 
         .btn { display: inline-block; background-color: var(--primary-color); color: var(--pure-white); padding: 18px 36px; font-size: 18px; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(125, 142, 116, 0.3); }
@@ -163,35 +163,35 @@
                     <div class="calc-inputs">
                         <div class="slider-group">
                             <div class="slider-label">
-                                <span>하루 평균 커피 판매량 (잔)</span>
-                                <span class="val" id="sales-volume-txt">200 잔</span>
+                                <span>월 평균 원두 소모량 (kg)</span>
+                                <span class="val" id="sales-volume-txt">50 kg</span>
                             </div>
-                            <input type="range" id="sales-volume" class="range-slider" min="50" max="600" step="10" value="200">
+                            <input type="range" id="sales-volume" class="range-slider" min="10" max="100" step="5" value="50">
                         </div>
                         <div class="slider-group">
                             <div class="slider-label">
                                 <span>타사 프랜차이즈 원두 단가 (1kg 기준)</span>
-                                <span class="val" id="competitor-price-txt">25,000 원</span>
+                                <span class="val" id="competitor-price-txt">24,000 원</span>
                             </div>
-                            <input type="range" id="competitor-price" class="range-slider" min="20000" max="35000" step="500" value="25000">
+                            <input type="range" id="competitor-price" class="range-slider" min="20000" max="35000" step="500" value="24000">
                         </div>
                     </div>
                     <div class="result-panel">
                         <div class="result-item">
                             <span class="label">월간 예상 원두 소모량</span>
-                            <span class="price" id="bean-weight-txt">150 kg</span>
+                            <span class="price" id="bean-weight-txt">50 kg</span>
                         </div>
                         <div class="result-item">
                             <span class="label">타사 브랜드 원두 비용</span>
-                            <span class="price" id="competitor-total-txt">3,750,000 원</span>
+                            <span class="price" id="competitor-total-txt">1,200,000 원</span>
                         </div>
                         <div class="result-item">
                             <span class="label">지구카페 원두 비용 (19,800원/kg)</span>
-                            <span class="price" id="earth-total-txt">2,970,000 원</span>
+                            <span class="price" id="earth-total-txt">990,000 원</span>
                         </div>
                         <div class="result-item highlight">
                             <span class="label">월 순수익 증가액 (원가 절감)</span>
-                            <span class="price-save" id="save-total-txt">780,000 원</span>
+                            <span class="price-save" id="save-total-txt">210,000 원</span>
                         </div>
                     </div>
                 </div>
@@ -225,20 +225,20 @@
         const priceSlider = document.getElementById('competitor-price');
         
         const updateCalculator = () => {
-            const dailyCups = parseInt(salesSlider.value);
+            // 이제 이 값은 '잔'이 아니라 'kg' 자체가 됨
+            const monthlyKg = parseInt(salesSlider.value);
             const compPricePerKg = parseInt(priceSlider.value);
             
-            document.getElementById('sales-volume-txt').innerText = dailyCups + " 잔";
+            // 화면 상단 슬라이더 텍스트 변경
+            document.getElementById('sales-volume-txt').innerText = monthlyKg + " kg";
             document.getElementById('competitor-price-txt').innerText = compPricePerKg.toLocaleString() + " 원";
             
-            // 1kg당 40잔 기준 추출 공식 적용 (1잔당 0.025kg 소모)
-            const monthlyKg = Math.round(dailyCups * 0.025 * 30);
+            // 비용 계산
             const competitorTotal = monthlyKg * compPricePerKg;
+            const earthTotal = monthlyKg * 19800; // 지구카페 원두 단가
+            const savings = competitorTotal - earthTotal; // 순수익 증가액
             
-            // 지구카페 원두 단가 19,800원 적용
-            const earthTotal = monthlyKg * 19800;
-            const savings = competitorTotal - earthTotal;
-            
+            // 결과창 텍스트 변경
             document.getElementById('bean-weight-txt').innerText = monthlyKg + " kg";
             document.getElementById('competitor-total-txt').innerText = competitorTotal.toLocaleString() + " 원";
             document.getElementById('earth-total-txt').innerText = earthTotal.toLocaleString() + " 원";
