@@ -86,36 +86,33 @@
 
         /* --- 추가된 모바일 폰 전용 반응형 --- */
         @media (max-width: 768px) {
-            /* 헤더 메뉴 모바일 정렬 */
             .nav-container { height: auto; padding: 15px 0; flex-direction: column; gap: 12px; }
             .nav-container > div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
             
-            /* 히어로 섹션 텍스트 축소 */
             .hero { padding: 150px 0 50px 0; }
             .hero h1 { font-size: 30px; margin-bottom: 15px; }
             .hero p.lead { font-size: 16px; margin-bottom: 30px; }
             .hero-badge { font-size: 13px; padding: 5px 12px; }
             
-            /* 전체 섹션 여백 및 제목 축소 */
             .section { padding: 60px 0; }
             .section-title { font-size: 24px; }
             .section-subtitle { font-size: 15px; margin-bottom: 40px; }
             
-            /* 계산기 모바일 최적화 */
             .calculator-box { padding: 25px 20px; border-radius: 16px; }
             .calc-grid { gap: 30px; }
             .slider-label { font-size: 15px; flex-direction: column; align-items: flex-start; gap: 5px; }
             .slider-label span.val { font-size: 18px; }
             
-            /* 결과창 모바일 최적화 */
             .result-panel { padding: 20px; }
             .result-item { padding-bottom: 15px; margin-bottom: 15px; flex-direction: column; align-items: flex-start; gap: 5px; }
             .result-item .label { font-size: 14px; }
             .result-item .price { font-size: 18px; align-self: flex-end; }
-            .result-item.highlight { align-items: center; text-align: center; background-color: rgba(125, 142, 116, 0.1); padding: 15px; border-radius: 12px; }
-            .result-item.highlight .price-save { font-size: 26px; align-self: center; }
             
-            /* 폼 모바일 최적화 */
+            /* 모바일에서 두 줄로 깨지지 않도록 폰트 크기 조정 */
+            .result-item.highlight { align-items: center; text-align: center; background-color: rgba(125, 142, 116, 0.1); padding: 15px; border-radius: 12px; }
+            .result-item.highlight .label { font-size: 15px; } /* 크기 축소 */
+            .result-item.highlight .price-save { font-size: 26px; align-self: center; } /* 크기 축소 */
+            
             .form-box { padding: 30px 20px; }
             .btn { font-size: 16px; padding: 15px 20px; }
         }
@@ -156,33 +153,27 @@
     <section class="section">
         <div class="container">
             <h2 class="section-title">우리 매장은 월 얼마를 더 벌 수 있을까?</h2>
-            <p class="section-subtitle">슬라이더를 조절하여 타사 대비 절감되는 원두 원가를 직접 확인해 보세요.</p>
+            <p class="section-subtitle">월간 소모량을 조절하여 타사 대비 절감되는 원가를 직접 확인해 보세요.</p>
             
             <div class="calculator-box">
                 <div class="calc-grid">
                     <div class="calc-inputs">
-                        <div class="slider-group">
+                        <div class="slider-group" style="margin-top: 20px;">
                             <div class="slider-label">
                                 <span>월 평균 원두 소모량 (kg)</span>
                                 <span class="val" id="sales-volume-txt">50 kg</span>
                             </div>
                             <input type="range" id="sales-volume" class="range-slider" min="10" max="100" step="5" value="50">
                         </div>
-                        <div class="slider-group">
-                            <div class="slider-label">
-                                <span>타사 프랜차이즈 원두 단가 (1kg 기준)</span>
-                                <span class="val" id="competitor-price-txt">24,000 원</span>
-                            </div>
-                            <input type="range" id="competitor-price" class="range-slider" min="20000" max="35000" step="500" value="24000">
-                        </div>
                     </div>
+                    
                     <div class="result-panel">
                         <div class="result-item">
                             <span class="label">월간 예상 원두 소모량</span>
                             <span class="price" id="bean-weight-txt">50 kg</span>
                         </div>
                         <div class="result-item">
-                            <span class="label">타사 브랜드 원두 비용</span>
+                            <span class="label">타사 브랜드 원두 비용 (24,000원/kg)</span>
                             <span class="price" id="competitor-total-txt">1,200,000 원</span>
                         </div>
                         <div class="result-item">
@@ -222,18 +213,17 @@
 
     <script>
         const salesSlider = document.getElementById('sales-volume');
-        const priceSlider = document.getElementById('competitor-price');
         
         const updateCalculator = () => {
-            // 이제 이 값은 '잔'이 아니라 'kg' 자체가 됨
             const monthlyKg = parseInt(salesSlider.value);
-            const compPricePerKg = parseInt(priceSlider.value);
+            
+            // 타사 원두 단가를 24,000원으로 고정
+            const compPricePerKg = 24000; 
             
             // 화면 상단 슬라이더 텍스트 변경
             document.getElementById('sales-volume-txt').innerText = monthlyKg + " kg";
-            document.getElementById('competitor-price-txt').innerText = compPricePerKg.toLocaleString() + " 원";
             
-            // 비용 계산
+            // 비용 계산 (고정된 단가로 계산)
             const competitorTotal = monthlyKg * compPricePerKg;
             const earthTotal = monthlyKg * 19800; // 지구카페 원두 단가
             const savings = competitorTotal - earthTotal; // 순수익 증가액
@@ -246,7 +236,6 @@
         };
 
         salesSlider.addEventListener('input', updateCalculator);
-        priceSlider.addEventListener('input', updateCalculator);
         updateCalculator();
     </script>
 </body>
