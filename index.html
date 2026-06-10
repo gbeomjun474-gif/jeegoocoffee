@@ -23,8 +23,11 @@
             --border-color: #E5E7EB;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif;
-           word-break: keep-all;   }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif; word-break: keep-all;   }
+            /* 스크롤 부드럽게 이동 & 헤더 높이만큼 여백 주기 */
+    html { scroll-behavior: smooth; }
+    #apply-form { scroll-margin-top: 70px; }
+        
         body { background-color: var(--bg-cream); color: var(--text-dark); line-height: 1.6; }
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 100px 0; }
