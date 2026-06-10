@@ -67,6 +67,11 @@
         .result-item.highlight .label { font-size: 18px; font-weight: 700; color: var(--accent-brown); }
         .result-item.highlight .price-save { font-size: 32px; font-weight: 700; color: var(--primary-dark); }
 
+        /* 추가된 박람회 현장 사진 섹션 */
+        .expo-photo-section { background-color: var(--pure-white); padding: 80px 0; }
+        .expo-photo-box { border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 1px solid var(--border-color); }
+        .expo-photo-box img { width: 100%; height: auto; display: block; object-fit: cover; }
+
         /* 폼 섹션 */
         .cta-section { background: linear-gradient(135deg, var(--accent-brown) 0%, #2C241E 100%); color: var(--pure-white); }
         .cta-section .section-title { color: var(--bg-cream); }
@@ -161,14 +166,13 @@
                                 <span class="val" id="sales-volume-txt">10 kg</span>
                             </div>
                             <input type="range" id="sales-volume" class="range-slider" min="1" max="100" step="1" value="10">
-                            <div style="font-size: 13px; color: var(--text-muted); text-align: right; margin-top: 10px;">※ VAT(부가가치세) 포함</div>
                         </div>
                     </div>
                     
                     <div class="result-panel">
                         <div class="result-item">
-                            <span class="label">월간 아메리카노 판매 분량 (1kg=50잔)</span>
-                            <span class="price" id="total-cups-txt" style="color: var(--primary-color); font-weight: 700;">500 잔</span>
+                            <span class="label">월간 아메리카노 판매 분량 (1kg=18잔)</span>
+                            <span class="price" id="total-cups-txt" style="color: var(--primary-color); font-weight: 700;">180 잔</span>
                         </div>
                         <div class="result-item">
                             <span class="label">타사 브랜드 원두 비용 (30,000원/1kg)</span>
@@ -184,6 +188,16 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="expo-photo-section">
+        <div class="container">
+            <h2 class="section-title">많은 분이 경험한 지구카페의 가치</h2>
+            <p class="section-subtitle">박람회 현장에서 확인한 '합리적인 원두와 브랜딩'의 강력한 현장감</p>
+            <div class="expo-photo-box">
+                <img src="image_0.png" alt="지구카페 박람회 현장 부스 모습">
             </div>
         </div>
     </section>
@@ -219,8 +233,8 @@
             const compPricePerKg = 30000; 
             const earthPricePerKg = 19800;
             
-            // 판매 잔수 계산 (1kg당 50잔)
-            const totalCups = monthlyKg * 50;
+            // 판매 잔수 계산 로직 (1kg당 18잔)
+            const totalCups = monthlyKg * 18;
             
             // 비용 계산
             const competitorTotal = monthlyKg * compPricePerKg;
