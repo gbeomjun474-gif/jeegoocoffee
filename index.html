@@ -166,8 +166,8 @@
                     
                     <div class="result-panel">
                         <div class="result-item">
-                            <span class="label">월간 아메리카노 판매 분량 (1kg=50잔)</span>
-                            <span class="price" id="total-cups-txt" style="color: var(--primary-color); font-weight: 700;">500 잔</span>
+                            <span class="label">월간 아메리카노 판매 분량 (1kg=18잔)</span>
+                            <span class="price" id="total-cups-txt" style="color: var(--primary-color); font-weight: 700;">180 잔</span>
                         </div>
                         <div class="result-item">
                             <span class="label">타사 브랜드 원두 비용 (30,000원/1kg)</span>
@@ -218,8 +218,8 @@
             const compPricePerKg = 30000; 
             const earthPricePerKg = 19800;
             
-            // 판매 잔수 계산 (1kg당 50잔)
-            const totalCups = monthlyKg * 50;
+            // 💡 판매 잔수 계산 로직 변경 (1kg당 18잔)
+            const totalCups = monthlyKg * 18;
             
             // 비용 계산
             const competitorTotal = monthlyKg * compPricePerKg;
