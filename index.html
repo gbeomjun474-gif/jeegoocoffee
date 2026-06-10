@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* 테마 컬러 정의 (세이지 그린 & 크림 스톤) */
+        /* 테마 컬러 정의 */
         :root {
             --primary-color: #7D8E74;
             --primary-dark: #5E7A5E;
@@ -52,10 +52,10 @@
 
         /* 계산기 UI */
         .calculator-box { background-color: var(--pure-white); border-radius: 24px; padding: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
-        .calc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; }
+        .calc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
         .slider-group { margin-bottom: 35px; }
         .slider-label { display: flex; justify-content: space-between; font-size: 18px; font-weight: 700; margin-bottom: 15px; }
-        .slider-label span.val { color: var(--primary-color); font-size: 20px; }
+        .slider-label span.val { color: var(--primary-color); font-size: 24px; }
         .range-slider { width: 100%; -webkit-appearance: none; height: 8px; border-radius: 5px; background: var(--light-gray); outline: none; }
         .range-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--primary-color); cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
         
@@ -77,14 +77,13 @@
         .form-control:focus { border-color: var(--primary-color); background-color: var(--pure-white); }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-        /* --- 기존 태블릿 반응형 --- */
+        /* 반응형 */
         @media (max-width: 968px) {
             .hero-grid, .calc-grid, .form-row { grid-template-columns: 1fr; }
             .hero { padding: 120px 0 60px 0; text-align: center; }
             .hero-image-box { height: 320px; }
         }
 
-        /* --- 추가된 모바일 폰 전용 반응형 --- */
         @media (max-width: 768px) {
             .nav-container { height: auto; padding: 15px 0; flex-direction: column; gap: 12px; }
             .nav-container > div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
@@ -100,15 +99,13 @@
             
             .calculator-box { padding: 25px 20px; border-radius: 16px; }
             .calc-grid { gap: 30px; }
-            .slider-label { font-size: 15px; flex-direction: column; align-items: flex-start; gap: 5px; }
-            .slider-label span.val { font-size: 18px; }
+            .slider-label { font-size: 16px; flex-direction: column; align-items: flex-start; gap: 5px; }
             
             .result-panel { padding: 20px; }
             .result-item { padding-bottom: 15px; margin-bottom: 15px; flex-direction: column; align-items: flex-start; gap: 5px; }
             .result-item .label { font-size: 14px; }
             .result-item .price { font-size: 18px; align-self: flex-end; }
             
-            /* 모바일에서 두 줄로 깨지지 않도록 폰트 크기 조정 */
             .result-item.highlight { align-items: center; text-align: center; background-color: rgba(125, 142, 116, 0.1); padding: 15px; border-radius: 12px; }
             .result-item.highlight .label { font-size: 15px; }
             .result-item.highlight .price-save { font-size: 26px; align-self: center; }
@@ -153,42 +150,36 @@
     <section class="section">
         <div class="container">
             <h2 class="section-title">우리 매장은 월 얼마를 더 벌 수 있을까?</h2>
-            <p class="section-subtitle">슬라이더를 조절하여 타사 대비 절감되는 원두 원가를 직접 확인해 보세요.</p>
+            <p class="section-subtitle">월간 소모량을 조절하여 한눈에 원가 차이를 확인해 보세요.</p>
             
             <div class="calculator-box">
                 <div class="calc-grid">
                     <div class="calc-inputs">
-                        <div class="slider-group">
+                        <div class="slider-group" style="margin-bottom: 0;">
                             <div class="slider-label">
-                                <span>하루 평균 커피 판매량 (잔)</span>
-                                <span class="val" id="sales-volume-txt">50 잔</span>
+                                <span>월간 예상 원두 소모량</span>
+                                <span class="val" id="sales-volume-txt">10 kg</span>
                             </div>
-                            <input type="range" id="sales-volume" class="range-slider" min="50" max="600" step="10" value="50">
-                        </div>
-                        <div class="slider-group">
-                            <div class="slider-label">
-                                <span>타사 프랜차이즈 원두 단가 (1kg 기준)</span>
-                                <span class="val" id="competitor-price-txt">24,000 원</span>
-                            </div>
-                            <input type="range" id="competitor-price" class="range-slider" min="20000" max="35000" step="500" value="24000">
+                            <input type="range" id="sales-volume" class="range-slider" min="1" max="100" step="1" value="10">
                         </div>
                     </div>
+                    
                     <div class="result-panel">
                         <div class="result-item">
-                            <span class="label">월간 예상 원두 소모량</span>
-                            <span class="price" id="bean-weight-txt">37.5 kg</span>
+                            <span class="label">월간 아메리카노 판매 분량 (1kg=50잔)</span>
+                            <span class="price" id="total-cups-txt" style="color: var(--primary-color); font-weight: 700;">500 잔</span>
                         </div>
                         <div class="result-item">
-                            <span class="label" id="competitor-price-label">타사 브랜드 원두 비용 (24,000원/1kg)</span>
-                            <span class="price" id="competitor-total-txt">900,000 원</span>
+                            <span class="label">타사 브랜드 원두 비용 (30,000원/1kg)</span>
+                            <span class="price" id="competitor-total-txt">300,000 원</span>
                         </div>
                         <div class="result-item">
                             <span class="label">지구카페 원두 비용 (19,800원/1kg)</span>
-                            <span class="price" id="earth-total-txt">742,500 원</span>
+                            <span class="price" id="earth-total-txt">198,000 원</span>
                         </div>
                         <div class="result-item highlight">
-                            <span class="label">타사 대비 원두 절감비용 (원가 절감)</span>
-                            <span class="price-save" id="save-total-txt">157,500 원</span>
+                            <span class="label">타사 대비 월 절감액 (순수익 증가)</span>
+                            <span class="price-save" id="save-total-txt">102,000 원</span>
                         </div>
                     </div>
                 </div>
@@ -219,40 +210,31 @@
 
     <script>
         const salesSlider = document.getElementById('sales-volume');
-        const priceSlider = document.getElementById('competitor-price');
         
         const updateCalculator = () => {
-            const dailyCups = parseInt(salesSlider.value);
-            const compPricePerKg = parseInt(priceSlider.value);
+            const monthlyKg = parseInt(salesSlider.value);
             
-            // 상단 슬라이더 텍스트 변경
-            document.getElementById('sales-volume-txt').innerText = dailyCups + " 잔";
-            document.getElementById('competitor-price-txt').innerText = compPricePerKg.toLocaleString() + " 원";
+            // 고정 단가 설정
+            const compPricePerKg = 30000; 
+            const earthPricePerKg = 19800;
             
-            // 💡 결과창의 타사 브랜드 라벨 텍스트도 슬라이더 값에 맞춰 동적으로 변경!
-            document.getElementById('competitor-price-label').innerText = "타사 브랜드 원두 비용 (" + compPricePerKg.toLocaleString() + "원/1kg)";
+            // 판매 잔수 계산 (1kg당 50잔)
+            const totalCups = monthlyKg * 50;
             
-            // 1kg당 40잔 기준 공식 (1잔당 0.025kg 소모) -> 반올림 없이 정확하게 계산
-            const monthlyKg = dailyCups * 0.025 * 30;
+            // 비용 계산
             const competitorTotal = monthlyKg * compPricePerKg;
-            
-            // 지구카페 원두 단가 19,800원 적용
-            const earthTotal = monthlyKg * 19800;
+            const earthTotal = monthlyKg * earthPricePerKg;
             const savings = competitorTotal - earthTotal;
             
-            // 37.5kg 처럼 소수점이 나오면 그대로 보여주고 정수면 깔끔하게 표시
-            const displayKg = Number.isInteger(monthlyKg) ? monthlyKg : monthlyKg.toFixed(1);
-            
-            document.getElementById('bean-weight-txt').innerText = displayKg + " kg";
+            // 화면 텍스트 업데이트
+            document.getElementById('sales-volume-txt').innerText = monthlyKg + " kg";
+            document.getElementById('total-cups-txt').innerText = totalCups.toLocaleString() + " 잔";
             document.getElementById('competitor-total-txt').innerText = competitorTotal.toLocaleString() + " 원";
             document.getElementById('earth-total-txt').innerText = earthTotal.toLocaleString() + " 원";
             document.getElementById('save-total-txt').innerText = savings.toLocaleString() + " 원";
         };
 
         salesSlider.addEventListener('input', updateCalculator);
-        priceSlider.addEventListener('input', updateCalculator);
-        
-        // 페이지가 열리자마자 바로 계산식 실행
         updateCalculator();
     </script>
 </body>
