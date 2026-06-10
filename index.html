@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>지구카페 - 파푸아뉴기니 원두를 블랜딩한 지구카페</title>
+    <title>지구카페 - 오픈 원두 플랫폼 창업 박람회 사전예약</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -67,7 +67,7 @@
         .result-item.highlight .label { font-size: 18px; font-weight: 700; color: var(--accent-brown); }
         .result-item.highlight .price-save { font-size: 32px; font-weight: 700; color: var(--primary-dark); }
 
-        /* 추가된 박람회 현장 사진 섹션 */
+        /* 박람회 현장 사진 섹션 CSS */
         .expo-photo-section { background-color: var(--pure-white); padding: 80px 0; }
         .expo-photo-box { border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 1px solid var(--border-color); }
         .expo-photo-box img { width: 100%; height: auto; display: block; object-fit: cover; }
@@ -171,8 +171,8 @@
                     
                     <div class="result-panel">
                         <div class="result-item">
-                            <span class="label">월간 아메리카노 판매 분량 (1kg=18잔)</span>
-                            <span class="price" id="total-cups-txt" style="color: var(--primary-color); font-weight: 700;">180 잔</span>
+                            <span class="label">월간 아메리카노 판매 분량 (1kg=50잔)</span>
+                            <span class="price" id="total-cups-txt" style="color: var(--primary-color); font-weight: 700;">500 잔</span>
                         </div>
                         <div class="result-item">
                             <span class="label">타사 브랜드 원두 비용 (30,000원/1kg)</span>
@@ -233,8 +233,8 @@
             const compPricePerKg = 30000; 
             const earthPricePerKg = 19800;
             
-            // 판매 잔수 계산 로직 (1kg당 18잔)
-            const totalCups = monthlyKg * 18;
+            // 💡 판매 잔수 계산 로직 다시 50잔으로 복구
+            const totalCups = monthlyKg * 50;
             
             // 비용 계산
             const competitorTotal = monthlyKg * compPricePerKg;
