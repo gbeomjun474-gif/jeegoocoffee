@@ -161,6 +161,7 @@
                                 <span class="val" id="sales-volume-txt">10 kg</span>
                             </div>
                             <input type="range" id="sales-volume" class="range-slider" min="1" max="100" step="1" value="10">
+                            <div style="font-size: 13px; color: var(--text-muted); text-align: right; margin-top: 10px;">※ VAT(부가가치세) 포함</div>
                         </div>
                     </div>
                     
@@ -218,7 +219,7 @@
             const compPricePerKg = 30000; 
             const earthPricePerKg = 19800;
             
-            // 💡 판매 잔수 계산 로직 변경 (1kg당 50잔)
+            // 판매 잔수 계산 (1kg당 50잔)
             const totalCups = monthlyKg * 50;
             
             // 비용 계산
