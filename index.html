@@ -1,242 +1,505 @@
 <!DOCTYPE html>
+
 <html lang="ko">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>지구카페 - 오픈 원두 플랫폼 창업 박람회 사전예약</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     
+
     <style>
+
         /* 테마 컬러 정의 (세이지 그린 & 크림 스톤) */
+
         :root {
+
             --primary-color: #7D8E74;
+
             --primary-dark: #5E7A5E;
+
             --bg-cream: #FDFCF0;
+
             --text-dark: #2C332B;
+
             --text-muted: #6B7280;
+
             --accent-brown: #4B3F35;
+
             --pure-white: #FFFFFF;
+
             --light-gray: #F4F6F3;
+
             --border-color: #E5E7EB;
+
         }
+
+
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif; }
+
         body { background-color: var(--bg-cream); color: var(--text-dark); line-height: 1.6; }
+
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
         .section { padding: 100px 0; }
+
         .section-title { text-align: center; font-size: 20px; font-weight: 700; margin-bottom: 15px; color: var(--accent-brown); }
+
         .section-subtitle { text-align: center; font-size: 18px; color: var(--text-muted); margin-bottom: 60px; }
 
+
+
         .btn { display: inline-block; background-color: var(--primary-color); color: var(--pure-white); padding: 18px 36px; font-size: 18px; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(125, 142, 116, 0.3); }
+
         .btn:hover { background-color: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(125, 142, 116, 0.4); }
 
+
+
         /* 헤더 */
+
         header { background-color: rgba(253, 252, 240, 0.9); backdrop-filter: blur(10px); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; border-bottom: 1px solid rgba(125, 142, 116, 0.1); }
+
         .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+
         .logo { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 700; color: var(--accent-brown); display: flex; align-items: center; gap: 8px; }
+
         .logo i { color: var(--primary-color); }
+
         .nav-booth { background-color: var(--accent-brown); color: var(--bg-cream); padding: 6px 14px; border-radius: 4px; font-size: 14px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
 
+
+
         /* 히어로 섹션 */
+
         .hero { padding: 160px 0 100px 0; background: linear-gradient(135deg, #F9F8EB 0%, #EAECE6 100%); position: relative; }
+
         .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+
         .hero-badge { display: inline-block; background-color: rgba(125, 142, 116, 0.15); color: var(--primary-dark); padding: 6px 16px; border-radius: 50px; font-weight: 700; font-size: 15px; margin-bottom: 20px; }
+
         .hero h1 { font-size: 46px; line-height: 1.3; font-weight: 700; color: var(--accent-brown); margin-bottom: 25px; }
+
         .hero h1 span { color: var(--primary-color); }
+
         .hero p.lead { font-size: 20px; margin-bottom: 40px; font-weight: 300; }
+
         .hero-image-box { position: relative; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); height: 450px; }
+
         .hero-image-box img { width: 100%; height: 100%; object-fit: cover; }
 
+
+
         /* 계산기 UI */
+
         .calculator-box { background-color: var(--pure-white); border-radius: 24px; padding: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
+
         .calc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; }
+
         .slider-group { margin-bottom: 35px; }
+
         .slider-label { display: flex; justify-content: space-between; font-size: 18px; font-weight: 700; margin-bottom: 15px; }
+
         .slider-label span.val { color: var(--primary-color); font-size: 20px; }
+
         .range-slider { width: 100%; -webkit-appearance: none; height: 8px; border-radius: 5px; background: var(--light-gray); outline: none; }
+
         .range-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--primary-color); cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+
         
+
         .result-panel { background-color: var(--light-gray); border-radius: 16px; padding: 40px 30px; display: flex; flex-direction: column; justify-content: center; }
+
         .result-item { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+
         .result-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
         .result-item .label { font-size: 16px; color: var(--text-muted); }
+
         .result-item .price { font-size: 20px; font-weight: 500; }
+
         .result-item.highlight .label { font-size: 18px; font-weight: 700; color: var(--accent-brown); }
+
         .result-item.highlight .price-save { font-size: 32px; font-weight: 700; color: var(--primary-dark); }
 
+
+
         /* 폼 섹션 */
+
         .cta-section { background: linear-gradient(135deg, var(--accent-brown) 0%, #2C241E 100%); color: var(--pure-white); }
+
         .cta-section .section-title { color: var(--bg-cream); }
+
         .form-box { max-width: 650px; margin: 0 auto; background-color: var(--pure-white); padding: 50px; border-radius: 24px; color: var(--text-dark); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+
         .form-group { margin-bottom: 20px; }
+
         .form-group label { display: block; font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--accent-brown); }
+
         .form-control { width: 100%; padding: 14px 18px; border: 1px solid var(--border-color); border-radius: 10px; font-size: 16px; background-color: var(--light-gray); outline: none; }
+
         .form-control:focus { border-color: var(--primary-color); background-color: var(--pure-white); }
+
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
+
+
         /* --- 기존 태블릿 반응형 --- */
+
         @media (max-width: 968px) {
+
             .hero-grid, .calc-grid, .form-row { grid-template-columns: 1fr; }
+
             .hero { padding: 120px 0 60px 0; text-align: center; }
+
             .hero-image-box { height: 320px; }
+
         }
+
+
 
         /* --- 추가된 모바일 폰 전용 반응형 --- */
+
         @media (max-width: 768px) {
+
+            /* 헤더 메뉴 모바일 정렬 */
+
             .nav-container { height: auto; padding: 15px 0; flex-direction: column; gap: 12px; }
+
             .nav-container > div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+
             
+
+            /* 히어로 섹션 텍스트 축소 */
+
             .hero { padding: 150px 0 50px 0; }
+
             .hero h1 { font-size: 30px; margin-bottom: 15px; }
+
             .hero p.lead { font-size: 16px; margin-bottom: 30px; }
+
             .hero-badge { font-size: 13px; padding: 5px 12px; }
+
             
+
+            /* 전체 섹션 여백 및 제목 축소 */
+
             .section { padding: 60px 0; }
+
             .section-title { font-size: 24px; }
+
             .section-subtitle { font-size: 15px; margin-bottom: 40px; }
+
             
+
+            /* 계산기 모바일 최적화 */
+
             .calculator-box { padding: 25px 20px; border-radius: 16px; }
+
             .calc-grid { gap: 30px; }
+
             .slider-label { font-size: 15px; flex-direction: column; align-items: flex-start; gap: 5px; }
+
             .slider-label span.val { font-size: 18px; }
+
             
+
+            /* 결과창 모바일 최적화 */
+
             .result-panel { padding: 20px; }
+
             .result-item { padding-bottom: 15px; margin-bottom: 15px; flex-direction: column; align-items: flex-start; gap: 5px; }
+
             .result-item .label { font-size: 14px; }
+
             .result-item .price { font-size: 18px; align-self: flex-end; }
-            
-            /* 모바일에서 두 줄로 깨지지 않도록 폰트 크기 조정 */
+
             .result-item.highlight { align-items: center; text-align: center; background-color: rgba(125, 142, 116, 0.1); padding: 15px; border-radius: 12px; }
-            .result-item.highlight .label { font-size: 15px; } /* 크기 축소 */
-            .result-item.highlight .price-save { font-size: 26px; align-self: center; } /* 크기 축소 */
+
+            .result-item.highlight .price-save { font-size: 26px; align-self: center; }
+
             
+
+            /* 폼 모바일 최적화 */
+
             .form-box { padding: 30px 20px; }
+
             .btn { font-size: 16px; padding: 15px 20px; }
+
         }
+
     </style>
+
 </head>
+
 <body>
 
+
+
     <header>
+
         <div class="container nav-container">
+
             <div class="logo">
+
                 <img src="jeegoo.png" alt="지구카페 로고" style="height: 45px; width: auto; object-fit: contain;">
+
             </div>
+
             <div style="display: flex; gap: 10px;">
+
                 <a href="tel:15512776" class="nav-booth" style="background-color: var(--primary-color); text-decoration: none; color: var(--pure-white);">
+
                     <i class="fa-solid fa-phone"></i> 가맹문의 1551-2776
+
                 </a>
+
                 <div class="nav-booth">
+
                     <i class="fa-solid fa-location-dot"></i> COEX C홀 호
+
                 </div>
+
             </div>
+
         </div>
+
     </header>
 
+
+
     <section class="hero">
+
         <div class="container hero-grid">
+
             <div class="hero-content">
+
                 <span class="hero-badge">2026 창업박람회 공식 참가 기념 특전</span>
+
                 <h1>치솟는 원두 가격 돌파구,<br>본사 마진 없는 <span>오픈 원두 플랫폼</span></h1>
+
                 <p class="lead">"지구커피"만의 물류시스템으로 프리미엄 원두를 합리적인 금액에 안정적으로 공급합니다.</p>
+
                 <a href="#apply-form" class="btn"><i class="fa-solid fa-calendar-check"></i> 박람회 한정 1:1 상담 예약하기</a>
+
             </div>
+
             <div class="hero-image-box">
+
                 <img src="shop3.jpg" alt="지구카페 실제 매장 전경">
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <section class="section">
+
         <div class="container">
+
             <h2 class="section-title">우리 매장은 월 얼마를 더 벌 수 있을까?</h2>
-            <p class="section-subtitle">월간 소모량을 조절하여 타사 대비 절감되는 원가를 직접 확인해 보세요.</p>
+
+            <p class="section-subtitle">슬라이더를 조절하여 타사 대비 절감되는 원두 원가를 직접 확인해 보세요.</p>
+
             
+
             <div class="calculator-box">
+
                 <div class="calc-grid">
+
                     <div class="calc-inputs">
-                        <div class="slider-group" style="margin-top: 20px;">
+
+                        <div class="slider-group">
+
                             <div class="slider-label">
-                                <span>월 평균 원두 소모량 (kg)</span>
-                                <span class="val" id="sales-volume-txt">50 kg</span>
+
+                                <span>하루 평균 커피 판매량 (잔)</span>
+
+                                <span class="val" id="sales-volume-txt">200 잔</span>
+
                             </div>
-                            <input type="range" id="sales-volume" class="range-slider" min="10" max="100" step="5" value="50">
+
+                            <input type="range" id="sales-volume" class="range-slider" min="50" max="600" step="10" value="200">
+
                         </div>
+
+                        <div class="slider-group">
+
+                            <div class="slider-label">
+
+                                <span>타사 프랜차이즈 원두 단가 (1kg 기준)</span>
+
+                                <span class="val" id="competitor-price-txt">24,000 원</span>
+
+                            </div>
+
+                            <input type="range" id="competitor-price" class="range-slider" min="20000" max="35000" step="500" value="25000">
+
+                        </div>
+
                     </div>
-                    
+
                     <div class="result-panel">
+
                         <div class="result-item">
+
                             <span class="label">월간 예상 원두 소모량</span>
-                            <span class="price" id="bean-weight-txt">50 kg</span>
+
+                            <span class="price" id="bean-weight-txt">100 kg</span>
+
                         </div>
+
                         <div class="result-item">
-                            <span class="label">타사 브랜드 원두 비용 (24,000원/kg)</span>
-                            <span class="price" id="competitor-total-txt">1,200,000 원</span>
+
+                            <span class="label">타사 브랜드 원두 비용</span>
+
+                            <span class="price" id="competitor-total-txt">3,750,000 원</span>
+
                         </div>
+
                         <div class="result-item">
+
                             <span class="label">지구카페 원두 비용 (19,800원/kg)</span>
-                            <span class="price" id="earth-total-txt">990,000 원</span>
+
+                            <span class="price" id="earth-total-txt">2,970,000 원</span>
+
                         </div>
+
                         <div class="result-item highlight">
-                            <span class="label">월 순수익 증가액 (원가 절감)</span>
-                            <span class="price-save" id="save-total-txt">210,000 원</span>
+
+                            <span class="label">타사 대비 원두 절감비용 (원가 절감)</span>
+
+                            <span class="price-save" id="save-total-txt">780,000 원</span>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <section class="section cta-section" id="apply-form">
+
         <div class="container">
+
             <h2 class="section-title">지구카페 성공 파트너 신청하기</h2>
+
             <div class="form-box">
+
                 <form action="https://formspree.io/f/mrevkqaj" method="POST">
+
                     <div class="form-row">
+
                         <div class="form-group">
+
                             <label>성함</label>
+
                             <input type="text" name="name" class="form-control" required>
+
                         </div>
+
                         <div class="form-group">
+
                             <label>연락처</label>
+
                             <input type="tel" name="phone" class="form-control" required>
+
                         </div>
+
                     </div>
+
                     <button type="submit" class="btn" style="width: 100%; border-radius: 12px;">무료 프리미엄 창업 상담 신청하기</button>
+
                 </form>
+
             </div>
+
         </div>
+
     </section>
 
+
+
     <script>
+
         const salesSlider = document.getElementById('sales-volume');
+
+        const priceSlider = document.getElementById('competitor-price');
+
         
+
         const updateCalculator = () => {
-            const monthlyKg = parseInt(salesSlider.value);
+
+            const dailyCups = parseInt(salesSlider.value);
+
+            const compPricePerKg = parseInt(priceSlider.value);
+
             
-            // 타사 원두 단가를 24,000원으로 고정
-            const compPricePerKg = 24000; 
+
+            document.getElementById('sales-volume-txt').innerText = dailyCups + " 잔";
+
+            document.getElementById('competitor-price-txt').innerText = compPricePerKg.toLocaleString() + " 원";
+
             
-            // 화면 상단 슬라이더 텍스트 변경
-            document.getElementById('sales-volume-txt').innerText = monthlyKg + " kg";
-            
-            // 비용 계산 (고정된 단가로 계산)
+
+            // 1kg당 40잔 기준 추출 공식 적용 (1잔당 0.025kg 소모)
+
+            const monthlyKg = Math.round(dailyCups * 0.025 * 30);
+
             const competitorTotal = monthlyKg * compPricePerKg;
-            const earthTotal = monthlyKg * 19800; // 지구카페 원두 단가
-            const savings = competitorTotal - earthTotal; // 순수익 증가액
+
             
-            // 결과창 텍스트 변경
+
+            // 지구카페 원두 단가 19,800원 적용
+
+            const earthTotal = monthlyKg * 19800;
+
+            const savings = competitorTotal - earthTotal;
+
+            
+
             document.getElementById('bean-weight-txt').innerText = monthlyKg + " kg";
+
             document.getElementById('competitor-total-txt').innerText = competitorTotal.toLocaleString() + " 원";
+
             document.getElementById('earth-total-txt').innerText = earthTotal.toLocaleString() + " 원";
+
             document.getElementById('save-total-txt').innerText = savings.toLocaleString() + " 원";
+
         };
 
+
+
         salesSlider.addEventListener('input', updateCalculator);
+
+        priceSlider.addEventListener('input', updateCalculator);
+
         updateCalculator();
+
     </script>
+
 </body>
+
 </html>
