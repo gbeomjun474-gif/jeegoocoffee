@@ -54,7 +54,7 @@
         .logo i { color: var(--primary-color); }
         .nav-booth { background-color: var(--text-dark); color: var(--pure-white); padding: 6px 14px; border-radius: 4px; font-size: 14px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
 
-        /* 히어로 섹션 - 여백 살짝만 남김 */
+        /* 히어로 섹션 */
         .hero { padding: 110px 0 50px 0; background: linear-gradient(135deg, #E6F0FA 0%, #F4F7F9 100%); position: relative; }
         .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
         .hero-badge { display: inline-block; background-color: var(--alert-red); color: var(--pure-white); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 16px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3); animation: pulse 2s infinite; }
@@ -105,14 +105,15 @@
         .footer-logo { margin-bottom: 25px; text-align: center; }
         .footer-logo img { height: 100px; object-fit: contain; }
         .footer-social { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
-        .footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border-color); color: var(--text-dark); text-decoration: none; transition: all 0.3s; font-size: 16px; }
+        
+        /* 💡 수정됨: 인스타그램 버튼 크기 큼직하게 확대 (54px & 폰트사이즈 26px) */
+        .footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%; border: 1px solid var(--border-color); color: var(--text-dark); text-decoration: none; transition: all 0.3s; font-size: 26px; }
         .footer-social a:hover { background-color: var(--text-dark); color: #fff; border-color: var(--text-dark); }
         
         .footer-info-wrapper { min-width: 0; width: 100%; max-width: 800px; margin: 0 auto; text-align: center; }
         .footer-inquiry { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); font-weight: 700; color: var(--text-dark); font-size: 14px; width: 100%; }
         .footer-inquiry div span { color: var(--text-muted); margin-right: 15px; font-weight: 500; }
         
-        /* 💡 복구됨: 푸터 회사 정보 (주소, 대표자, 사업자번호 등) CSS */
         .footer-info { margin-bottom: 20px; text-align: center; }
         .footer-info p { margin-bottom: 5px; text-align: center; }
         .footer-info span { display: inline-block; margin-right: 12px; }
@@ -147,7 +148,8 @@
             .nav-container { height: auto; padding: 15px 0; flex-direction: column; gap: 12px; }
             .nav-container > div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
             
-            .hero { padding: 90px 0 30px 0; } 
+            /* 💡 수정됨: 모바일에서 상단 메뉴바가 길어질 걸 대비해 넉넉하게 여백 추가 (90px -> 140px) */
+            .hero { padding: 140px 0 30px 0; } 
             .hero h1 { font-size: 34px; margin-bottom: 15px; line-height: 1.4; } 
             .hero p.lead { font-size: 16px; margin-bottom: 30px; }
             .hero-badge { font-size: 14px; padding: 6px 16px; }
@@ -175,7 +177,6 @@
             .footer-logo img { height: 80px; }
             .footer-social { margin-bottom: 25px; }
             
-            /* 💡 복구됨: 푸터 회사 정보 모바일 줄바꿈 CSS */
             .footer-info span { display: block; margin-right: 0; margin-bottom: 5px; }
             .footer-info span::after { display: none; }
             
@@ -228,28 +229,28 @@
                         <div class="slider-group" style="margin-bottom: 0;">
                             <div class="slider-label">
                                 <span>월간 예상 원두 소모량</span>
-                                <span class="val" id="sales-volume-txt">1 kg</span>
+                                <span class="val" id="sales-volume-txt">150 kg</span>
                             </div>
-                            <input type="range" id="sales-volume" class="range-slider" min="1" max="100" step="1" value="1">
+                            <input type="range" id="sales-volume" class="range-slider" min="50" max="150" step="1" value="150">
                         </div>
                     </div>
                     
                     <div class="result-panel">
                         <div class="result-item">
                             <span class="label">월간 아메리카노 판매 분량 (1kg=50잔)</span>
-                            <span class="price" id="total-cups-txt" style="color: var(--primary-color);">50 잔</span>
+                            <span class="price" id="total-cups-txt" style="color: var(--primary-color);">7,500 잔</span>
                         </div>
                         <div class="result-item">
                             <span class="label">타사 브랜드 원두 비용 (30,000원/1kg)</span>
-                            <span class="price" id="competitor-total-txt">30,000 원</span>
+                            <span class="price" id="competitor-total-txt">4,500,000 원</span>
                         </div>
                         <div class="result-item">
                             <span class="label">지구카페 원두 비용 (19,800원/1kg)</span>
-                            <span class="price" id="earth-total-txt">19,800 원</span>
+                            <span class="price" id="earth-total-txt">2,970,000 원</span>
                         </div>
                         <div class="result-item highlight">
                             <span class="label">타사 대비 월 절감액 (순수익 증가)</span>
-                            <span class="price-save" id="save-total-txt">10,200 원</span>
+                            <span class="price-save" id="save-total-txt">1,530,000 원</span>
                         </div>
                     </div>
                 </div>
