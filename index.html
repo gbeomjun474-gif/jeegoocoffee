@@ -131,6 +131,10 @@
         .close-modal-btn:hover { color: var(--alert-red); }
         .modal-body { padding: 25px; overflow-y: auto; font-size: 14px; color: var(--text-muted); line-height: 1.7; white-space: pre-wrap; }
 
+        /* 지도 호버(마우스 올렸을 때) 애니메이션 */
+        .map-box-link { display: block; text-decoration: none; color: inherit; transition: transform 0.3s ease; }
+        .map-box-link:hover { transform: translateY(-3px); }
+
         /* 반응형 */
         @media (max-width: 968px) {
             .hero-grid, .calc-grid, .form-row { grid-template-columns: 1fr; }
@@ -275,22 +279,29 @@
 
     <section class="section" style="padding-bottom: 40px;">
         <div class="container">
-            <h2 class="section-title fade-up">지구카페 오시는 길</h2>
+            <h2 class="section-title fade-up">지구커피 오시는 길</h2>
             <p class="section-subtitle fade-up delay-1">미리 예약하고 방문하시면 더 깊은 창업 상담이 가능합니다.</p>
             
-            <div class="fade-up delay-2" style="border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); background-color: var(--pure-white); padding: 0;">
-                
-                <div id="daumRoughmapContainer1781145767845" class="root_daum_roughmap root_daum_roughmap_landing" style="width: 100%;"></div>
-                <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-                <script charset="UTF-8">
-                    new daum.roughmap.Lander({
-                        "timestamp" : "1781145767845",
-                        "key" : "pc4dw7sair4",
-                        "mapWidth" : "100%",   
-                        "mapHeight" : "400"    
-                    }).render();
-                </script>
+            <div class="fade-up delay-2" style="border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); background-color: var(--pure-white);">
+                <a href="https://map.kakao.com/link/search/전북특별자치도 전주시 완산구 기린대로 163" target="_blank" class="map-box-link">
+                    
+                    <div style="width: 100%; height: 320px; background-color: #E2E8F0; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+                        <i class="fa-solid fa-map-location-dot" style="font-size: 40px; color: #94A3B8; margin-bottom: 15px; position: relative; z-index: 1;"></i>
+                        <div style="background-color: rgba(255,255,255,0.9); padding: 10px 20px; border-radius: 50px; font-weight: 700; color: var(--primary-color); box-shadow: 0 4px 10px rgba(0,0,0,0.1); position: relative; z-index: 1;">
+                            <i class="fa-solid fa-hand-pointer"></i> 지도를 클릭하면 카카오맵으로 이동합니다
+                        </div>
+                    </div>
 
+                    <div style="padding: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; border-top: 1px solid var(--border-color);">
+                        <div>
+                            <h3 style="font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 5px;">지구커피 본사</h3>
+                            <p style="font-size: 15px; color: var(--text-muted); margin: 0;">전북특별자치도 전주시 완산구 기린대로 163</p>
+                        </div>
+                        <div style="background-color: #FAE100; color: #3A1D1D; padding: 12px 20px; border-radius: 10px; font-weight: 700; font-size: 15px;">
+                            카카오맵 길찾기 <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -302,7 +313,6 @@
             </div>
             <div class="footer-social">
                 <a href="https://www.instagram.com/jeegoocoffee/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-solid fa-blog"></i></a>
                 <a href="#"><i class="fa-solid fa-store"></i></a>
             </div>
             <div class="footer-info-wrapper">
@@ -389,7 +399,6 @@
             observer.observe(el);
         });
 
-        // 💡 마케팅 활용동의 조항이 완벽 추가된 약관 스크립트!
         const termsData = {
             'privacy': {
                 title: "개인정보처리방침 (마케팅 동의 포함)",
