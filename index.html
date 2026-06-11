@@ -3,54 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>지구카페 - 파푸아뉴기니 싱글 오리진 원두 카페창업 박람회 사전예약</title>
+    <title>지구카페 - 오픈 원두 플랫폼 창업 박람회 사전예약</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* 테마 컬러 정의 */
+        /* 딥블루 테마 컬러 */
         :root {
-            --primary-color: #7D8E74;
-            --primary-dark: #5E7A5E;
-            --bg-cream: #FDFCF0;
-            --text-dark: #2C332B;
-            --text-muted: #6B7280;
-            --accent-brown: #4B3F35;
+            --primary-color: #0051A1; 
+            --primary-dark: #003A75;  
+            --bg-cream: #F4F7F9;      
+            --text-dark: #1E293B;     
+            --text-muted: #64748B;    
+            --accent-blue: #0051A1;   
             --pure-white: #FFFFFF;
-            --light-gray: #F4F6F3;
-            --border-color: #E5E7EB;
+            --light-gray: #E2E8F0;    
+            --border-color: #CBD5E1;
         }
 
-        /* 글자 단어 단위로 떨어지게 & 스크롤 부드럽게 */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; }
         html { scroll-behavior: smooth; }
         #apply-form { scroll-margin-top: 70px; } 
 
-        /* 가로 스크롤 흔들림 방지 */
         body { background-color: var(--bg-cream); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; width: 100%; }
+
+        /* 💡 스크롤 애니메이션 (Fade-up) 마법의 CSS */
+        .fade-up {
+            opacity: 0; /* 처음엔 투명하게 안 보임 */
+            transform: translateY(40px); /* 아래로 40px 내려가 있음 */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* 0.8초 동안 부드럽게 올라옴 */
+        }
+        .fade-up.visible {
+            opacity: 1; /* 스크롤 닿으면 100% 보이게 됨 */
+            transform: translateY(0); /* 원래 위치로 올라옴 */
+        }
+        /* 시간차를 두고 나타나게 하는 딜레이 효과 */
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
 
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 100px 0; }
-        .section-title { text-align: center; font-size: 20px; font-weight: 700; margin-bottom: 15px; color: var(--accent-brown); }
+        .section-title { text-align: center; font-size: 20px; font-weight: 700; margin-bottom: 15px; color: var(--accent-blue); }
         .section-subtitle { text-align: center; font-size: 18px; color: var(--text-muted); margin-bottom: 60px; }
 
-        .btn { display: inline-block; background-color: var(--primary-color); color: var(--pure-white); padding: 18px 36px; font-size: 18px; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(125, 142, 116, 0.3); }
-        .btn:hover { background-color: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(125, 142, 116, 0.4); }
+        .btn { display: inline-block; background-color: var(--primary-color); color: var(--pure-white); padding: 18px 36px; font-size: 18px; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(0, 81, 161, 0.3); }
+        .btn:hover { background-color: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 81, 161, 0.4); }
 
         /* 헤더 */
-        header { background-color: rgba(253, 252, 240, 0.9); backdrop-filter: blur(10px); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; border-bottom: 1px solid rgba(125, 142, 116, 0.1); }
+        header { background-color: rgba(244, 247, 249, 0.9); backdrop-filter: blur(10px); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; border-bottom: 1px solid rgba(0, 81, 161, 0.1); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-        .logo { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 700; color: var(--accent-brown); display: flex; align-items: center; gap: 8px; }
+        .logo { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 700; color: var(--accent-blue); display: flex; align-items: center; gap: 8px; }
         .logo i { color: var(--primary-color); }
-        .nav-booth { background-color: var(--accent-brown); color: var(--bg-cream); padding: 6px 14px; border-radius: 4px; font-size: 14px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
+        .nav-booth { background-color: var(--text-dark); color: var(--pure-white); padding: 6px 14px; border-radius: 4px; font-size: 14px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
 
         /* 히어로 섹션 */
-        .hero { padding: 160px 0 100px 0; background: linear-gradient(135deg, #F9F8EB 0%, #EAECE6 100%); position: relative; }
+        .hero { padding: 160px 0 100px 0; background: linear-gradient(135deg, #E6F0FA 0%, #F4F7F9 100%); position: relative; }
         .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
-        .hero-badge { display: inline-block; background-color: rgba(125, 142, 116, 0.15); color: var(--primary-dark); padding: 6px 16px; border-radius: 50px; font-weight: 700; font-size: 15px; margin-bottom: 20px; }
-        .hero h1 { font-size: 46px; line-height: 1.3; font-weight: 700; color: var(--accent-brown); margin-bottom: 25px; }
+        .hero-badge { display: inline-block; background-color: rgba(0, 81, 161, 0.1); color: var(--primary-color); padding: 6px 16px; border-radius: 50px; font-weight: 700; font-size: 15px; margin-bottom: 20px; }
+        .hero h1 { font-size: 46px; line-height: 1.3; font-weight: 700; color: var(--text-dark); margin-bottom: 25px; }
         .hero h1 span { color: var(--primary-color); }
         .hero p.lead { font-size: 20px; margin-bottom: 40px; font-weight: 300; }
         .hero-image-box { position: relative; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); height: 450px; }
@@ -62,16 +74,16 @@
         .slider-group { margin-bottom: 35px; }
         .slider-label { display: flex; justify-content: space-between; font-size: 18px; font-weight: 700; margin-bottom: 15px; }
         .slider-label span.val { color: var(--primary-color); font-size: 24px; }
-        .range-slider { width: 100%; -webkit-appearance: none; height: 8px; border-radius: 5px; background: var(--light-gray); outline: none; }
+        .range-slider { width: 100%; -webkit-appearance: none; height: 8px; border-radius: 5px; background: var(--border-color); outline: none; }
         .range-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--primary-color); cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
         
         .result-panel { background-color: var(--light-gray); border-radius: 16px; padding: 40px 30px; display: flex; flex-direction: column; justify-content: center; }
         .result-item { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.06); }
         .result-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         .result-item .label { font-size: 16px; color: var(--text-muted); }
-        .result-item .price { font-size: 20px; font-weight: 500; }
-        .result-item.highlight .label { font-size: 18px; font-weight: 700; color: var(--accent-brown); }
-        .result-item.highlight .price-save { font-size: 32px; font-weight: 700; color: var(--primary-dark); }
+        .result-item .price { font-size: 20px; font-weight: 500; color: var(--text-dark); }
+        .result-item.highlight .label { font-size: 18px; font-weight: 700; color: var(--accent-blue); }
+        .result-item.highlight .price-save { font-size: 32px; font-weight: 700; color: var(--primary-color); }
 
         /* 박람회 현장 사진 섹션 */
         .expo-photo-section { background-color: var(--pure-white); padding: 80px 0; }
@@ -79,23 +91,23 @@
         .expo-photo-box img { width: 100%; height: auto; display: block; object-fit: cover; }
 
         /* 폼 섹션 */
-        .cta-section { background: linear-gradient(135deg, var(--accent-brown) 0%, #2C241E 100%); color: var(--pure-white); }
-        .cta-section .section-title { color: var(--bg-cream); }
+        .cta-section { background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%); color: var(--pure-white); }
+        .cta-section .section-title { color: var(--pure-white); }
+        .cta-section .section-subtitle { color: rgba(255,255,255,0.8); }
         .form-box { max-width: 650px; margin: 0 auto; background-color: var(--pure-white); padding: 50px; border-radius: 24px; color: var(--text-dark); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--accent-brown); }
-        .form-control { width: 100%; padding: 14px 18px; border: 1px solid var(--border-color); border-radius: 10px; font-size: 16px; background-color: var(--light-gray); outline: none; }
+        .form-group label { display: block; font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--accent-blue); }
+        .form-control { width: 100%; padding: 14px 18px; border: 1px solid var(--border-color); border-radius: 10px; font-size: 16px; background-color: var(--bg-cream); outline: none; }
         .form-control:focus { border-color: var(--primary-color); background-color: var(--pure-white); }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-        /* --- 기존 태블릿 반응형 --- */
+        /* 반응형 */
         @media (max-width: 968px) {
             .hero-grid, .calc-grid, .form-row { grid-template-columns: 1fr; }
             .hero { padding: 120px 0 60px 0; text-align: center; }
             .hero-image-box { height: 320px; }
         }
 
-        /* --- 완벽하게 수정된 모바일 전용 반응형 --- */
         @media (max-width: 768px) {
             .nav-container { height: auto; padding: 15px 0; flex-direction: column; gap: 12px; }
             .nav-container > div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
@@ -109,7 +121,6 @@
             .section-title { font-size: 20px; margin-bottom: 10px; }
             .section-subtitle { font-size: 14px; margin-bottom: 40px; }
             
-            /* 계산기 박스 크기 넘치지 않게 고정 */
             .calculator-box { padding: 25px 20px; border-radius: 16px; width: 100%; box-sizing: border-box; }
             .calc-grid { gap: 30px; display: grid; grid-template-columns: 1fr; width: 100%; }
             
@@ -118,13 +129,11 @@
             .slider-label span.val { font-size: 18px; font-weight: 700; }
             .range-slider { width: 100%; display: block; box-sizing: border-box; }
             
-            /* 결과창 넘치지 않게 고정 */
             .result-panel { padding: 20px; width: 100%; box-sizing: border-box; }
             .result-item { padding-bottom: 15px; margin-bottom: 15px; flex-direction: column; align-items: flex-start; gap: 5px; width: 100%; }
             .result-item .label { font-size: 13px; white-space: normal; word-break: keep-all; } 
             .result-item .price { font-size: 16px; align-self: flex-end; font-weight: 700; }
             
-            /* 월 절감액 딱 한 줄로만 표시되게 고정! */
             .result-item.highlight { flex-direction: row; justify-content: space-between; align-items: center; padding: 15px; border-radius: 12px; width: 100%; box-sizing: border-box; }
             .result-item.highlight .label { font-size: 12px; white-space: nowrap; letter-spacing: -0.5px; }
             .result-item.highlight .price-save { font-size: 18px; white-space: nowrap; }
@@ -145,8 +154,8 @@
                 <a href="tel:15512776" class="nav-booth" style="background-color: var(--primary-color); text-decoration: none; color: var(--pure-white);">
                     <i class="fa-solid fa-phone"></i> 가맹문의 1551-2776
                 </a>
-                <div class="nav-booth">
-                    <i class="fa-solid fa-location-dot"></i> COEX D홀 H109
+                <div class="nav-booth" style="background-color: var(--text-dark);">
+                    <i class="fa-solid fa-location-dot"></i> COEX C홀 호
                 </div>
             </div>
         </div>
@@ -154,13 +163,13 @@
 
     <section class="hero">
         <div class="container hero-grid">
-            <div class="hero-content">
-                <span class="hero-badge">2026 창업박람회 공식 참가 기념 특혜</span>
-                <h1>치솟는 원두 가격 돌파구,<br>본사 마진 없는 <span style="color: var(--primary-color);">원두공급</span></h1>
+            <div class="hero-content fade-up">
+                <span class="hero-badge">2026 창업박람회 공식 참가 기념 특전</span>
+                <h1>치솟는 원두 가격 돌파구,<br>본사 마진 없는 <span style="color: var(--primary-color);">오픈 원두 플랫폼</span></h1>
                 <p class="lead">"지구커피"만의 물류시스템으로 프리미엄 원두를 합리적인 금액에 안정적으로 공급합니다.</p>
                 <a href="#apply-form" class="btn"><i class="fa-solid fa-calendar-check"></i> 박람회 한정 1:1 상담 예약하기</a>
             </div>
-            <div class="hero-image-box">
+            <div class="hero-image-box fade-up delay-1">
                 <img src="shop3.jpg" alt="지구카페 실제 매장 전경">
             </div>
         </div>
@@ -168,10 +177,10 @@
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title">우리 매장은 월 얼마를 더 벌 수 있을까?</h2>
-            <p class="section-subtitle">월간 소모량을 조절하여 한눈에 원가 차이를 확인해 보세요.</p>
+            <h2 class="section-title fade-up">우리 매장은 월 얼마를 더 벌 수 있을까?</h2>
+            <p class="section-subtitle fade-up delay-1">월간 소모량을 조절하여 한눈에 원가 차이를 확인해 보세요.</p>
             
-            <div class="calculator-box">
+            <div class="calculator-box fade-up delay-2">
                 <div class="calc-grid">
                     <div class="calc-inputs">
                         <div class="slider-group" style="margin-bottom: 0;">
@@ -193,7 +202,7 @@
                             <span class="price" id="competitor-total-txt">30,000 원</span>
                         </div>
                         <div class="result-item">
-                            <span class="label">지구커피 원두 비용 (19,800원/1kg)</span>
+                            <span class="label">지구카페 원두 비용 (19,800원/1kg)</span>
                             <span class="price" id="earth-total-txt">19,800 원</span>
                         </div>
                         <div class="result-item highlight">
@@ -208,18 +217,19 @@
 
     <section class="expo-photo-section">
         <div class="container">
-            <h2 class="section-title">점주님과 함께 상생하는 지구커피</h2>
-            <p class="section-subtitle">'파푸아뉴기니 싱글오리진 원두'의 파격혜택</p>
-            <div class="expo-photo-box">
-                <img src="event.png" alt="지구커피 혜택 전단지">
+            <h2 class="section-title fade-up">많은 분이 경험한 지구카페의 가치</h2>
+            <p class="section-subtitle fade-up delay-1">박람회 현장에서 확인한 '합리적인 원두와 브랜딩'의 강력한 현장감</p>
+            <div class="expo-photo-box fade-up delay-2">
+                <img src="image_0.png" alt="지구카페 박람회 현장 부스 모습">
             </div>
         </div>
     </section>
 
     <section class="section cta-section" id="apply-form">
         <div class="container">
-            <h2 class="section-title">지구커피 성공 파트너 신청하기</h2>
-            <div class="form-box">
+            <h2 class="section-title fade-up">지구카페 성공 파트너 신청하기</h2>
+            <p class="section-subtitle fade-up delay-1" style="margin-bottom: 30px;">박람회 한정 혜택을 놓치지 마세요.</p>
+            <div class="form-box fade-up delay-2">
                 <form action="https://formspree.io/f/mrevkqaj" method="POST">
                     <div class="form-row">
                         <div class="form-group">
@@ -235,7 +245,7 @@
                         <label>희망 창업 지역</label>
                         <input type="text" name="region" class="form-control" placeholder="예: 서울 강남구, 부산 해운대구 등" required>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%; border-radius: 12px;">무료 프리미엄 창업 상담 신청하기</button>
+                    <button type="submit" class="btn" style="width: 100%; border-radius: 12px; box-shadow: none;">무료 프리미엄 창업 상담 신청하기</button>
                 </form>
             </div>
         </div>
@@ -247,11 +257,9 @@
         const updateCalculator = () => {
             const monthlyKg = parseInt(salesSlider.value);
             
-            // 고정 단가
             const compPricePerKg = 30000; 
             const earthPricePerKg = 19800;
             
-            // 1kg = 50잔 고정 공식
             const totalCups = monthlyKg * 50;
             
             const competitorTotal = monthlyKg * compPricePerKg;
@@ -266,8 +274,27 @@
         };
 
         salesSlider.addEventListener('input', updateCalculator);
-        // 페이지 켜지자마자 1kg 계산 실행
         updateCalculator();
+
+        // 💡 스크롤 애니메이션(Fade-up)을 작동시키는 자바스크립트!
+        const observerOptions = {
+            threshold: 0.1, // 화면에 10% 정도 보이기 시작할 때 애니메이션 실행
+            rootMargin: "0px 0px -50px 0px" // 살짝 덜 내려가도 보이게 마진 조절
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible'); // 스크롤 닿으면 클래스 추가해서 띄움!
+                    observer.unobserve(entry.target); // 한번 뜬 애들은 계속 떠있게 고정
+                }
+            });
+        }, observerOptions);
+
+        // 'fade-up' 클래스가 달린 모든 요소들을 감시해라!
+        document.querySelectorAll('.fade-up').forEach((el) => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
