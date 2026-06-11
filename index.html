@@ -30,7 +30,7 @@
 
         body { background-color: var(--bg-cream); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; width: 100%; }
 
-        /* 스크롤 애니메이션 (Fade-up) */
+        /* 스크롤 애니메이션 */
         .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.2s; }
@@ -38,6 +38,10 @@
 
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 100px 0; }
+        
+        /* 💡 수정됨: 계산기 섹션 위쪽 여백 대폭 축소용 클래스 */
+        .calc-section { padding-top: 40px; }
+
         .section-title { text-align: center; font-size: 20px; font-weight: 700; margin-bottom: 15px; color: var(--accent-blue); }
         .section-subtitle { text-align: center; font-size: 18px; color: var(--text-muted); margin-bottom: 60px; }
 
@@ -52,19 +56,21 @@
         .nav-booth { background-color: var(--text-dark); color: var(--pure-white); padding: 6px 14px; border-radius: 4px; font-size: 14px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
 
         /* 히어로 섹션 */
-        .hero { padding: 160px 0 100px 0; background: linear-gradient(135deg, #E6F0FA 0%, #F4F7F9 100%); position: relative; }
+        /* 💡 수정됨: 히어로 하단 여백 대폭 축소 (100px -> 50px) */
+        .hero { padding: 160px 0 50px 0; background: linear-gradient(135deg, #E6F0FA 0%, #F4F7F9 100%); position: relative; }
         .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
         .hero-badge { display: inline-block; background-color: var(--alert-red); color: var(--pure-white); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 16px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3); animation: pulse 2s infinite; }
         
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-        .hero h1 { font-size: 46px; line-height: 1.3; font-weight: 700; color: var(--text-dark); margin-bottom: 25px; }
-        .hero h1 span { color: var(--primary-color); }
+        /* 💡 수정됨: 메인 카피 타이포그래피 강화 (더 눈에 띄게) */
+        .hero h1 { font-size: 52px; line-height: 1.35; font-weight: 700; color: var(--text-dark); margin-bottom: 25px; letter-spacing: -1px; }
+        .hero-highlight { background-color: var(--primary-color); color: var(--pure-white); padding: 0 12px; border-radius: 8px; display: inline-block; margin-top: 5px; }
         .hero p.lead { font-size: 20px; margin-bottom: 40px; font-weight: 300; }
         .hero-image-box { position: relative; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); height: 450px; }
         .hero-image-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 계산기 UI 이탈 완벽 방지 */
+        /* 계산기 UI */
         .calculator-box { background-color: var(--pure-white); border-radius: 24px; padding: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid var(--border-color); width: 100%; box-sizing: border-box; overflow: hidden; }
         .calc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; width: 100%; }
         .calc-inputs { min-width: 0; width: 100%; }
@@ -89,11 +95,13 @@
         .cta-section .section-title { color: var(--pure-white); }
         .cta-section .section-subtitle { color: rgba(255,255,255,0.8); }
         .form-box { max-width: 650px; margin: 0 auto; background-color: var(--pure-white); padding: 50px; border-radius: 24px; color: var(--text-dark); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--accent-blue); }
-        .form-control { width: 100%; padding: 14px 18px; border: 1px solid var(--border-color); border-radius: 10px; font-size: 16px; background-color: var(--bg-cream); outline: none; }
+        
+        /* 💡 수정됨: 폼 간격 (마진, 갭) 촘촘하게 축소 */
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--accent-blue); }
+        .form-control { width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 15px; background-color: var(--bg-cream); outline: none; transition: border-color 0.2s; }
         .form-control:focus { border-color: var(--primary-color); background-color: var(--pure-white); }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
         /* 푸터(바닥글) 디자인 */
         .site-footer { background-color: #F8FAFC; padding: 40px 0 30px 0; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 13px; line-height: 1.8; text-align: center; }
@@ -131,14 +139,10 @@
         .close-modal-btn:hover { color: var(--alert-red); }
         .modal-body { padding: 25px; overflow-y: auto; font-size: 14px; color: var(--text-muted); line-height: 1.7; white-space: pre-wrap; }
 
-        /* 지도 호버(마우스 올렸을 때) 애니메이션 */
-        .map-box-link { display: block; text-decoration: none; color: inherit; transition: transform 0.3s ease; }
-        .map-box-link:hover { transform: translateY(-3px); }
-
         /* 반응형 */
         @media (max-width: 968px) {
             .hero-grid, .calc-grid, .form-row { grid-template-columns: 1fr; }
-            .hero { padding: 120px 0 60px 0; text-align: center; }
+            .hero { padding: 120px 0 40px 0; text-align: center; } /* 모바일 여백 축소 */
             .hero-image-box { height: 320px; }
         }
 
@@ -146,12 +150,13 @@
             .nav-container { height: auto; padding: 15px 0; flex-direction: column; gap: 12px; }
             .nav-container > div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
             
-            .hero { padding: 150px 0 50px 0; }
-            .hero h1 { font-size: 30px; margin-bottom: 15px; }
+            .hero { padding: 120px 0 30px 0; } /* 모바일 여백 축소 */
+            .hero h1 { font-size: 34px; margin-bottom: 15px; line-height: 1.4; } /* 모바일 폰트 크기 조절 */
             .hero p.lead { font-size: 16px; margin-bottom: 30px; }
             .hero-badge { font-size: 14px; padding: 6px 16px; }
             
             .section { padding: 60px 0; }
+            .calc-section { padding-top: 20px; } /* 모바일 계산기 위쪽 여백 축소 */
             .section-title { font-size: 20px; margin-bottom: 10px; }
             .section-subtitle { font-size: 14px; margin-bottom: 40px; line-height: 1.5; }
             
@@ -201,7 +206,9 @@
         <div class="container hero-grid">
             <div class="hero-content fade-up">
                 <span class="hero-badge">🚨 박람회 한정: 창업 비용 최대 3,000만원 지원</span>
-                <h1>치솟는 원두 가격 돌파구,<br>본사 마진 없는 <span style="color: var(--primary-color);">최고등급 원두</span></h1>
+                
+                <h1>치솟는 원두 가격 돌파구,<br>본사 마진 없는 <span class="hero-highlight">최고등급 원두</span></h1>
+                
                 <p class="lead">"지구커피"만의 물류시스템으로 프리미엄 원두 타사 원두보다 더 합리적인 금액에 안정적으로 공급합니다.</p>
                 <a href="#apply-form" class="btn" style="background-color: var(--alert-red);"><i class="fa-solid fa-gift"></i> 3,000만원 혜택 선점하기</a>
             </div>
@@ -211,7 +218,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section calc-section">
         <div class="container">
             <h2 class="section-title fade-up">우리 매장은 월 얼마를 더 벌 수 있을까?</h2>
             <p class="section-subtitle fade-up delay-1">월간 소모량을 조절하여 한눈에 원가 차이를 확인해 보세요.</p>
@@ -267,7 +274,7 @@
                             <input type="tel" name="phone" class="form-control" placeholder="예: 010-1234-5678" required>
                         </div>
                     </div>
-                    <div class="form-group" style="margin-bottom: 25px;">
+                    <div class="form-group" style="margin-bottom: 20px;">
                         <label>희망 창업 지역</label>
                         <input type="text" name="region" class="form-control" placeholder="예: 서울 강남구, 부산 해운대구 등" required>
                     </div>
@@ -282,26 +289,24 @@
             <h2 class="section-title fade-up">지구커피 오시는 길</h2>
             <p class="section-subtitle fade-up delay-1">미리 예약하고 방문하시면 더 깊은 창업 상담이 가능합니다.</p>
             
-            <div class="fade-up delay-2" style="border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); background-color: var(--pure-white);">
-                <a href="https://map.kakao.com/link/search/전북특별자치도 전주시 완산구 기린대로 163" target="_blank" class="map-box-link">
-                    
-                    <div style="width: 100%; height: 320px; background-color: #E2E8F0; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
-                        <i class="fa-solid fa-map-location-dot" style="font-size: 40px; color: #94A3B8; margin-bottom: 15px; position: relative; z-index: 1;"></i>
-                        <div style="background-color: rgba(255,255,255,0.9); padding: 10px 20px; border-radius: 50px; font-weight: 700; color: var(--primary-color); box-shadow: 0 4px 10px rgba(0,0,0,0.1); position: relative; z-index: 1;">
-                            <i class="fa-solid fa-hand-pointer"></i> 지도를 클릭하면 카카오맵으로 이동합니다
-                        </div>
-                    </div>
+            <div class="fade-up delay-2" style="border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); background-color: var(--pure-white); padding: 0;">
+                
+                <div id="daumRoughmapContainer1781145767845" class="root_daum_roughmap root_daum_roughmap_landing" style="width: 100%;"></div>
+                <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+                <script charset="UTF-8">
+                    new daum.roughmap.Lander({
+                        "timestamp" : "1781145767845",
+                        "key" : "pc4dw7sair4",
+                        "mapWidth" : "100%",   
+                        "mapHeight" : "400"    
+                    }).render();
+                </script>
 
-                    <div style="padding: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; border-top: 1px solid var(--border-color);">
-                        <div>
-                            <h3 style="font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 5px;">지구커피 본사</h3>
-                            <p style="font-size: 15px; color: var(--text-muted); margin: 0;">전북특별자치도 전주시 완산구 기린대로 163</p>
-                        </div>
-                        <div style="background-color: #FAE100; color: #3A1D1D; padding: 12px 20px; border-radius: 10px; font-weight: 700; font-size: 15px;">
-                            카카오맵 길찾기 <i class="fa-solid fa-arrow-right"></i>
-                        </div>
-                    </div>
-                </a>
+            </div>
+
+            <div class="fade-up delay-2" style="text-align: center; margin-top: 25px;">
+                <h3 style="font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 5px;">📍 지구커피 본사</h3>
+                <p style="font-size: 16px; font-weight: 500; color: var(--primary-color); margin: 0;">전북특별자치도 전주시 완산구 기린대로 163</p>
             </div>
         </div>
     </section>
@@ -361,12 +366,9 @@
         
         const updateCalculator = () => {
             const monthlyKg = parseInt(salesSlider.value);
-            
             const compPricePerKg = 30000; 
             const earthPricePerKg = 19800;
-            
             const totalCups = monthlyKg * 50;
-            
             const competitorTotal = monthlyKg * compPricePerKg;
             const earthTotal = monthlyKg * earthPricePerKg;
             const savings = competitorTotal - earthTotal;
@@ -381,11 +383,7 @@
         salesSlider.addEventListener('input', updateCalculator);
         updateCalculator();
 
-        const observerOptions = {
-            threshold: 0.1, 
-            rootMargin: "0px 0px -50px 0px" 
-        };
-
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -394,10 +392,7 @@
                 }
             });
         }, observerOptions);
-
-        document.querySelectorAll('.fade-up').forEach((el) => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-up').forEach((el) => { observer.observe(el); });
 
         const termsData = {
             'privacy': {
