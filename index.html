@@ -70,4 +70,29 @@
         /* 계산기 UI */
         .calculator-box { background-color: var(--pure-white); border-radius: 24px; padding: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid var(--border-color); width: 100%; box-sizing: border-box; overflow: hidden; }
         .calc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; width: 100%; }
-        .calc-inputs { min-width: 0; width
+        .calc-inputs { min-width: 0; width: 100%; }
+        .slider-group { margin-bottom: 35px; width: 100%; }
+        .slider-label { display: flex; flex-wrap: wrap; justify-content: space-between; font-size: 20px; font-weight: 700; margin-bottom: 15px; gap: 10px; width: 100%; }
+        .slider-label span.val { color: var(--primary-color); font-size: 26px; white-space: nowrap; }
+        .range-slider { width: 100%; -webkit-appearance: none; height: 8px; border-radius: 5px; background: var(--border-color); outline: none; }
+        .range-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--primary-color); cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+        
+        .result-panel { background-color: var(--light-gray); border-radius: 16px; padding: 40px 30px; display: flex; flex-direction: column; justify-content: center; min-width: 0; width: 100%; box-sizing: border-box; }
+        .result-item { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.06); gap: 10px; width: 100%; }
+        .result-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .result-item .label { font-size: 16px; color: var(--text-muted); flex: 1 1 50%; word-break: keep-all; }
+        .result-item .price { font-size: 20px; font-weight: 500; color: var(--text-dark); flex: 1 1 auto; text-align: right; white-space: nowrap; }
+        
+        .result-item.highlight { background-color: rgba(0, 81, 161, 0.05); padding: 20px; border-radius: 12px; }
+        .result-item.highlight .label { font-size: 18px; font-weight: 700; color: var(--accent-blue); }
+        .result-item.highlight .price-save { font-size: 32px; font-weight: 700; color: var(--primary-color); flex: 1 1 auto; text-align: right; white-space: nowrap; }
+
+        /* 폼 섹션 */
+        .cta-section { background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%); color: var(--pure-white); }
+        .cta-section .section-title { color: var(--pure-white); }
+        .cta-section .section-subtitle { color: rgba(255,255,255,0.8); }
+        .form-box { max-width: 650px; margin: 0 auto; background-color: var(--pure-white); padding: 50px; border-radius: 24px; color: var(--text-dark); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--accent-blue); }
+        .form-control { width: 100%; padding: 12
