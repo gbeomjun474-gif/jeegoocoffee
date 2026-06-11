@@ -106,7 +106,6 @@
         .footer-logo img { height: 100px; object-fit: contain; }
         .footer-social { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
         
-        /* 💡 수정됨: 인스타그램 버튼 크기 큼직하게 확대 (54px & 폰트사이즈 26px) */
         .footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%; border: 1px solid var(--border-color); color: var(--text-dark); text-decoration: none; transition: all 0.3s; font-size: 26px; }
         .footer-social a:hover { background-color: var(--text-dark); color: #fff; border-color: var(--text-dark); }
         
@@ -148,7 +147,6 @@
             .nav-container { height: auto; padding: 15px 0; flex-direction: column; gap: 12px; }
             .nav-container > div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
             
-            /* 💡 수정됨: 모바일에서 상단 메뉴바가 길어질 걸 대비해 넉넉하게 여백 추가 (90px -> 140px) */
             .hero { padding: 140px 0 30px 0; } 
             .hero h1 { font-size: 34px; margin-bottom: 15px; line-height: 1.4; } 
             .hero p.lead { font-size: 16px; margin-bottom: 30px; }
@@ -289,7 +287,7 @@
             <h2 class="section-title fade-up">지구커피 오시는 길</h2>
             <p class="section-subtitle fade-up delay-1">미리 예약하고 방문하시면 더 깊은 창업 상담이 가능합니다.</p>
             
-            <div class="fade-up delay-2" style="border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); background-color: var(--pure-white); padding: 0;">
+            <div class="fade-up delay-2" style="border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); background-color: var(--pure-white); padding: 0; max-width: 600px; margin: 0 auto;">
                 
                 <div id="daumRoughmapContainer1781145767845" class="root_daum_roughmap root_daum_roughmap_landing" style="width: 100%;"></div>
                 <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
@@ -298,7 +296,7 @@
                         "timestamp" : "1781145767845",
                         "key" : "pc4dw7sair4",
                         "mapWidth" : "100%",   
-                        "mapHeight" : "400"    
+                        "mapHeight" : "300" /* 💡 수정됨: 지도 높이도 조금 더 날씬하게 300px로 축소 */
                     }).render();
                 </script>
 
@@ -400,7 +398,7 @@
         const termsData = {
             'privacy': {
                 title: "개인정보처리방침 (마케팅 동의 포함)",
-                content: `제1조(목적)\n지구커피(이하 '회사')는 회사의 가맹 창업 상담 서비스를 이용하는 고객의 개인정보를 매우 중요하게 생각하며, "개인정보보호법" 등 관련 법령을 철저히 준수합니다.\n\n제2조(수집하는 개인정보 항목)\n회사는 원활한 창업 상담 및 마케팅 소식 전달을 위해 아래와 같은 개인정보를 수집하고 있습니다.\n- 필수항목 : 성함, 연락처, 희망 창업 지역\n\n제3조(개인정보의 수집 및 이용 목적)\n수집된 개인정보는 다음의 목적을 위해서만 활용됩니다.\n1. 가맹점 개설 관련 1:1 맞춤 상담 진행 및 본사 방문 안내\n2. 지구커피 창업 세미나, 설명회 안내 및 브랜드 뉴스레터 발송\n3. [마케팅 및 광고성 정보 활용] 본사 프로모션, 신메뉴 출시 정보, 창업 혜택 정보 안내 및 광고성 정보(SMS, 이메일 등) 전송\n\n제4조(개인정보의 보유 및 이용 기간)\n- 이용자의 개인정보는 가맹 상담 및 마케팅 목적 달성이 완료된 후 지체 없이 파기하는 것을 원칙으로 합니다.\n- 단, 관련 법령의 규정에 의하여 보존할 필요가 있는 경우 일정한 기간 동안 보관할 수 있습니다. (소비자의 불만 또는 분쟁 처리에 관한 기록 : 3년)\n\n제5조(동의 거부 권리 및 불이익 안내)\n이용자는 본 개인정보 수집 및 마케팅 활용 동의를 거부할 권리가 있습니다. 단, 필수 항목 및 마케팅 수신에 동의하지 않으실 경우, 박람회 한정 혜택 안내나 특별 창업 세미나 초청 등의 유용한 정보를 받아보실 수 없습니다.`
+                content: `제1조(목적)\n지구커피(이하 '회사')는 회사의 가맹 창업 상담 서비스를 이용하는 고객의 개인정보를 매우 중요하게 생각하며, "개인정보보호법" 등 관련 법령을 철저히 준수합니다.\n\n제2조(수집하는 개인정보 항목)\n회사는 원활한 창업 상담 및 마케팅 소식 전달을 위해 아래와 같은 개인정보를 수집하고 있습니다.\n- 필수항목 : 성함, 연락처, 희망 창업 지역\n\n제3조(개인정보의 수집 및 이용 목적)\n수집된 개인정보는 다음의 목적을 위해서만 활용됩니다.\n1. 가맹점 개설 관련 1:1 맞춤 상담 진행 및 본사 방문 안내\n2. 지구커피 창업 세미나, 설명회 안내 및 브랜드 뉴스레터 발송\n3. [마케팅 및 광고성 대행] 본사 프로모션, 신메뉴 출시 정보, 창업 혜택 정보 안내 및 광고성 정보(SMS, 이메일 등) 전송\n\n제4조(개인정보의 보유 및 이용 기간)\n- 이용자의 개인정보는 가맹 상담 및 마케팅 목적 달성이 완료된 후 지체 없이 파기하는 것을 원칙으로 합니다.\n- 단, 관련 법령의 규정에 의하여 보존할 필요가 있는 경우 일정한 기간 동안 보관할 수 있습니다. (소비자의 불만 또는 분쟁 처리에 관한 기록 : 3년)\n\n제5조(동의 거부 권리 및 불이익 안내)\n이용자는 본 개인정보 수집 및 마케팅 활용 동의를 거부할 권리가 있습니다. 단, 필수 항목 및 마케팅 수신에 동의하지 않으실 경우, 박람회 한정 혜택 안내나 특별 창업 세미나 초청 등의 유용한 정보를 받아보실 수 없습니다.`
             },
             'terms': {
                 title: "서비스 이용약관",
