@@ -31,15 +31,8 @@
         body { background-color: var(--bg-cream); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; width: 100%; }
 
         /* 스크롤 애니메이션 (Fade-up) */
-        .fade-up {
-            opacity: 0; 
-            transform: translateY(40px); 
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
-        }
-        .fade-up.visible {
-            opacity: 1; 
-            transform: translateY(0); 
-        }
+        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.2s; }
         .delay-2 { transition-delay: 0.4s; }
 
@@ -61,14 +54,9 @@
         /* 히어로 섹션 */
         .hero { padding: 160px 0 100px 0; background: linear-gradient(135deg, #E6F0FA 0%, #F4F7F9 100%); position: relative; }
         .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
-        
         .hero-badge { display: inline-block; background-color: var(--alert-red); color: var(--pure-white); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 16px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3); animation: pulse 2s infinite; }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
         .hero h1 { font-size: 46px; line-height: 1.3; font-weight: 700; color: var(--text-dark); margin-bottom: 25px; }
         .hero h1 span { color: var(--primary-color); }
@@ -76,22 +64,25 @@
         .hero-image-box { position: relative; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); height: 450px; }
         .hero-image-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 계산기 UI */
-        .calculator-box { background-color: var(--pure-white); border-radius: 24px; padding: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
-        .calc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
-        .slider-group { margin-bottom: 35px; }
-        .slider-label { display: flex; justify-content: space-between; font-size: 20px; font-weight: 700; margin-bottom: 15px; }
-        .slider-label span.val { color: var(--primary-color); font-size: 26px; }
+        /* 계산기 UI 이탈 완벽 방지 */
+        .calculator-box { background-color: var(--pure-white); border-radius: 24px; padding: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid var(--border-color); width: 100%; box-sizing: border-box; overflow: hidden; }
+        .calc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; width: 100%; }
+        .calc-inputs { min-width: 0; width: 100%; }
+        .slider-group { margin-bottom: 35px; width: 100%; }
+        .slider-label { display: flex; flex-wrap: wrap; justify-content: space-between; font-size: 20px; font-weight: 700; margin-bottom: 15px; gap: 10px; width: 100%; }
+        .slider-label span.val { color: var(--primary-color); font-size: 26px; white-space: nowrap; }
         .range-slider { width: 100%; -webkit-appearance: none; height: 8px; border-radius: 5px; background: var(--border-color); outline: none; }
         .range-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--primary-color); cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
         
-        .result-panel { background-color: var(--light-gray); border-radius: 16px; padding: 40px 30px; display: flex; flex-direction: column; justify-content: center; }
-        .result-item { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .result-panel { background-color: var(--light-gray); border-radius: 16px; padding: 40px 30px; display: flex; flex-direction: column; justify-content: center; min-width: 0; width: 100%; box-sizing: border-box; }
+        .result-item { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.06); gap: 10px; width: 100%; }
         .result-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .result-item .label { font-size: 16px; color: var(--text-muted); }
-        .result-item .price { font-size: 20px; font-weight: 500; color: var(--text-dark); }
+        .result-item .label { font-size: 16px; color: var(--text-muted); flex: 1 1 50%; word-break: keep-all; }
+        .result-item .price { font-size: 20px; font-weight: 500; color: var(--text-dark); flex: 1 1 auto; text-align: right; white-space: nowrap; }
+        
+        .result-item.highlight { background-color: rgba(0, 81, 161, 0.05); padding: 20px; border-radius: 12px; }
         .result-item.highlight .label { font-size: 18px; font-weight: 700; color: var(--accent-blue); }
-        .result-item.highlight .price-save { font-size: 32px; font-weight: 700; color: var(--primary-color); }
+        .result-item.highlight .price-save { font-size: 32px; font-weight: 700; color: var(--primary-color); flex: 1 1 auto; text-align: right; white-space: nowrap; }
 
         /* 폼 섹션 */
         .cta-section { background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%); color: var(--pure-white); }
@@ -104,43 +95,41 @@
         .form-control:focus { border-color: var(--primary-color); background-color: var(--pure-white); }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-        /* 💡 수정됨: 푸터(바닥글) 가운데 정렬 CSS */
-        .site-footer { background-color: #F8FAFC; padding: 60px 0; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 13px; line-height: 1.8; text-align: center; /* 전체 중앙 정렬 */ }
-        
-        /* 💡 수정됨: 컨테이너를 수직 중앙 정렬 구조로 변경 */
+        /* 푸터(바닥글) 디자인 */
+        .site-footer { background-color: #F8FAFC; padding: 40px 0 30px 0; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 13px; line-height: 1.8; text-align: center; }
         .footer-container { display: flex; flex-direction: column; align-items: center; gap: 0; }
-        
-        /* 💡 수정됨: 로고 가운데 배치 및 크기 확대 */
-        .footer-logo { margin-bottom: 30px; text-align: center; }
-        .footer-logo img { height: 100px; /* 로고 크기 대폭 확대 */ object-fit: contain; } /* 파란색 원본 색상 유지 */
-        
-        /* 💡 수정됨: SNS 아이콘 로고 아래 중앙 배치 */
-        .footer-social { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; }
+        .footer-logo { margin-bottom: 25px; text-align: center; }
+        .footer-logo img { height: 100px; object-fit: contain; }
+        .footer-social { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
         .footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border-color); color: var(--text-dark); text-decoration: none; transition: all 0.3s; font-size: 16px; }
         .footer-social a:hover { background-color: var(--text-dark); color: #fff; border-color: var(--text-dark); }
         
-        /* 💡 수정됨: 회사 정보 영역 가운데 배치 및 너비 최적화 */
         .footer-info-wrapper { min-width: 0; width: 100%; max-width: 800px; margin: 0 auto; text-align: center; }
-        
-        /* 💡 수정됨: 문의처 중앙 배치 */
         .footer-inquiry { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); font-weight: 700; color: var(--text-dark); font-size: 14px; width: 100%; }
         .footer-inquiry div span { color: var(--text-muted); margin-right: 15px; font-weight: 500; }
         
-        /* 💡 수정됨: 회사 정보 텍스트 가운데 정렬 */
         .footer-info { margin-bottom: 20px; text-align: center; }
         .footer-info p { margin-bottom: 5px; text-align: center; }
         .footer-info span { display: inline-block; margin-right: 12px; }
         .footer-info span::after { content: "|"; margin-left: 12px; color: var(--border-color); }
         .footer-info span:last-child::after { content: ""; margin-left: 0; }
         
-        /* 💡 수정됨: 약관 링크 가운데 정렬 */
-        .footer-links { margin-bottom: 30px; font-weight: 500; text-align: center; }
-        .footer-links a { color: var(--text-dark); text-decoration: none; margin-right: 20px; }
+        .footer-links { margin-bottom: 25px; font-weight: 500; text-align: center; }
+        .footer-links a { color: var(--text-dark); text-decoration: none; margin-right: 20px; cursor: pointer; }
         .footer-links a:hover { text-decoration: underline; }
-        .footer-links a:last-child { margin-right: 0; } /* 마지막 링크 간격 제거 */
-        
-        /* 💡 수정됨: 카피라이트 가운데 정렬 */
-        .footer-copyright { font-size: 12px; color: #94A3B8; text-align: center; }
+        .footer-links a:last-child { margin-right: 0; } 
+        .footer-copyright { font-size: 12px; color: #94A3B8; text-align: center; margin-bottom: 0; }
+
+        /* 약관 모달(팝업창) CSS */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-box { background-color: var(--pure-white); width: 90%; max-width: 600px; max-height: 80vh; border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); transition: all 0.3s ease; box-shadow: 0 25px 50px rgba(0,0,0,0.2); text-align: left; }
+        .modal-overlay.active .modal-box { transform: translateY(0); }
+        .modal-header { padding: 20px 25px; border-bottom: 1px solid var(--light-gray); display: flex; justify-content: space-between; align-items: center; background-color: var(--bg-cream); }
+        .modal-header h3 { font-size: 18px; font-weight: 700; color: var(--text-dark); margin: 0; }
+        .close-modal-btn { background: none; border: none; font-size: 24px; color: var(--text-muted); cursor: pointer; transition: color 0.2s; display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; }
+        .close-modal-btn:hover { color: var(--alert-red); }
+        .modal-body { padding: 25px; overflow-y: auto; font-size: 14px; color: var(--text-muted); line-height: 1.7; white-space: pre-wrap; }
 
         /* 반응형 */
         @media (max-width: 968px) {
@@ -162,30 +151,23 @@
             .section-title { font-size: 20px; margin-bottom: 10px; }
             .section-subtitle { font-size: 14px; margin-bottom: 40px; line-height: 1.5; }
             
-            .calculator-box { padding: 25px 20px; border-radius: 16px; width: 100%; box-sizing: border-box; }
-            .calc-grid { gap: 30px; display: grid; grid-template-columns: 1fr; width: 100%; }
-            
-            .slider-label { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-            .slider-label span { font-size: 16px; letter-spacing: -0.5px; font-weight: 700; } 
-            .slider-label span.val { font-size: 22px; font-weight: 700; }
-            
-            .range-slider { width: 100%; display: block; box-sizing: border-box; }
-            
-            .result-panel { padding: 20px; width: 100%; box-sizing: border-box; }
-            .result-item { padding-bottom: 15px; margin-bottom: 15px; flex-direction: column; align-items: flex-start; gap: 5px; width: 100%; }
-            .result-item .label { font-size: 13px; white-space: normal; word-break: keep-all; } 
-            .result-item .price { font-size: 16px; align-self: flex-end; font-weight: 700; }
-            
-            .result-item.highlight { flex-direction: row; justify-content: space-between; align-items: center; padding: 15px; border-radius: 12px; width: 100%; box-sizing: border-box; }
-            .result-item.highlight .label { font-size: 12px; white-space: nowrap; letter-spacing: -0.5px; }
-            .result-item.highlight .price-save { font-size: 18px; white-space: nowrap; }
+            .calculator-box { padding: 25px 20px; border-radius: 16px; }
+            .slider-label { font-size: 16px; }
+            .slider-label span.val { font-size: 22px; }
+            .result-panel { padding: 20px; }
+            .result-item { flex-direction: row; align-items: center; }
+            .result-item .label { font-size: 13px; } 
+            .result-item .price { font-size: 16px; }
+            .result-item.highlight { padding: 15px; }
+            .result-item.highlight .label { font-size: 12px; }
+            .result-item.highlight .price-save { font-size: 20px; }
             
             .form-box { padding: 30px 20px; }
             .btn { font-size: 16px; padding: 15px 20px; }
 
-            /* 푸터 모바일 반응형 */
-            .footer-logo img { height: 80px; /* 모바일 로고 크기 살짝 조절 */ }
-            .footer-social { margin-bottom: 30px; }
+            .site-footer { padding: 40px 0 20px 0; }
+            .footer-logo img { height: 80px; }
+            .footer-social { margin-bottom: 25px; }
             .footer-inquiry { flex-direction: column; gap: 10px; align-items: center; text-align: center; }
             .footer-info span { display: block; margin-right: 0; margin-bottom: 5px; }
             .footer-info span::after { display: none; }
@@ -216,11 +198,11 @@
             <div class="hero-content fade-up">
                 <span class="hero-badge">🚨 박람회 한정: 창업 비용 최대 3,000만원 지원</span>
                 <h1>치솟는 원두 가격 돌파구,<br>본사 마진 없는 <span style="color: var(--primary-color);">최고등급 원두</span></h1>
-                <p class="lead">파푸아뉴기니 시그리AA등급 프리미엄 원두를 합리적인 금액에 안정적으로 공급합니다.</p>
+                <p class="lead">"지구커피"만의 물류시스템으로 프리미엄 원두 타사 원두보다 더 합리적인 금액에 안정적으로 공급합니다.</p>
                 <a href="#apply-form" class="btn" style="background-color: var(--alert-red);"><i class="fa-solid fa-gift"></i> 3,000만원 혜택 선점하기</a>
             </div>
             <div class="hero-image-box fade-up delay-1">
-                <img src="shop3.jpg" alt="지구카페 실제 매장 전경">
+                <img src="shop3.jpg" alt="지구커피 실제 매장 전경">
             </div>
         </div>
     </section>
@@ -252,7 +234,7 @@
                             <span class="price" id="competitor-total-txt">30,000 원</span>
                         </div>
                         <div class="result-item">
-                            <span class="label">지구커피 원두 비용 (19,800원/1kg)</span>
+                            <span class="label">지구카페 원두 비용 (19,800원/1kg)</span>
                             <span class="price" id="earth-total-txt">19,800 원</span>
                         </div>
                         <div class="result-item highlight">
@@ -262,30 +244,9 @@
                     </div>
                 </div>
             </div>
-      </div>
-   <section class="section">
-        <div class="container">
-            <h2 class="section-title fade-up">지구카페 오시는 길</h2>
-            <p class="section-subtitle fade-up delay-1">미리 예약하고 방문하시면 더 깊은 창업 상담이 가능합니다.</p>
-            
-            <div class="fade-up delay-2" style="border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); background-color: var(--pure-white); padding: 0;">
-                
-                <div id="daumRoughmapContainer1781145767845" class="root_daum_roughmap root_daum_roughmap_landing" style="width: 100%;"></div>
-
-                <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-
-                <script charset="UTF-8">
-                    new daum.roughmap.Lander({
-                        "timestamp" : "1781145767845",
-                        "key" : "pc4dw7sair4",
-                        "mapWidth" : "100%",   /* 💡 여기에 100% 적용 완료! */
-                        "mapHeight" : "400"    /* 💡 모바일에서 보기 좋게 세로 길이 살짝 늘림 */
-                    }).render();
-                </script>
-
-            </div>
         </div>
     </section>
+
     <section class="section cta-section" id="apply-form">
         <div class="container">
             <h2 class="section-title fade-up" style="font-size: 28px;">선착순 마감 주의! 최대 3,000만원 창업 혜택 받기</h2>
@@ -312,13 +273,36 @@
         </div>
     </section>
 
-    <footer class="site-footer fade-up">
+    <section class="section" style="padding-bottom: 40px;">
+        <div class="container">
+            <h2 class="section-title fade-up">지구카페 오시는 길</h2>
+            <p class="section-subtitle fade-up delay-1">미리 예약하고 방문하시면 더 깊은 창업 상담이 가능합니다.</p>
+            
+            <div class="fade-up delay-2" style="border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); background-color: var(--pure-white); padding: 0;">
+                
+                <div id="daumRoughmapContainer1781145767845" class="root_daum_roughmap root_daum_roughmap_landing" style="width: 100%;"></div>
+                <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+                <script charset="UTF-8">
+                    new daum.roughmap.Lander({
+                        "timestamp" : "1781145767845",
+                        "key" : "pc4dw7sair4",
+                        "mapWidth" : "100%",   
+                        "mapHeight" : "400"    
+                    }).render();
+                </script>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
         <div class="container footer-container">
             <div class="footer-logo">
                 <img src="jeegoo.png" alt="지구카페 로고">
             </div>
             <div class="footer-social">
-               <a href="https://www.instagram.com/jeegoocoffee/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.instagram.com/jeegoocoffee/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-solid fa-blog"></i></a>
                 <a href="#"><i class="fa-solid fa-store"></i></a>
             </div>
             <div class="footer-info-wrapper">
@@ -339,9 +323,9 @@
                     </p>
                 </div>
                 <div class="footer-links">
-                    <a href="#">개인정보처리방침</a>
-                    <a href="#">서비스 이용약관</a>
-                    <a href="#">위치기반서비스 이용약관</a>
+                    <a onclick="openModal('privacy')">개인정보처리방침</a>
+                    <a onclick="openModal('terms')">서비스 이용약관</a>
+                    <a onclick="openModal('location')">위치기반서비스 이용약관</a>
                 </div>
                 <div class="footer-copyright">
                     &copy; 2026. JEEGOO COFFEE. All Rights Reserved. Created by Jeegoo.
@@ -349,6 +333,18 @@
             </div>
         </div>
     </footer>
+
+    <div class="modal-overlay" id="termsModal" onclick="closeModal(event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 id="modalTitle">약관 제목</h3>
+                <button class="close-modal-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="modalContent">
+                여기에 약관 내용이 들어갑니다.
+            </div>
+        </div>
+    </div>
 
     <script>
         const salesSlider = document.getElementById('sales-volume');
@@ -392,6 +388,35 @@
         document.querySelectorAll('.fade-up').forEach((el) => {
             observer.observe(el);
         });
+
+        // 💡 마케팅 활용동의 조항이 완벽 추가된 약관 스크립트!
+        const termsData = {
+            'privacy': {
+                title: "개인정보처리방침 (마케팅 동의 포함)",
+                content: `제1조(목적)\n지구커피(이하 '회사')는 회사의 가맹 창업 상담 서비스를 이용하는 고객의 개인정보를 매우 중요하게 생각하며, "개인정보보호법" 등 관련 법령을 철저히 준수합니다.\n\n제2조(수집하는 개인정보 항목)\n회사는 원활한 창업 상담 및 마케팅 소식 전달을 위해 아래와 같은 개인정보를 수집하고 있습니다.\n- 필수항목 : 성함, 연락처, 희망 창업 지역\n\n제3조(개인정보의 수집 및 이용 목적)\n수집된 개인정보는 다음의 목적을 위해서만 활용됩니다.\n1. 가맹점 개설 관련 1:1 맞춤 상담 진행 및 본사 방문 안내\n2. 지구커피 창업 세미나, 설명회 안내 및 브랜드 뉴스레터 발송\n3. [마케팅 및 광고성 정보 활용] 본사 프로모션, 신메뉴 출시 정보, 창업 혜택 정보 안내 및 광고성 정보(SMS, 이메일 등) 전송\n\n제4조(개인정보의 보유 및 이용 기간)\n- 이용자의 개인정보는 가맹 상담 및 마케팅 목적 달성이 완료된 후 지체 없이 파기하는 것을 원칙으로 합니다.\n- 단, 관련 법령의 규정에 의하여 보존할 필요가 있는 경우 일정한 기간 동안 보관할 수 있습니다. (소비자의 불만 또는 분쟁 처리에 관한 기록 : 3년)\n\n제5조(동의 거부 권리 및 불이익 안내)\n이용자는 본 개인정보 수집 및 마케팅 활용 동의를 거부할 권리가 있습니다. 단, 필수 항목 및 마케팅 수신에 동의하지 않으실 경우, 박람회 한정 혜택 안내나 특별 창업 세미나 초청 등의 유용한 정보를 받아보실 수 없습니다.`
+            },
+            'terms': {
+                title: "서비스 이용약관",
+                content: `제1조(목적)\n본 약관은 지구커피(이하 '회사')가 제공하는 웹사이트 및 가맹 신청 관련 제반 서비스의 이용과 관련하여 회사와 이용자의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.\n\n제2조(서비스의 내용)\n회사는 이용자에게 웹사이트를 통한 가맹 창업 정보 제공, 원가 절감 계산기 시뮬레이션, 1:1 상담 예약 접수 등의 서비스를 제공합니다.`
+            },
+            'location': {
+                title: "위치기반서비스 이용약관",
+                content: `제1조(목적)\n본 약관은 지구커피(이하 '회사')가 제공하는 위치기반서비스와 관련하여 회사와 개인위치정보주체와의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.\n\n제2조(서비스의 내용)\n회사는 웹사이트 내 지도 API 서비스를 활용하여 이용자에게 지구커피 본사 및 가맹점 오시는 길, 상권 위치 안내 서비스를 제공합니다.`
+            }
+        };
+
+        function openModal(type) {
+            document.getElementById('modalTitle').innerText = termsData[type].title;
+            document.getElementById('modalContent').innerText = termsData[type].content;
+            document.getElementById('termsModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeModal(event) {
+            if (event && event.target.id !== 'termsModal' && event.type !== 'click') return;
+            document.getElementById('termsModal').classList.remove('active');
+            document.body.style.overflow = ''; 
+        }
     </script>
 </body>
 </html>
