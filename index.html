@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>지구카페 - 오픈 원두 플랫폼 창업 박람회 사전예약</title>
+    <title>지구카페 - 파푸아뉴기니 시그리AA등급 원두 카페창업 공식사이트</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -104,29 +104,43 @@
         .form-control:focus { border-color: var(--primary-color); background-color: var(--pure-white); }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-        /* 💡 새롭게 추가된 푸터(바닥글) 디자인 CSS */
-        .site-footer { background-color: #F8FAFC; padding: 60px 0; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 13px; line-height: 1.8; }
-        .footer-container { display: flex; flex-wrap: wrap; gap: 50px; justify-content: space-between; }
-        .footer-left { flex: 0 0 200px; }
-        .footer-logo img { height: 45px; margin-bottom: 20px; object-fit: contain; filter: grayscale(100%) opacity(80%); } /* 로고를 차분하게 */
-        .footer-social { display: flex; gap: 10px; }
+        /* 💡 수정됨: 푸터(바닥글) 가운데 정렬 CSS */
+        .site-footer { background-color: #F8FAFC; padding: 60px 0; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 13px; line-height: 1.8; text-align: center; /* 전체 중앙 정렬 */ }
+        
+        /* 💡 수정됨: 컨테이너를 수직 중앙 정렬 구조로 변경 */
+        .footer-container { display: flex; flex-direction: column; align-items: center; gap: 0; }
+        
+        /* 💡 수정됨: 로고 가운데 배치 및 크기 확대 */
+        .footer-logo { margin-bottom: 30px; text-align: center; }
+        .footer-logo img { height: 100px; /* 로고 크기 대폭 확대 */ object-fit: contain; } /* 파란색 원본 색상 유지 */
+        
+        /* 💡 수정됨: SNS 아이콘 로고 아래 중앙 배치 */
+        .footer-social { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; }
         .footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border-color); color: var(--text-dark); text-decoration: none; transition: all 0.3s; font-size: 16px; }
         .footer-social a:hover { background-color: var(--text-dark); color: #fff; border-color: var(--text-dark); }
         
-        .footer-right { flex: 1; min-width: 300px; }
-        .footer-inquiry { display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); font-weight: 700; color: var(--text-dark); font-size: 14px; }
+        /* 💡 수정됨: 회사 정보 영역 가운데 배치 및 너비 최적화 */
+        .footer-info-wrapper { min-width: 0; width: 100%; max-width: 800px; margin: 0 auto; text-align: center; }
+        
+        /* 💡 수정됨: 문의처 중앙 배치 */
+        .footer-inquiry { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); font-weight: 700; color: var(--text-dark); font-size: 14px; width: 100%; }
         .footer-inquiry div span { color: var(--text-muted); margin-right: 15px; font-weight: 500; }
         
-        .footer-info { margin-bottom: 20px; }
-        .footer-info p { margin-bottom: 5px; }
+        /* 💡 수정됨: 회사 정보 텍스트 가운데 정렬 */
+        .footer-info { margin-bottom: 20px; text-align: center; }
+        .footer-info p { margin-bottom: 5px; text-align: center; }
         .footer-info span { display: inline-block; margin-right: 12px; }
         .footer-info span::after { content: "|"; margin-left: 12px; color: var(--border-color); }
         .footer-info span:last-child::after { content: ""; margin-left: 0; }
         
-        .footer-links { margin-bottom: 30px; font-weight: 500; }
+        /* 💡 수정됨: 약관 링크 가운데 정렬 */
+        .footer-links { margin-bottom: 30px; font-weight: 500; text-align: center; }
         .footer-links a { color: var(--text-dark); text-decoration: none; margin-right: 20px; }
         .footer-links a:hover { text-decoration: underline; }
-        .footer-copyright { font-size: 12px; color: #94A3B8; }
+        .footer-links a:last-child { margin-right: 0; } /* 마지막 링크 간격 제거 */
+        
+        /* 💡 수정됨: 카피라이트 가운데 정렬 */
+        .footer-copyright { font-size: 12px; color: #94A3B8; text-align: center; }
 
         /* 반응형 */
         @media (max-width: 968px) {
@@ -162,19 +176,20 @@
             .result-item .label { font-size: 13px; white-space: normal; word-break: keep-all; } 
             .result-item .price { font-size: 16px; align-self: flex-end; font-weight: 700; }
             
-           /* 💡 수정됨: 숫자가 길어지면 박스를 뚫지 않고 유연하게 대처! */
-            .result-item.highlight { flex-direction: row; justify-content: space-between; align-items: center; padding: 15px; border-radius: 12px; width: 100%; box-sizing: border-box; flex-wrap: wrap; gap: 5px; }
-            .result-item.highlight .label { font-size: 13px; white-space: normal; word-break: keep-all; letter-spacing: -0.5px; flex: 1; min-width: 60%; }
-            .result-item.highlight .price-save { font-size: 20px; white-space: nowrap; text-align: right; }
+            .result-item.highlight { flex-direction: row; justify-content: space-between; align-items: center; padding: 15px; border-radius: 12px; width: 100%; box-sizing: border-box; }
+            .result-item.highlight .label { font-size: 12px; white-space: nowrap; letter-spacing: -0.5px; }
+            .result-item.highlight .price-save { font-size: 18px; white-space: nowrap; }
             
             .form-box { padding: 30px 20px; }
             .btn { font-size: 16px; padding: 15px 20px; }
 
             /* 푸터 모바일 반응형 */
-            .footer-container { flex-direction: column; gap: 30px; }
-            .footer-inquiry { flex-direction: column; gap: 10px; }
+            .footer-logo img { height: 80px; /* 모바일 로고 크기 살짝 조절 */ }
+            .footer-social { margin-bottom: 30px; }
+            .footer-inquiry { flex-direction: column; gap: 10px; align-items: center; text-align: center; }
             .footer-info span { display: block; margin-right: 0; margin-bottom: 5px; }
             .footer-info span::after { display: none; }
+            .footer-links a { display: block; margin-right: 0; margin-bottom: 10px; }
         }
     </style>
 </head>
@@ -190,7 +205,7 @@
                     <i class="fa-solid fa-phone"></i> 가맹문의 1551-2776
                 </a>
                 <div class="nav-booth" style="background-color: var(--text-dark);">
-                    <i class="fa-solid fa-location-dot"></i> COEX C홀 호
+                    <i class="fa-solid fa-location-dot"></i> COEX D홀 H109
                 </div>
             </div>
         </div>
@@ -200,8 +215,8 @@
         <div class="container hero-grid">
             <div class="hero-content fade-up">
                 <span class="hero-badge">🚨 박람회 한정: 창업 비용 최대 3,000만원 지원</span>
-                <h1>치솟는 원두 가격 돌파구,<br>본사 마진 없는 <span style="color: var(--primary-color);">오픈 원두 플랫폼</span></h1>
-                <p class="lead">"지구커피"만의 물류시스템으로 프리미엄 원두를 합리적인 금액에 안정적으로 공급합니다.</p>
+                <h1>치솟는 원두 가격 돌파구,<br>본사 마진 없는 <span style="color: var(--primary-color);">최고등급 원두</span></h1>
+                <p class="lead">파푸아뉴기니 시그리AA등급 프리미엄 원두를 합리적인 금액에 안정적으로 공급합니다.</p>
                 <a href="#apply-form" class="btn" style="background-color: var(--alert-red);"><i class="fa-solid fa-gift"></i> 3,000만원 혜택 선점하기</a>
             </div>
             <div class="hero-image-box fade-up delay-1">
@@ -237,7 +252,7 @@
                             <span class="price" id="competitor-total-txt">30,000 원</span>
                         </div>
                         <div class="result-item">
-                            <span class="label">지구카페 원두 비용 (19,800원/1kg)</span>
+                            <span class="label">지구커피 원두 비용 (19,800원/1kg)</span>
                             <span class="price" id="earth-total-txt">19,800 원</span>
                         </div>
                         <div class="result-item highlight">
@@ -247,9 +262,30 @@
                     </div>
                 </div>
             </div>
+      </div>
+   <section class="section">
+        <div class="container">
+            <h2 class="section-title fade-up">지구카페 오시는 길</h2>
+            <p class="section-subtitle fade-up delay-1">미리 예약하고 방문하시면 더 깊은 창업 상담이 가능합니다.</p>
+            
+            <div class="fade-up delay-2" style="border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); background-color: var(--pure-white); padding: 0;">
+                
+                <div id="daumRoughmapContainer1781145767845" class="root_daum_roughmap root_daum_roughmap_landing" style="width: 100%;"></div>
+
+                <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+                <script charset="UTF-8">
+                    new daum.roughmap.Lander({
+                        "timestamp" : "1781145767845",
+                        "key" : "pc4dw7sair4",
+                        "mapWidth" : "100%",   /* 💡 여기에 100% 적용 완료! */
+                        "mapHeight" : "400"    /* 💡 모바일에서 보기 좋게 세로 길이 살짝 늘림 */
+                    }).render();
+                </script>
+
+            </div>
         </div>
     </section>
-
     <section class="section cta-section" id="apply-form">
         <div class="container">
             <h2 class="section-title fade-up" style="font-size: 28px;">선착순 마감 주의! 최대 3,000만원 창업 혜택 받기</h2>
@@ -278,22 +314,19 @@
 
     <footer class="site-footer fade-up">
         <div class="container footer-container">
-            <div class="footer-left">
-                <div class="footer-logo">
-                    <img src="jeegoo.png" alt="지구카페 로고">
-                </div>
-                <div class="footer-social">
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-solid fa-blog"></i></a>
-                    <a href="#"><i class="fa-solid fa-store"></i></a>
-                </div>
+            <div class="footer-logo">
+                <img src="jeegoo.png" alt="지구카페 로고">
             </div>
-            <div class="footer-right">
-                <div class="footer-inquiry">    
+            <div class="footer-social">
+               <a href="https://www.instagram.com/jeegoocoffee/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-solid fa-store"></i></a>
+            </div>
+            <div class="footer-info-wrapper">
+                <div class="footer-inquiry">
                     <div><span>입점제안 및 가맹문의</span> jeegoocoffee@naver.com</div>
                 </div>
                 <div class="footer-info">
-                    <p>[본사] 전북특별자치도 전주시 완산구 기린대로 163 (06000)</p>
+                    <p>[본사] 전북특별자치도 전주시 완산구 기린대로 163 (55000)</p>
                     <p>
                         <span>대표이사 : 이재구</span>
                         <span>대표번호 : 1551-2776</span>
