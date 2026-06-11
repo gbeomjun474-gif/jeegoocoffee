@@ -39,7 +39,6 @@
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 100px 0; }
         
-        /* 💡 수정됨: 계산기 섹션 위쪽 여백 대폭 축소용 클래스 */
         .calc-section { padding-top: 40px; }
 
         .section-title { text-align: center; font-size: 20px; font-weight: 700; margin-bottom: 15px; color: var(--accent-blue); }
@@ -55,15 +54,13 @@
         .logo i { color: var(--primary-color); }
         .nav-booth { background-color: var(--text-dark); color: var(--pure-white); padding: 6px 14px; border-radius: 4px; font-size: 14px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
 
-        /* 히어로 섹션 */
-        /* 💡 수정됨: 히어로 하단 여백 대폭 축소 (100px -> 50px) */
-        .hero { padding: 160px 0 50px 0; background: linear-gradient(135deg, #E6F0FA 0%, #F4F7F9 100%); position: relative; }
+        /* 히어로 섹션 - 여백 살짝만 남김 */
+        .hero { padding: 110px 0 50px 0; background: linear-gradient(135deg, #E6F0FA 0%, #F4F7F9 100%); position: relative; }
         .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
         .hero-badge { display: inline-block; background-color: var(--alert-red); color: var(--pure-white); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 16px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3); animation: pulse 2s infinite; }
         
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-        /* 💡 수정됨: 메인 카피 타이포그래피 강화 (더 눈에 띄게) */
         .hero h1 { font-size: 52px; line-height: 1.35; font-weight: 700; color: var(--text-dark); margin-bottom: 25px; letter-spacing: -1px; }
         .hero-highlight { background-color: var(--primary-color); color: var(--pure-white); padding: 0 12px; border-radius: 8px; display: inline-block; margin-top: 5px; }
         .hero p.lead { font-size: 20px; margin-bottom: 40px; font-weight: 300; }
@@ -96,7 +93,6 @@
         .cta-section .section-subtitle { color: rgba(255,255,255,0.8); }
         .form-box { max-width: 650px; margin: 0 auto; background-color: var(--pure-white); padding: 50px; border-radius: 24px; color: var(--text-dark); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
         
-        /* 💡 수정됨: 폼 간격 (마진, 갭) 촘촘하게 축소 */
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--accent-blue); }
         .form-control { width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 15px; background-color: var(--bg-cream); outline: none; transition: border-color 0.2s; }
@@ -116,6 +112,7 @@
         .footer-inquiry { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); font-weight: 700; color: var(--text-dark); font-size: 14px; width: 100%; }
         .footer-inquiry div span { color: var(--text-muted); margin-right: 15px; font-weight: 500; }
         
+        /* 💡 복구됨: 푸터 회사 정보 (주소, 대표자, 사업자번호 등) CSS */
         .footer-info { margin-bottom: 20px; text-align: center; }
         .footer-info p { margin-bottom: 5px; text-align: center; }
         .footer-info span { display: inline-block; margin-right: 12px; }
@@ -142,7 +139,7 @@
         /* 반응형 */
         @media (max-width: 968px) {
             .hero-grid, .calc-grid, .form-row { grid-template-columns: 1fr; }
-            .hero { padding: 120px 0 40px 0; text-align: center; } /* 모바일 여백 축소 */
+            .hero { padding: 110px 0 40px 0; text-align: center; } 
             .hero-image-box { height: 320px; }
         }
 
@@ -150,13 +147,13 @@
             .nav-container { height: auto; padding: 15px 0; flex-direction: column; gap: 12px; }
             .nav-container > div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
             
-            .hero { padding: 120px 0 30px 0; } /* 모바일 여백 축소 */
-            .hero h1 { font-size: 34px; margin-bottom: 15px; line-height: 1.4; } /* 모바일 폰트 크기 조절 */
+            .hero { padding: 90px 0 30px 0; } 
+            .hero h1 { font-size: 34px; margin-bottom: 15px; line-height: 1.4; } 
             .hero p.lead { font-size: 16px; margin-bottom: 30px; }
             .hero-badge { font-size: 14px; padding: 6px 16px; }
             
             .section { padding: 60px 0; }
-            .calc-section { padding-top: 20px; } /* 모바일 계산기 위쪽 여백 축소 */
+            .calc-section { padding-top: 20px; } 
             .section-title { font-size: 20px; margin-bottom: 10px; }
             .section-subtitle { font-size: 14px; margin-bottom: 40px; line-height: 1.5; }
             
@@ -177,9 +174,11 @@
             .site-footer { padding: 40px 0 20px 0; }
             .footer-logo img { height: 80px; }
             .footer-social { margin-bottom: 25px; }
-            .footer-inquiry { flex-direction: column; gap: 10px; align-items: center; text-align: center; }
+            
+            /* 💡 복구됨: 푸터 회사 정보 모바일 줄바꿈 CSS */
             .footer-info span { display: block; margin-right: 0; margin-bottom: 5px; }
             .footer-info span::after { display: none; }
+            
             .footer-links a { display: block; margin-right: 0; margin-bottom: 10px; }
         }
     </style>
@@ -316,14 +315,16 @@
             <div class="footer-logo">
                 <img src="jeegoo.png" alt="지구카페 로고">
             </div>
+            
             <div class="footer-social">
                 <a href="https://www.instagram.com/jeegoocoffee/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-solid fa-store"></i></a>
             </div>
+
             <div class="footer-info-wrapper">
                 <div class="footer-inquiry">
                     <div><span>입점제안 및 가맹문의</span> jeegoocoffee@naver.com</div>
                 </div>
+                
                 <div class="footer-info">
                     <p>[본사] 전북특별자치도 전주시 완산구 기린대로 163 (55000)</p>
                     <p>
@@ -337,6 +338,7 @@
                         <span>통신판매업 신고번호 : 제2025-전주완산-0444호</span>
                     </p>
                 </div>
+
                 <div class="footer-links">
                     <a onclick="openModal('privacy')">개인정보처리방침</a>
                     <a onclick="openModal('terms')">서비스 이용약관</a>
