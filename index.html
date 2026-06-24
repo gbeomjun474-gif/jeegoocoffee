@@ -39,7 +39,7 @@
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 100px 0; }
         
-        .calc-section { padding-top: 40px; }
+        .calc-section { padding-top: 60px; }
 
         .section-title { text-align: center; font-size: 20px; font-weight: 700; margin-bottom: 15px; color: var(--accent-blue); }
         .section-subtitle { text-align: center; font-size: 18px; color: var(--text-muted); margin-bottom: 60px; }
@@ -61,11 +61,28 @@
         
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-        .hero h1 { font-size: 52px; line-height: 1.35; font-weight: 700; color: var(--text-dark); margin-bottom: 25px; letter-spacing: -1px; }
+        .hero h1 { font-size: 52px; line-height: 1.35; font-weight: 700; color: var(--text-dark); margin-bottom: 25px; letter-spacing: -1px; min-height: 140px; }
+        
+        /* 💡 타이핑 효과 하이라이트 & 커서 CSS */
         .hero-highlight { background-color: var(--primary-color); color: var(--pure-white); padding: 0 12px; border-radius: 8px; display: inline-block; margin-top: 5px; }
+        .cursor { display: inline-block; width: 4px; height: 45px; background-color: var(--primary-color); vertical-align: middle; margin-left: 5px; animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
         .hero p.lead { font-size: 20px; margin-bottom: 40px; font-weight: 300; }
         .hero-image-box { position: relative; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); height: 450px; }
         .hero-image-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* 💡 무한 롤링 띠 배너 CSS */
+        .marquee-container { width: 100%; overflow: hidden; background-color: var(--text-dark); color: var(--pure-white); padding: 15px 0; display: flex; white-space: nowrap; border-top: 3px solid var(--primary-color); border-bottom: 3px solid var(--primary-color); }
+        .marquee-content { display: flex; animation: marquee 20s linear infinite; }
+        .marquee-content span { font-size: 18px; font-weight: 600; margin-right: 60px; display: inline-flex; align-items: center; gap: 8px; color: #E2E8F0; }
+        .marquee-content span i { color: #FAE100; } /* 아이콘 포인트 컬러 */
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* 내용물 2세트가 정확히 절반 이동시 루프 */
+        }
+        .marquee-container:hover .marquee-content { animation-play-state: paused; } /* 마우스 올리면 일시정지 */
 
         /* 계산기 UI */
         .calculator-box { background-color: var(--pure-white); border-radius: 24px; padding: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid var(--border-color); width: 100%; box-sizing: border-box; overflow: hidden; }
@@ -125,7 +142,7 @@
         .footer-links a:last-child { margin-right: 0; } 
         .footer-copyright { font-size: 12px; color: #94A3B8; text-align: center; margin-bottom: 0; }
 
-        /* 약관 모달(팝업창) CSS */
+        /* 약관 모달 CSS */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal-box { background-color: var(--pure-white); width: 90%; max-width: 600px; max-height: 80vh; border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); transition: all 0.3s ease; box-shadow: 0 25px 50px rgba(0,0,0,0.2); text-align: left; }
@@ -136,7 +153,7 @@
         .close-modal-btn:hover { color: var(--alert-red); }
         .modal-body { padding: 25px; overflow-y: auto; font-size: 14px; color: var(--text-muted); line-height: 1.7; white-space: pre-wrap; }
 
-        /* 구글 시트 연동 전송 중 버튼 스피너 CSS */
+        /* 구글 시트 전송 스피너 */
         .loader { border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid #fff; width: 20px; height: 20px; -webkit-animation: spin 1s linear infinite; animation: spin 1s linear infinite; display: none; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
@@ -152,10 +169,14 @@
             .nav-container > div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
             
             .hero { padding: 180px 0 30px 0 !important; } 
-            .hero h1 { font-size: 34px; margin-bottom: 15px; line-height: 1.4; } 
+            .hero h1 { font-size: 34px; margin-bottom: 15px; line-height: 1.4; min-height: 100px; } 
+            .cursor { height: 30px; } /* 모바일용 커서 크기 조절 */
+
             .hero p.lead { font-size: 16px; margin-bottom: 30px; }
             .hero-badge { font-size: 14px; padding: 6px 16px; }
             
+            .marquee-content span { font-size: 15px; margin-right: 30px; } /* 모바일 롤링 배너 폰트/간격 조절 */
+
             .section { padding: 60px 0; }
             .calc-section { padding-top: 20px; } 
             .section-subtitle { font-size: 14px; margin-bottom: 40px; line-height: 1.5; }
@@ -208,7 +229,10 @@
             <div class="hero-content fade-up">
                 <span class="hero-badge">🚨 박람회 한정: 창업 비용 최대 3,000만원 지원</span>
                 
-                <h1>치솟는 원두 가격 돌파구,<br>본사 마진 없는 <span class="hero-highlight">최고등급 원두</span></h1>
+                <!-- 💡 타이핑 효과 적용 영역 -->
+                <h1>치솟는 원두 가격 돌파구,<br>
+                    <span id="typing-text" class="hero-highlight"></span><span class="cursor"></span>
+                </h1>
                 
                 <p class="lead">"지구커피"만의 물류시스템으로 프리미엄 원두 타사 원두보다 더 합리적인 금액에 안정적으로 공급합니다.</p>
                 <a href="#apply-form" class="btn" style="background-color: var(--alert-red);"><i class="fa-solid fa-gift"></i> 3,000만원 혜택 선점하기</a>
@@ -218,6 +242,22 @@
             </div>
         </div>
     </section>
+
+    <!-- 💡 무한 롤링 띠 배너 추가! -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <!-- 1세트 -->
+            <span><i class="fa-solid fa-bolt"></i> 박람회 한정 가맹비 전액 면제</span>
+            <span><i class="fa-solid fa-bolt"></i> 선착순 3,000만원 창업 지원</span>
+            <span><i class="fa-solid fa-bolt"></i> 프리미엄 시그리 AA등급 원두</span>
+            <span><i class="fa-solid fa-bolt"></i> 월 평균 원가 150만원 절감</span>
+            <!-- 2세트 (루프용 복제) -->
+            <span><i class="fa-solid fa-bolt"></i> 박람회 한정 가맹비 전액 면제</span>
+            <span><i class="fa-solid fa-bolt"></i> 선착순 3,000만원 창업 지원</span>
+            <span><i class="fa-solid fa-bolt"></i> 프리미엄 시그리 AA등급 원두</span>
+            <span><i class="fa-solid fa-bolt"></i> 월 평균 원가 150만원 절감</span>
+        </div>
+    </div>
 
     <section class="section calc-section">
         <div class="container">
@@ -344,7 +384,25 @@
     </div>
 
     <script>
-        // 계산기
+        // 💡 1. 타이핑 효과 스크립트
+        const textToType = "본사 마진 없는 최고등급 원두";
+        const typingElement = document.getElementById("typing-text");
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < textToType.length) {
+                typingElement.innerHTML += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 120); // 글자 쳐지는 속도 (밀리초)
+            }
+        }
+        
+        // 페이지 로딩 완료 후 0.5초 뒤에 타이핑 시작
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(typeWriter, 500); 
+        });
+
+        // 2. 계산기 스크립트
         const salesSlider = document.getElementById('sales-volume');
         const updateCalculator = () => {
             const monthlyKg = parseInt(salesSlider.value);
@@ -364,7 +422,7 @@
         salesSlider.addEventListener('input', updateCalculator);
         updateCalculator();
 
-        // 스크롤 애니메이션
+        // 3. 스크롤 애니메이션
         const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -376,7 +434,7 @@
         }, observerOptions);
         document.querySelectorAll('.fade-up').forEach((el) => { observer.observe(el); });
 
-        // 모달 팝업
+        // 4. 모달 팝업
         const termsData = {
             'privacy': { title: "개인정보처리방침", content: "지구커피는 가맹 상담을 위해 성함, 연락처, 지역을 수집하며 마케팅 활용(세미나 안내 등)에 동의한 것으로 간주합니다." },
             'terms': { title: "서비스 이용약관", content: "본 사이트는 지구커피 창업 정보를 제공하며, 이용자가 남긴 정보는 상담 목적으로만 성실히 사용됩니다." },
@@ -396,8 +454,8 @@
             document.body.style.overflow = ''; 
         }
 
-        // 구글 시트 연동
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzeqacPKg1WXQWme5TRn5MZk0m_yHOrWEJgCNVLuR4WFjy_fwvfxqRuo_9rjIUVeiwuDg/exec'; 
+        // 5. 구글 시트 연동 (URL 꼭 넣기)
+        const scriptURL = '여기에_복사한_웹앱_URL_붙여넣기'; 
         const form = document.forms['submit-to-google-sheet'];
         const submitBtn = document.getElementById('submitBtn');
         const btnText = document.getElementById('btnText');
