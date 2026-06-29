@@ -430,18 +430,26 @@
     </div>
 
     <script>
-        // 1. 타이핑 효과
-        const textToType = "본사 마진 없는 최고등급 원두";
-        const typingElement = document.getElementById("typing-text");
-        let charIndex = 0;
+      // 1. 타이핑 효과
+const textToType = "본사 마진 없는 최고등급 원두";
+const typingElement = document.getElementById("typing-text");
+let charIndex = 0;
 
-        function typeWriter() {
-            if (charIndex < textToType.length) {
-                typingElement.innerHTML += textToType.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 120); 
-            }
-        }
+function typeWriter() {
+    if (charIndex < textToType.length) {
+        typingElement.innerHTML += textToType.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWriter, 120); 
+    } else {
+        // 👇 타이핑이 모두 끝난 후 실행될 부분 추가 👇
+        
+        // 옵션 1: 커서를 아예 화면에서 사라지게 만들기 (추천)
+        document.querySelector('.cursor').style.display = 'none';
+        
+        // 옵션 2: 커서는 남겨두되, 깜빡이는 애니메이션만 멈추기 (원하시면 위 코드 대신 아래 코드 사용)
+        // document.querySelector('.cursor').style.animation = 'none';
+    }
+}
         
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(typeWriter, 500); 
