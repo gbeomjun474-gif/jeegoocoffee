@@ -84,7 +84,9 @@
 
         /* 오리진 스토리(최상단) 3단 이미지 CSS */
         .origin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 60px; }
-        .origin-img-box { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); background-color: #1E293B; }
+        /* 배경을 F8FAFC로 설정하여 contain 시 어색하지 않게 처리 */
+        .origin-img-box { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); background-color: #F8FAFC; }
+        /* 이미지가 잘리지 않게 object-fit: contain 적용 */
         .origin-img-box img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); opacity: 0.9; }
         .origin-img-box:hover img { transform: scale(1.08); opacity: 1; }
         .origin-label { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 30px 20px 15px; font-weight: 700; font-size: 15px; text-align: center; }
@@ -233,6 +235,15 @@
         .fab-button:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 15px 30px rgba(230, 57, 70, 0.6); animation-play-state: paused;}
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-7px); } }
 
+        /* 사진 클릭 확대(라이트박스) 모달 CSS */
+        .image-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); z-index: 3000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; cursor: zoom-out; }
+        .image-modal-overlay.active { opacity: 1; visibility: visible; }
+        .image-modal-content { max-width: 90%; max-height: 90vh; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); object-fit: contain; transform: scale(0.8); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .image-modal-overlay.active .image-modal-content { transform: scale(1); }
+        .image-modal-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; transition: 0.3s; z-index: 3010; }
+        .image-modal-close:hover { color: var(--alert-red); transform: rotate(90deg); }
+        .zoomable-img { cursor: zoom-in; } 
+
         /* 반응형 */
         @media (max-width: 968px) {
             .hero-grid, .calc-grid, .form-row { grid-template-columns: 1fr; }
@@ -307,7 +318,6 @@
 
     <header>
         <div class="container nav-container">
-            <!-- 클릭 시 새로고침 되도록 설정된 로고 -->
             <a href="javascript:location.reload();" class="logo" style="text-decoration: none; cursor: pointer;">
                 <img src="jeegoo.png" alt="지구카페 로고" style="height: 45px; width: auto; object-fit: contain;">
             </a>
@@ -322,7 +332,6 @@
         </div>
     </header>
 
-    <!-- 0. 최상단 웰컴 브랜드 스토리 (프리미엄 원두 소개 + 3단 사진) -->
     <section class="section brand-intro-section" style="background: linear-gradient(135deg, #0F172A 0%, var(--primary-dark) 100%); color: var(--pure-white); position: relative; overflow: hidden; padding-top: 160px; padding-bottom: 100px; text-align: center;">
         <div style="position: absolute; top: -50%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
         
@@ -348,7 +357,7 @@
                         <i class="fa-solid fa-mountain-sun" style="color: #FBBF24; margin-right: 8px;"></i> 해발 1,500m 청정구역
                     </div>
                     <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); padding: 15px 25px; border-radius: 12px; font-weight: 700; border: 1px solid rgba(255,255,255,0.05); color: var(--pure-white);">
-                        <i class="fa-solid fa-medal" style="color: #FBBF24; margin-right: 8px;"></i> 최고 등급 AA 엄선
+                        <i class="fa-solid fa-medal" style="color: #FBBF24; margin-right: 8px;"></i> 최고 등급 시그리 AA 엄선
                     </div>
                     <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); padding: 15px 25px; border-radius: 12px; font-weight: 700; border: 1px solid rgba(255,255,255,0.05); color: var(--pure-white);">
                         <i class="fa-solid fa-ship" style="color: #FBBF24; margin-right: 8px;"></i> 본사 직접 수입망
@@ -358,34 +367,31 @@
 
             <div class="origin-grid fade-up delay-1">
                 <div class="origin-img-box">
-                    <img src="water.png" alt="파푸아뉴기니 청정 농장">
-                    <div class="origin-label"># 파푸아뉴기니 청정 농장</div>
+                    <img src="water.png" alt="지구커피 슬로건" class="zoomable-img" onclick="openImageModal(this)">
+                    <div class="origin-label"># 지구커피 슬로건</div>
                 </div>
                 <div class="origin-img-box">
-                    <img src="water2.png" alt="최상급 시그리 생두">
-                    <div class="origin-label"># 상위 1% 스페셜티 생두</div>
+                    <img src="water2.png" alt="최상급 시그리 생두" class="zoomable-img" onclick="openImageModal(this)">
+                    <div class="origin-label"># 지구커피의 사회적 책임</div>
                 </div>
                 <div class="origin-img-box">
-                    <img src="water3.png" alt="최상급 원두">
-                    <div class="origin-label"># 밸런스를 잡은 직접 로스팅</div>
+                    <img src="water3.png" alt="완벽한 로스팅 원두" class="zoomable-img" onclick="openImageModal(this)">
+                    <div class="origin-label"># 밸런스를 잡은 원두</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 1. 브랜드 스토리 섹션 (장관님 사진) -->
     <section class="section brand-story-section" style="background-color: var(--pure-white); position: relative; overflow: hidden;">
         <div class="container">
             <div class="story-grid">
                 
-                <!-- 왼쪽: 장관님(대표님) 사진 영역 (뱃지 제거 완료) -->
                 <div class="story-image fade-up" style="display: flex; justify-content: center;">
                     <div style="position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.15); border: 1px solid rgba(0, 81, 161, 0.1); max-width: 380px; width: 100%;">
                         <img src="john2.png" alt="장관상 수상 및 브랜드 철학" style="width: 100%; height: auto; display: block;">
                     </div>
                 </div>
 
-                <!-- 오른쪽: 브랜드 설명 강조 영역 -->
                 <div class="story-content fade-up delay-1">
                     <p style="color: var(--primary-color); font-weight: 800; font-size: 16px; margin-bottom: 15px; letter-spacing: 2px;">
                         <i class="fa-solid fa-crown" style="margin-right: 5px;"></i> BRAND PHILOSOPHY
@@ -423,7 +429,6 @@
         </div>
     </section>
 
-    <!-- 2. 메인 혜택 섹션 (타이핑 효과) -->
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-content fade-up">
@@ -445,15 +450,12 @@
         </div>
     </section>
 
-    <!-- 무한 롤링 띠 배너 -->
     <div class="marquee-container">
         <div class="marquee-content">
-            <!-- 1세트 -->
             <span><i class="fa-solid fa-handshake"></i> 박람회 한정 가맹비 전액 면제</span>
             <span><i class="fa-solid fa-gift"></i> 선착순 3,000만원 창업 지원</span>
             <span><i class="fa-solid fa-mug-hot"></i> 프리미엄 시그리 AA등급 원두</span>
             <span><i class="fa-solid fa-coins"></i> 월 평균 원가 150만원 절감</span>
-            <!-- 2세트 -->
             <span><i class="fa-solid fa-handshake"></i> 박람회 한정 가맹비 전액 면제</span>
             <span><i class="fa-solid fa-gift"></i> 선착순 3,000만원 창업 지원</span>
             <span><i class="fa-solid fa-mug-hot"></i> 프리미엄 시그리 AA등급 원두</span>
@@ -461,7 +463,6 @@
         </div>
     </div>
 
-    <!-- 이벤트 하이라이트 섹션 (나바코리아 커피차) -->
     <section class="section event-section" style="background-color: var(--bg-cream);">
         <div class="container">
             <div class="fade-up" style="text-align: center; margin-bottom: 50px;">
@@ -480,20 +481,19 @@
 
             <div class="gallery-grid fade-up delay-1">
                 <div class="gallery-item large">
-                    <img src="nabba_main.jpg" alt="나바코리아 대회 현장 메인">
+                    <img src="nabbakarea.jpg" alt="나바코리아 대회 현장 메인">
                     <div class="gallery-overlay">
                         <span class="gallery-tag"><i class="fa-solid fa-fire"></i> 열광적인 현장 반응</span>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="nabba_truck.jpg" alt="지구커피 공식 커피차">
+                    <img src="coffeecar.jpg" alt="지구커피 공식 커피차">
                     <div class="gallery-overlay">
                         <span class="gallery-tag"><i class="fa-solid fa-truck"></i> 공식 커피차 출동</span>
                     </div>
                 </div>
-                <!-- 3번째 커피 사진 (박스 딱 맞추기 적용) -->
                 <div class="gallery-item" style="background-color: #F1F5F9;">
-                    <img src="nabba_coffee.jpg" alt="시그리 원두 아이스 아메리카노" style="object-fit: contain;">
+                    <img src="americano.png" alt="시그리 원두 아이스 아메리카노" style="object-fit: contain;">
                     <div class="gallery-overlay">
                         <span class="gallery-tag"><i class="fa-solid fa-mug-hot"></i> 시그리 원두의 힘</span>
                     </div>
@@ -502,7 +502,6 @@
         </div>
     </section>
 
-    <!-- 매장 경쟁력 (메뉴 & 인테리어) 섹션 -->
     <section class="section feature-section">
         <div class="container">
             <div class="fade-up" style="text-align: center; margin-bottom: 60px;">
@@ -512,10 +511,9 @@
                 <p style="font-size: 18px; color: var(--text-muted);">탄탄한 수익 구조는 매력적인 메뉴와 효율적인 공간에서 시작됩니다.</p>
             </div>
 
-            <!-- 시그니처 메뉴 (이미지 사이즈 딱 맞추기 적용) -->
             <div class="feature-row fade-up delay-1">
                 <div class="feature-image" style="background-color: #F8FAFC;">
-                    <img src="signature_menu.jpg" alt="지구커피 시그니처 메뉴" style="object-fit: contain;">
+                    <img src="signature.png" alt="지구커피 시그니처 메뉴" style="object-fit: contain;">
                 </div>
                 <div class="feature-text">
                     <span class="feature-label label-blue"><i class="fa-solid fa-utensils"></i> SIGNATURE MENU</span>
@@ -535,7 +533,7 @@
 
             <div class="feature-row reverse fade-up delay-2">
                 <div class="feature-image">
-                    <img src="cafe_interior.jpg" alt="지구커피 인테리어">
+                    <img src="jeegoocoffee.jpg" alt="지구커피 인테리어">
                 </div>
                 <div class="feature-text">
                     <span class="feature-label label-gold"><i class="fa-solid fa-shop"></i> INTERIOR & SPACE</span>
@@ -555,7 +553,6 @@
         </div>
     </section>
 
-    <!-- 수익 계산기 섹션 -->
     <section class="section calc-section" style="background-color: var(--bg-cream);">
         <div class="container">
             <h2 class="fade-up" style="text-align: center; font-size: 34px; letter-spacing: -1px; margin-bottom: 15px;">
@@ -598,7 +595,6 @@
         </div>
     </section>
 
-    <!-- 폼 섹션 -->
     <section class="section cta-section" id="apply-form">
         <div class="container">
             <h2 class="section-title fade-up" style="font-size: 30px; font-weight: 800;">선착순 마감 주의! 최대 3,000만원 창업 혜택 받기</h2>
@@ -628,7 +624,6 @@
         </div>
     </section>
 
-    <!-- 푸터 -->
     <footer class="site-footer">
         <div class="container footer-container">
             <div class="footer-logo">
@@ -670,12 +665,10 @@
         </div>
     </footer>
 
-    <!-- 플로팅 버튼 -->
     <a href="#apply-form" class="fab-button btn-shine">
         <i class="fa-solid fa-pen-to-square"></i> 3,000만원 혜택 신청
     </a>
 
-    <!-- 모달 -->
     <div class="modal-overlay" id="termsModal" onclick="closeModal(event)">
         <div class="modal-box" onclick="event.stopPropagation()">
             <div class="modal-header">
@@ -684,6 +677,11 @@
             </div>
             <div class="modal-body" id="modalContent"></div>
         </div>
+    </div>
+
+    <div class="image-modal-overlay" id="imageModal" onclick="closeImageModal()">
+        <span class="image-modal-close"><i class="fa-solid fa-xmark"></i></span>
+        <img class="image-modal-content" id="expandedImg">
     </div>
 
     <script>
@@ -738,7 +736,7 @@
       }, observerOptions);
       document.querySelectorAll('.fade-up').forEach((el) => { observer.observe(el); });
 
-      // 4. 모달 팝업
+      // 4. 약관 모달 팝업
       const termsData = {
           'privacy': { title: "개인정보처리방침", content: "지구커피는 가맹 상담을 위해 성함, 연락처, 지역을 수집하며 마케팅 활용(세미나 안내 등)에 동의한 것으로 간주합니다." },
           'terms': { title: "서비스 이용약관", content: "본 사이트는 지구커피 창업 정보를 제공하며, 이용자가 남긴 정보는 상담 목적으로만 성실히 사용됩니다." },
@@ -803,6 +801,21 @@
               currentSlide = (currentSlide + 1) % heroSlides.length;
               heroSlides[currentSlide].classList.add('active');
           }, 3000);
+      }
+
+      // 7. 이미지 클릭 시 확대(라이트박스) 기능
+      function openImageModal(imgElement) {
+          const modal = document.getElementById('imageModal');
+          const modalImg = document.getElementById('expandedImg');
+          modalImg.src = imgElement.src; 
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden'; 
+      }
+
+      function closeImageModal() {
+          const modal = document.getElementById('imageModal');
+          modal.classList.remove('active');
+          document.body.style.overflow = ''; 
       }
     </script>
 </body>
