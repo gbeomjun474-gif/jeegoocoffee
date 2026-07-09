@@ -173,6 +173,66 @@
         .result-item.highlight .label { font-size: 18px; font-weight: 700; color: var(--primary-dark); }
         .result-item.highlight .price-save { font-size: 36px; font-weight: 900; color: var(--alert-red); flex: 1 1 auto; text-align: right; white-space: nowrap; text-shadow: 0 2px 4px rgba(230, 57, 70, 0.2); }
 
+        <!-- ========================================== -->
+    <!-- 💡 네이버 리뷰 캡처 이미지 슬라이드 섹션 -->
+    <!-- ========================================== -->
+    
+    <!-- 1. CSS 디자인 영역 -->
+    <style>
+        .review-slider-wrapper { position: relative; max-width: 900px; margin: 40px auto 0; padding: 0 50px; }
+        .review-slider { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 20px; }
+        .review-slider::-webkit-scrollbar { display: none; }
+        .review-slider img { flex: 0 0 calc(50% - 10px); width: 100%; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); scroll-snap-align: center; object-fit: cover; border: 1px solid #E2E8F0; transition: transform 0.3s; }
+        .review-slider img:hover { transform: translateY(-5px); }
+        
+        .slider-btn { position: absolute; top: 45%; transform: translateY(-50%); background: var(--pure-white); color: var(--text-dark); border: 1px solid var(--border-color); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: all 0.3s; }
+        .slider-btn:hover { background: var(--primary-color); color: var(--pure-white); border-color: var(--primary-color); }
+        .slider-btn.prev { left: 0; }
+        .slider-btn.next { right: 0; }
+        
+        @media (max-width: 768px) {
+            .review-slider-wrapper { padding: 0 10px; }
+            .review-slider img { flex: 0 0 85%; } 
+            .slider-btn { display: none; } 
+        }
+    </style>
+
+    <!-- 2. HTML 실제 화면 영역 -->
+    <section class="section review-section" style="background-color: var(--bg-cream); padding-top: 40px;">
+        <div class="container">
+            <div class="fade-up" style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 34px; font-weight: 800; margin-bottom: 15px; color: var(--text-dark);">
+                    영수증 인증이 증명하는 <span style="color: #03C75A;">실제 네이버 리뷰</span>
+                </h2>
+                <p style="font-size: 18px; color: var(--text-muted);">맛과 분위기, 굿즈까지 입소문 난 지구커피의 생생한 현장 반응입니다.</p>
+            </div>
+
+            <div class="review-slider-wrapper fade-up delay-1">
+                <button class="slider-btn prev" onclick="moveReviewSlider(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                
+                <div class="review-slider" id="reviewSlider">
+                    <!-- 👇 준비하신 캡처 이미지 4장의 파일명을 각각 넣어주세요 -->
+                    <img src="review.png" alt="네이버 리뷰 1" class="zoomable-img" onclick="openImageModal(this)">
+                    <img src="review2.png" alt="네이버 리뷰 2" class="zoomable-img" onclick="openImageModal(this)">
+                    <img src="review3.png" alt="네이버 리뷰 3" class="zoomable-img" onclick="openImageModal(this)">
+                    <img src="review4.png" alt="네이버 리뷰 4" class="zoomable-img" onclick="openImageModal(this)">
+                </div>
+                
+                <button class="slider-btn next" onclick="moveReviewSlider(1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 스크립트 작동 영역 -->
+    <script>
+      function moveReviewSlider(direction) {
+          const slider = document.getElementById('reviewSlider');
+          const scrollAmount = slider.clientWidth / 2 + 10; 
+          slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+      }
+    </script>
+    <!-- ========================================== -->
+        
         /* 폼 섹션 */
         .cta-section { background: linear-gradient(135deg, var(--primary-color) 0%, #001f3f 100%); color: var(--pure-white); position: relative; overflow: hidden;}
         .cta-section::after { content: ''; position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: url('data:image/svg+xml;utf8,<svg opacity="0.05" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="white" stroke-width="2" fill="none"/></svg>') repeat; z-index: 0;}
