@@ -84,9 +84,7 @@
 
         /* 오리진 스토리(최상단) 3단 이미지 CSS */
         .origin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 60px; }
-        /* 배경을 F8FAFC로 설정하여 contain 시 어색하지 않게 처리 */
         .origin-img-box { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); background-color: #FFFFFF; }
-        /* 이미지가 잘리지 않게 object-fit: contain 적용 */
         .origin-img-box img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); opacity: 0.9; }
         .origin-img-box:hover img { transform: scale(1.08); opacity: 1; }
         .origin-label { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 30px 20px 15px; font-weight: 700; font-size: 15px; text-align: center; }
@@ -173,12 +171,7 @@
         .result-item.highlight .label { font-size: 18px; font-weight: 700; color: var(--primary-dark); }
         .result-item.highlight .price-save { font-size: 36px; font-weight: 900; color: var(--alert-red); flex: 1 1 auto; text-align: right; white-space: nowrap; text-shadow: 0 2px 4px rgba(230, 57, 70, 0.2); }
 
-        <!-- ========================================== -->
-    <!-- 💡 네이버 리뷰 캡처 이미지 슬라이드 섹션 -->
-    <!-- ========================================== -->
-    
-    <!-- 1. CSS 디자인 영역 -->
-    <style>
+        /* 네이버 리뷰 캡처 이미지 슬라이드 CSS */
         .review-slider-wrapper { position: relative; max-width: 900px; margin: 40px auto 0; padding: 0 50px; }
         .review-slider { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 20px; }
         .review-slider::-webkit-scrollbar { display: none; }
@@ -189,50 +182,7 @@
         .slider-btn:hover { background: var(--primary-color); color: var(--pure-white); border-color: var(--primary-color); }
         .slider-btn.prev { left: 0; }
         .slider-btn.next { right: 0; }
-        
-        @media (max-width: 768px) {
-            .review-slider-wrapper { padding: 0 10px; }
-            .review-slider img { flex: 0 0 85%; } 
-            .slider-btn { display: none; } 
-        }
-    </style>
 
-    <!-- 2. HTML 실제 화면 영역 -->
-    <section class="section review-section" style="background-color: var(--bg-cream); padding-top: 40px;">
-        <div class="container">
-            <div class="fade-up" style="text-align: center; margin-bottom: 50px;">
-                <h2 style="font-size: 34px; font-weight: 800; margin-bottom: 15px; color: var(--text-dark);">
-                    영수증 인증이 증명하는 <span style="color: #03C75A;">실제 네이버 리뷰</span>
-                </h2>
-                <p style="font-size: 18px; color: var(--text-muted);">맛과 분위기, 굿즈까지 입소문 난 지구커피의 생생한 현장 반응입니다.</p>
-            </div>
-
-            <div class="review-slider-wrapper fade-up delay-1">
-                <button class="slider-btn prev" onclick="moveReviewSlider(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-                
-                <div class="review-slider" id="reviewSlider">
-                    <!-- 👇 준비하신 캡처 이미지 4장의 파일명을 각각 넣어주세요 -->
-                    <img src="review.png" alt="네이버 리뷰 1" class="zoomable-img" onclick="openImageModal(this)">
-                    <img src="review2.png" alt="네이버 리뷰 2" class="zoomable-img" onclick="openImageModal(this)">
-                    <img src="review3.png" alt="네이버 리뷰 3" class="zoomable-img" onclick="openImageModal(this)">
-                    <img src="review4.png" alt="네이버 리뷰 4" class="zoomable-img" onclick="openImageModal(this)">
-                </div>
-                
-                <button class="slider-btn next" onclick="moveReviewSlider(1)"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. 스크립트 작동 영역 -->
-    <script>
-      function moveReviewSlider(direction) {
-          const slider = document.getElementById('reviewSlider');
-          const scrollAmount = slider.clientWidth / 2 + 10; 
-          slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-      }
-    </script>
-    <!-- ========================================== -->
-        
         /* 폼 섹션 */
         .cta-section { background: linear-gradient(135deg, var(--primary-color) 0%, #001f3f 100%); color: var(--pure-white); position: relative; overflow: hidden;}
         .cta-section::after { content: ''; position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: url('data:image/svg+xml;utf8,<svg opacity="0.05" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="white" stroke-width="2" fill="none"/></svg>') repeat; z-index: 0;}
@@ -375,6 +325,11 @@
             .footer-links a { display: block; margin-right: 0; margin-bottom: 10px; }
 
             .fab-button { padding: 12px 20px; font-size: 14px; bottom: 20px; right: 20px; }
+
+            /* 모바일 리뷰 슬라이드 조정 */
+            .review-slider-wrapper { padding: 0 10px; }
+            .review-slider img { flex: 0 0 85%; } 
+            .slider-btn { display: none; } 
         }
     </style>
 </head>
@@ -396,19 +351,14 @@
         </div>
     </header>
 
-  <!-- 💡 배경 사진을 src로 쉽게 넣을 수 있는 0. 최상단 웰컴 브랜드 스토리 -->
-    <section class="section brand-intro-section" style="position: relative; overflow: hidden; padding-top: 160px; padding-bottom: 100px; text-align: center; color: var(--pure-white);">
+  <section class="section brand-intro-section" style="position: relative; overflow: hidden; padding-top: 160px; padding-bottom: 100px; text-align: center; color: var(--pure-white);">
         
-        <!-- 1층: 배경 이미지 (여기서 src="파일이름.jpg" 를 쉽게 바꾸시면 됩니다!) -->
         <img src="2352.jpg" alt="지구커피 본" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
         
-        <!-- 2층: 반투명 다크블루 필터 (글자가 잘 보이게 덮어주는 유리막) -->
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(0, 58, 117, 0.85) 100%); z-index: 1;"></div>
         
-        <!-- 은은한 빛 반사 효과 -->
         <div style="position: absolute; top: -50%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 2;"></div>
         
-        <!-- 3층: 실제 내용 (글자 및 3단 사진들) -->
         <div class="container relative" style="position: relative; z-index: 10;">
             <div class="fade-up">
                 <span style="display: inline-block; padding: 6px 18px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; font-size: 13px; font-weight: 700; letter-spacing: 2px; margin-bottom: 25px; color: #E2E8F0; background: rgba(0,0,0,0.2);">
@@ -621,25 +571,17 @@
                     </ul>
                 </div>
             </div>
-       <!-- 3. 브랜드 굿즈 (키링 & 리유저블 텀블러) 라인 -->
+            
             <div class="feature-row fade-up delay-3" style="margin-top: 80px;">
-                <!-- 하나의 박스 안에서 두 개의 이미지를 나란히 보여주도록 display: flex 사용 -->
                 <div class="feature-image" style="background-color: #F8FAFC; display: flex; align-items: center; justify-content: center;">
-                    
-                    <!-- 왼쪽: 키링 사진 -->
                     <div style="flex: 1; padding: 30px 20px; border-right: 1px dashed #CBD5E1; text-align: center;">
-                        <!-- 👇 키링 사진 파일명 입력 -->
                         <img src="2293.jpg" alt="지구커피 시그니처 키링" class="zoomable-img" onclick="openImageModal(this)" style="width: 100%; height: auto; object-fit: contain; aspect-ratio: 1/1;">
                         <span style="display: inline-block; background-color: var(--primary-color); color: white; padding: 4px 12px; border-radius: 50px; font-size: 13px; font-weight: 700; margin-top: 15px;"># 시그니처 키링</span>
                     </div>
-                    
-                    <!-- 오른쪽: 리유저블 텀블러 사진 -->
                     <div style="flex: 1; padding: 30px 20px; text-align: center;">
-                        <!-- 👇 리유저블 텀블러 사진 파일명 입력 -->
                         <img src="tumbler.png" alt="지구커피 리유저블 텀블러" class="zoomable-img" onclick="openImageModal(this)" style="width: 100%; height: auto; object-fit: contain; aspect-ratio: 1/1;">
                         <span style="display: inline-block; background-color: var(--primary-color); color: white; padding: 4px 12px; border-radius: 50px; font-size: 13px; font-weight: 700; margin-top: 15px;"># 리유저블 텀블러</span>
                     </div>
-
                 </div>
                 
                 <div class="feature-text">
@@ -698,6 +640,30 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section review-section" style="background-color: var(--bg-cream); padding-top: 40px;">
+        <div class="container">
+            <div class="fade-up" style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 34px; font-weight: 800; margin-bottom: 15px; color: var(--text-dark);">
+                    영수증 인증이 증명하는 <span style="color: #03C75A;">실제 네이버 리뷰</span>
+                </h2>
+                <p style="font-size: 18px; color: var(--text-muted);">맛과 분위기, 굿즈까지 입소문 난 지구커피의 생생한 현장 반응입니다.</p>
+            </div>
+
+            <div class="review-slider-wrapper fade-up delay-1">
+                <button class="slider-btn prev" onclick="moveReviewSlider(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                
+                <div class="review-slider" id="reviewSlider">
+                    <img src="review.png" alt="네이버 리뷰 1" class="zoomable-img" onclick="openImageModal(this)">
+                    <img src="review2.png" alt="네이버 리뷰 2" class="zoomable-img" onclick="openImageModal(this)">
+                    <img src="review3.png" alt="네이버 리뷰 3" class="zoomable-img" onclick="openImageModal(this)">
+                    <img src="review4.png" alt="네이버 리뷰 4" class="zoomable-img" onclick="openImageModal(this)">
+                </div>
+                
+                <button class="slider-btn next" onclick="moveReviewSlider(1)"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -792,11 +758,12 @@
     </div>
 
     <script>
-        // 0. 브라우저 스크롤 기억 기능 끄기 (새로고침 시 무조건 맨 위로)
+      // 0. 브라우저 스크롤 기억 기능 끄기 (새로고침 시 무조건 맨 위로)
       if ('scrollRestoration' in history) {
           history.scrollRestoration = 'manual';
       }
       window.scrollTo(0, 0);
+
       // 1. 타이핑 효과
       const textToType = "본사 마진 없는 최고등급 원두";
       const typingElement = document.getElementById("typing-text");
@@ -868,7 +835,7 @@
           document.body.style.overflow = ''; 
       }
 
-      // 5. 구글 시트 연동 (웹앱 URL 다시 연결 필요)
+      // 5. 구글 시트 연동
       const scriptURL = 'https://script.google.com/macros/s/AKfycbzeqacPKg1WXQWme5TRn5MZk0m_yHOrWEJgCNVLuR4WFjy_fwvfxqRuo_9rjIUVeiwuDg/exec'; 
       
       const form = document.forms['submit-to-google-sheet'];
@@ -928,6 +895,13 @@
           const modal = document.getElementById('imageModal');
           modal.classList.remove('active');
           document.body.style.overflow = ''; 
+      }
+
+      // 8. 리뷰 슬라이드 넘기기 기능
+      function moveReviewSlider(direction) {
+          const slider = document.getElementById('reviewSlider');
+          const scrollAmount = slider.clientWidth / 2 + 10; 
+          slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
       }
     </script>
 </body>
