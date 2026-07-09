@@ -264,6 +264,10 @@
         }
 
         @media (max-width: 768px) {
+            /* 💡 브랜드 스토리 텍스트 모바일 최적화 (자연스러운 줄바꿈) */
+            .story-content h2 { font-size: 28px !important; }
+            .story-content p { font-size: 15px !important; }
+            .story-content br { display: none; }
             .nav-container { height: auto; padding: 15px 0; flex-direction: column; gap: 12px; }
             .nav-container > div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
             
