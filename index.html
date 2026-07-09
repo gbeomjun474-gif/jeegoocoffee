@@ -329,6 +329,23 @@
             .review-slider img { flex: 0 0 85%; } 
             .slider-btn { display: none; } 
         }
+        /* 리뷰 슬라이더 이미지 잘림 방지 (최종 덮어쓰기) */
+.review-slider {
+    align-items: flex-start !important; 
+}
+
+.review-slider img {
+    height: auto !important; 
+    object-fit: unset !important; /* 이미지를 강제로 자르는 cover 속성 무효화 */
+    max-height: 600px; /* PC에서 이미지가 세로로 너무 길어지는 것 방지 */
+}
+
+/* 모바일 환경 설정 */
+@media (max-width: 768px) {
+    .review-slider img {
+        max-height: none !important; /* 모바일에서는 화면에 맞춰 원본 전체가 다 보이도록 설정 */
+    }
+}
     </style>
 </head>
 <body>
