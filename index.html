@@ -102,7 +102,7 @@
 
         .hero h1 { font-size: 54px; line-height: 1.35; font-weight: 800; color: var(--text-dark); margin-bottom: 25px; letter-spacing: -1px; min-height: 140px; }
         .hero-highlight { background-color: var(--primary-color); color: var(--pure-white); padding: 2px 12px; border-radius: 8px; display: inline-block; margin-top: 5px; box-shadow: 0 4px 15px rgba(0, 81, 161, 0.3); }
-        .cursor { display: inline-block; width: 4px; height: 45px; background-color: var(--primary-color); vertical-align: middle; margin-left: 5px; animation: blink 1s step-end infinite; }
+        .cursor { display: inline-block; width: 4px; height: 35px; background-color: #FBBF24; vertical-align: middle; margin-left: 5px; animation: blink 1s step-end infinite; }
         @keyframes blink { 50% { opacity: 0; } }
 
         .hero p.lead { font-size: 20px; margin-bottom: 40px; font-weight: 400; color: #475569; }
@@ -129,6 +129,17 @@
         .gallery-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px 25px 25px; background: linear-gradient(to top, rgba(0, 31, 63, 0.9), transparent); color: white; opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; }
         .gallery-item:hover .gallery-overlay { opacity: 1; }
         .gallery-tag { font-weight: 700; font-size: 15px; background: var(--primary-color); padding: 6px 14px; border-radius: 50px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+
+        /* 네이버 리뷰 캡처 이미지 슬라이드 CSS */
+        .review-slider-wrapper { position: relative; max-width: 900px; margin: 40px auto 0; padding: 0 50px; }
+        .review-slider { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 20px; }
+        .review-slider::-webkit-scrollbar { display: none; }
+        .review-slider img { flex: 0 0 calc(50% - 10px); width: 100%; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); scroll-snap-align: center; object-fit: cover; border: 1px solid #E2E8F0; transition: transform 0.3s; }
+        .review-slider img:hover { transform: translateY(-5px); }
+        .slider-btn { position: absolute; top: 45%; transform: translateY(-50%); background: var(--pure-white); color: var(--text-dark); border: 1px solid var(--border-color); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: all 0.3s; }
+        .slider-btn:hover { background: var(--primary-color); color: var(--pure-white); border-color: var(--primary-color); }
+        .slider-btn.prev { left: 0; }
+        .slider-btn.next { right: 0; }
 
         /* 메뉴 및 인테리어 경쟁력 섹션 CSS */
         .feature-section { padding: 100px 0; background-color: var(--pure-white); }
@@ -170,18 +181,6 @@
         .result-item.highlight { background: linear-gradient(90deg, rgba(0, 81, 161, 0.05) 0%, rgba(0, 81, 161, 0.1) 100%); padding: 25px; border-radius: 15px; border: 1px solid rgba(0, 81, 161, 0.2); box-shadow: 0 10px 20px rgba(0,81,161,0.05);}
         .result-item.highlight .label { font-size: 18px; font-weight: 700; color: var(--primary-dark); }
         .result-item.highlight .price-save { font-size: 36px; font-weight: 900; color: var(--alert-red); flex: 1 1 auto; text-align: right; white-space: nowrap; text-shadow: 0 2px 4px rgba(230, 57, 70, 0.2); }
-
-        /* 네이버 리뷰 캡처 이미지 슬라이드 CSS */
-        .review-slider-wrapper { position: relative; max-width: 900px; margin: 40px auto 0; padding: 0 50px; }
-        .review-slider { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 20px; }
-        .review-slider::-webkit-scrollbar { display: none; }
-        .review-slider img { flex: 0 0 calc(50% - 10px); width: 100%; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); scroll-snap-align: center; object-fit: cover; border: 1px solid #E2E8F0; transition: transform 0.3s; }
-        .review-slider img:hover { transform: translateY(-5px); }
-        
-        .slider-btn { position: absolute; top: 45%; transform: translateY(-50%); background: var(--pure-white); color: var(--text-dark); border: 1px solid var(--border-color); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: all 0.3s; }
-        .slider-btn:hover { background: var(--primary-color); color: var(--pure-white); border-color: var(--primary-color); }
-        .slider-btn.prev { left: 0; }
-        .slider-btn.next { right: 0; }
 
         /* 폼 섹션 */
         .cta-section { background: linear-gradient(135deg, var(--primary-color) 0%, #001f3f 100%); color: var(--pure-white); position: relative; overflow: hidden;}
@@ -285,7 +284,6 @@
 
             .hero { padding: 60px 0 30px 0 !important; } 
             .hero h1 { font-size: 36px; margin-bottom: 15px; line-height: 1.4; min-height: 100px; } 
-            .cursor { height: 30px; } 
 
             .hero p.lead { font-size: 16px; margin-bottom: 30px; }
             .hero-badge { font-size: 14px; padding: 6px 16px; }
@@ -325,7 +323,7 @@
             .footer-links a { display: block; margin-right: 0; margin-bottom: 10px; }
 
             .fab-button { padding: 12px 20px; font-size: 14px; bottom: 20px; right: 20px; }
-
+            
             /* 모바일 리뷰 슬라이드 조정 */
             .review-slider-wrapper { padding: 0 10px; }
             .review-slider img { flex: 0 0 85%; } 
@@ -351,12 +349,11 @@
         </div>
     </header>
 
-  <section class="section brand-intro-section" style="position: relative; overflow: hidden; padding-top: 160px; padding-bottom: 100px; text-align: center; color: var(--pure-white);">
+    <!-- 1. 최상단 웰컴 브랜드 스토리 -->
+    <section class="section brand-intro-section" style="position: relative; overflow: hidden; padding-top: 160px; padding-bottom: 100px; text-align: center; color: var(--pure-white);">
         
         <img src="2352.jpg" alt="지구커피 본" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
-        
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(0, 58, 117, 0.85) 100%); z-index: 1;"></div>
-        
         <div style="position: absolute; top: -50%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 2;"></div>
         
         <div class="container relative" style="position: relative; z-index: 10;">
@@ -365,9 +362,10 @@
                     THE ORIGIN OF JEEGOO
                 </span>
                 
+                <!-- 💡 타이핑 효과가 이곳(파푸아뉴기니 시그리 AA)에 적용됩니다 -->
                 <h2 style="font-size: 42px; font-weight: 900; line-height: 1.4; margin-bottom: 30px; text-shadow: 0 4px 10px rgba(0,0,0,0.3);">
                     지구 반대편에서 시작된 지구커피의 원두<br>
-                    <span style="color: #FBBF24;">파푸아뉴기니 시그리(Sigri) AA</span>
+                    <span id="typing-text" style="color: #FBBF24;"></span><span class="cursor"></span>
                 </h2>
                 
                 <p style="font-size: 18px; color: rgba(255,255,255,0.8); max-width: 700px; margin: 0 auto 50px; line-height: 1.8; font-weight: 400; word-break: keep-all;">
@@ -406,6 +404,7 @@
         </div>
     </section>
 
+    <!-- 2. 브랜드 철학 (장관님 사진) -->
     <section class="section brand-story-section" style="background-color: var(--pure-white); position: relative; overflow: hidden;">
         <div class="container">
             <div class="story-grid">
@@ -445,7 +444,7 @@
                         </li>
                         <li style="display: flex; align-items: center; gap: 15px; font-size: 16px; font-weight: 700; color: var(--text-dark); background: var(--bg-cream); padding: 18px 24px; border-radius: 12px; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02);" onmouseover="this.style.transform='translateX(10px)'" onmouseout="this.style.transform='translateX(0)'">
                             <i class="fa-solid fa-circle-check" style="color: #10B981; font-size: 22px;"></i> 
-                            변함없는 하이엔드 스페셜티 커피의 맛 제공
+                            변함없는 파푸아뉴기니 블루마운틴 커피의 맛 제공
                         </li>
                     </ul>
                 </div>
@@ -453,40 +452,7 @@
         </div>
     </section>
 
-    <section class="hero">
-        <div class="container hero-grid">
-            <div class="hero-content fade-up">
-                <span class="hero-badge">🚨 박람회 한정: 창업 비용 최대 3,000만원 지원</span>
-                
-                <h1>치솟는 원두 가격 돌파구,<br>
-                    <span id="typing-text" class="hero-highlight"></span><span class="cursor"></span>
-                </h1>
-                
-                <p class="lead">"지구커피"만의 물류시스템으로 프리미엄 원두 타사 원두보다 더 합리적인 금액에 안정적으로 공급합니다.</p>
-                <a href="#apply-form" class="btn btn-shine" style="background-color: var(--alert-red);"><i class="fa-solid fa-gift"></i> 3,000만원 혜택 선점하기</a>
-            </div>
-            
-            <div class="hero-image-box floating-element fade-up delay-1">
-                <img src="shop3.jpg" alt="지구커피 매장 1" class="active">
-                <img src="shop5.jpg" alt="지구커피 매장 2">
-                <img src="dudu.jpg" alt="파푸아뉴기니 현장">
-            </div>
-        </div>
-    </section>
-
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <span><i class="fa-solid fa-handshake"></i> 박람회 한정 가맹비 전액 면제</span>
-            <span><i class="fa-solid fa-gift"></i> 선착순 3,000만원 창업 지원</span>
-            <span><i class="fa-solid fa-mug-hot"></i> 프리미엄 시그리 AA등급 원두</span>
-            <span><i class="fa-solid fa-coins"></i> 월 평균 원가 150만원 절감</span>
-            <span><i class="fa-solid fa-handshake"></i> 박람회 한정 가맹비 전액 면제</span>
-            <span><i class="fa-solid fa-gift"></i> 선착순 3,000만원 창업 지원</span>
-            <span><i class="fa-solid fa-mug-hot"></i> 프리미엄 시그리 AA등급 원두</span>
-            <span><i class="fa-solid fa-coins"></i> 월 평균 원가 150만원 절감</span>
-        </div>
-    </div>
-
+    <!-- 3. 나바코리아 현장 이벤트 -->
     <section class="section event-section" style="background-color: var(--bg-cream);">
         <div class="container">
             <div class="fade-up" style="text-align: center; margin-bottom: 50px;">
@@ -519,14 +485,40 @@
                 <div class="gallery-item" style="background-color: #F1F5F9;">
                     <img src="americano.png" alt="아이스 아메리카노" style="object-fit: contain;">
                     <div class="gallery-overlay">
-                        <span class="gallery-tag"><i class="fa-solid fa-mug-hot"></i> 시그리 원두의 힘</span>
+                        <span class="gallery-tag"><i class="fa-solid fa-mug-hot"></i> 블루마운틴 원두</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section feature-section">
+    <!-- 4. 네이버 리뷰 슬라이드 -->
+    <section class="section review-section" style="background-color: var(--pure-white);">
+        <div class="container">
+            <div class="fade-up" style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 34px; font-weight: 800; margin-bottom: 15px; color: var(--text-dark);">
+                    영수증 인증이 증명하는 <span style="color: #03C75A;">실제 네이버 리뷰</span>
+                </h2>
+                <p style="font-size: 18px; color: var(--text-muted);">맛과 분위기, 굿즈까지 입소문 난 지구커피의 생생한 현장 반응입니다.</p>
+            </div>
+
+            <div class="review-slider-wrapper fade-up delay-1">
+                <button class="slider-btn prev" onclick="moveReviewSlider(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                
+                <div class="review-slider" id="reviewSlider">
+                    <img src="review.png" alt="네이버 리뷰 1" class="zoomable-img" onclick="openImageModal(this)">
+                    <img src="review2.png" alt="네이버 리뷰 2" class="zoomable-img" onclick="openImageModal(this)">
+                    <img src="review3.png" alt="네이버 리뷰 3" class="zoomable-img" onclick="openImageModal(this)">
+                    <img src="review5.png" alt="네이버 리뷰 4" class="zoomable-img" onclick="openImageModal(this)">
+                </div>
+                
+                <button class="slider-btn next" onclick="moveReviewSlider(1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 시그니처 메뉴 & 인테리어 & 굿즈 -->
+    <section class="section feature-section" style="background-color: var(--pure-white);">
         <div class="container">
             <div class="fade-up" style="text-align: center; margin-bottom: 60px;">
                 <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 15px; color: var(--text-dark);">
@@ -542,10 +534,10 @@
                 <div class="feature-text">
                     <span class="feature-label label-blue"><i class="fa-solid fa-utensils"></i> SIGNATURE MENU</span>
                     <h3 style="font-size: 30px; font-weight: 800; margin-bottom: 20px; line-height: 1.4;">
-                        한 번 맛보면 단골이 되는<br>독보적인 시그니처 라인업
+                        한 번 맛보면 단골이 되는<br>독보적인 시그니처 라떼
                     </h3>
                     <p style="font-size: 16px; color: var(--text-muted); line-height: 1.7;">
-                        프리미엄 시그리 원두의 풍미를 극대화한 메뉴 구성으로 객단가를 높였습니다. 초보자도 쉽게 만들 수 있는 원팩 시스템을 도입해 인건비 부담을 줄였습니다.
+                        프리미엄 시그리 원두의 풍미를 극대화한 메뉴 구성으로 객단가를 높였습니다. 초보자도 쉽게 만들 수 있는 시스템을 도입해 인건비 부담을 줄였습니다.
                     </p>
                     <ul class="feature-list">
                         <li><i class="fa-solid fa-check"></i> <strong>높은 마진율:</strong> 객단가를 끌어올리는 화려한 비주얼과 압도적인 맛</li>
@@ -602,6 +594,42 @@
         </div>
     </section>
 
+    <!-- 6. 메인 히어로 (혜택 & 원두가격 돌파구) -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content fade-up">
+                <span class="hero-badge">🚨 박람회 한정: 창업 비용 최대 3,000만원 지원</span>
+                
+                <h1>치솟는 원두 가격 돌파구,<br>
+                    <span class="hero-highlight">본사 마진 없는 최고등급 원두</span>
+                </h1>
+                
+                <p class="lead">"지구커피"만의 물류시스템으로 프리미엄 원두 타사 원두보다 더 합리적인 금액에 안정적으로 공급합니다.</p>
+                <a href="#apply-form" class="btn btn-shine" style="background-color: var(--alert-red);"><i class="fa-solid fa-gift"></i> 3,000만원 혜택 선점하기</a>
+            </div>
+            
+            <div class="hero-image-box floating-element fade-up delay-1">
+                <img src="shop3.jpg" alt="지구커피 매장 1" class="active">
+                <img src="shop5.jpg" alt="지구커피 매장 2">
+                <img src="dudu.jpg" alt="파푸아뉴기니 현장">
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span><i class="fa-solid fa-handshake"></i> 박람회 한정 가맹비 전액 면제</span>
+            <span><i class="fa-solid fa-gift"></i> 선착순 3,000만원 창업 지원</span>
+            <span><i class="fa-solid fa-mug-hot"></i> 프리미엄 시그리 AA등급 원두</span>
+            <span><i class="fa-solid fa-coins"></i> 월 평균 원가 150만원 절감</span>
+            <span><i class="fa-solid fa-handshake"></i> 박람회 한정 가맹비 전액 면제</span>
+            <span><i class="fa-solid fa-gift"></i> 선착순 3,000만원 창업 지원</span>
+            <span><i class="fa-solid fa-mug-hot"></i> 프리미엄 시그리 AA등급 원두</span>
+            <span><i class="fa-solid fa-coins"></i> 월 평균 원가 150만원 절감</span>
+        </div>
+    </div>
+
+    <!-- 7. 수익 계산기 -->
     <section class="section calc-section" style="background-color: var(--bg-cream);">
         <div class="container">
             <h2 class="fade-up" style="text-align: center; font-size: 34px; letter-spacing: -1px; margin-bottom: 15px;">
@@ -644,30 +672,7 @@
         </div>
     </section>
 
-    <section class="section review-section" style="background-color: var(--bg-cream); padding-top: 40px;">
-        <div class="container">
-            <div class="fade-up" style="text-align: center; margin-bottom: 50px;">
-                <h2 style="font-size: 34px; font-weight: 800; margin-bottom: 15px; color: var(--text-dark);">
-                    영수증 인증이 증명하는 <span style="color: #03C75A;">실제 네이버 리뷰</span>
-                </h2>
-                <p style="font-size: 18px; color: var(--text-muted);">맛과 분위기, 굿즈까지 입소문 난 지구커피의 생생한 현장 반응입니다.</p>
-            </div>
-
-            <div class="review-slider-wrapper fade-up delay-1">
-                <button class="slider-btn prev" onclick="moveReviewSlider(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-                
-                <div class="review-slider" id="reviewSlider">
-                    <img src="review.png" alt="네이버 리뷰 1" class="zoomable-img" onclick="openImageModal(this)">
-                    <img src="review2.png" alt="네이버 리뷰 2" class="zoomable-img" onclick="openImageModal(this)">
-                    <img src="review3.png" alt="네이버 리뷰 3" class="zoomable-img" onclick="openImageModal(this)">
-                    <img src="review4.png" alt="네이버 리뷰 4" class="zoomable-img" onclick="openImageModal(this)">
-                </div>
-                
-                <button class="slider-btn next" onclick="moveReviewSlider(1)"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-        </div>
-    </section>
-
+    <!-- 8. 최종 전환 폼 (CTA) -->
     <section class="section cta-section" id="apply-form">
         <div class="container">
             <h2 class="section-title fade-up" style="font-size: 30px; font-weight: 800;">선착순 마감 주의! 최대 3,000만원 창업 혜택 받기</h2>
@@ -697,6 +702,7 @@
         </div>
     </section>
 
+    <!-- 푸터 -->
     <footer class="site-footer">
         <div class="container footer-container">
             <div class="footer-logo">
@@ -738,10 +744,12 @@
         </div>
     </footer>
 
+    <!-- 플로팅 버튼 -->
     <a href="#apply-form" class="fab-button btn-shine">
         <i class="fa-solid fa-pen-to-square"></i> 3,000만원 혜택 신청
     </a>
 
+    <!-- 약관 모달 -->
     <div class="modal-overlay" id="termsModal" onclick="closeModal(event)">
         <div class="modal-box" onclick="event.stopPropagation()">
             <div class="modal-header">
@@ -752,6 +760,7 @@
         </div>
     </div>
 
+    <!-- 이미지 확대 라이트박스 팝업창 -->
     <div class="image-modal-overlay" id="imageModal" onclick="closeImageModal()">
         <span class="image-modal-close"><i class="fa-solid fa-xmark"></i></span>
         <img class="image-modal-content" id="expandedImg">
@@ -764,8 +773,8 @@
       }
       window.scrollTo(0, 0);
 
-      // 1. 타이핑 효과
-      const textToType = "본사 마진 없는 최고등급 원두";
+      // 1. 타이핑 효과 (최상단 브랜드 스토리 문구로 변경)
+      const textToType = "파푸아뉴기니 시그리(Sigri) AA";
       const typingElement = document.getElementById("typing-text");
       let charIndex = 0;
 
