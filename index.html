@@ -34,9 +34,11 @@
         /* 애니메이션 모음 */
         .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
-        .delay-1 { transition-delay: 0.2s; }
-        .delay-2 { transition-delay: 0.4s; }
-        .delay-3 { transition-delay: 0.6s; }
+        .delay-1 { transition-delay: 0.15s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.45s; }
+        .delay-4 { transition-delay: 0.6s; }
+        .delay-5 { transition-delay: 0.75s; }
 
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -93,6 +95,33 @@
         /* 브랜드 스토리(장관님) 그리드 */
         .story-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: center; }
 
+        /* 메뉴 및 인테리어 경쟁력 섹션 CSS */
+        .feature-section { padding: 100px 0; background-color: var(--pure-white); }
+        .feature-row { display: flex; align-items: center; gap: 60px; margin-bottom: 80px; }
+        .feature-row:last-child { margin-bottom: 0; }
+        .feature-row.reverse { flex-direction: row-reverse; }
+        .feature-text { flex: 1; }
+        .feature-image { flex: 1; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid rgba(0, 81, 161, 0.05); position: relative; }
+        .feature-image img { width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 4/3; transition: transform 0.5s ease; }
+        .feature-image:hover img { transform: scale(1.05); }
+        
+        .feature-label { display: inline-block; padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 700; margin-bottom: 15px; }
+        .label-blue { background-color: rgba(0, 81, 161, 0.1); color: var(--primary-color); }
+        .label-gold { background-color: rgba(245, 158, 11, 0.1); color: #D97706; }
+        
+        .feature-list { list-style: none; padding: 0; margin-top: 25px; }
+        .feature-list li { margin-bottom: 15px; font-size: 16px; color: var(--text-dark); display: flex; align-items: flex-start; gap: 12px; font-weight: 500; line-height: 1.5; }
+        .feature-list li i { color: var(--primary-color); font-size: 20px; margin-top: 2px; }
+
+        /* 🔥 새롭게 추가된 가맹 개설 절차 CSS */
+        .process-section { background-color: #F8FAFC; padding: 100px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 30px; margin-top: 60px; }
+        .process-card { background: var(--pure-white); padding: 35px 25px 25px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,81,161,0.05); position: relative; transition: all 0.3s ease; }
+        .process-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,81,161,0.1); border-color: rgba(0,81,161,0.2); }
+        .step-number { position: absolute; top: -20px; left: 30px; background: var(--gold-gradient); color: white; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 900; font-size: 20px; box-shadow: 0 6px 15px rgba(0,81,161,0.3); }
+        .process-card h3 { font-size: 20px; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .process-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
         /* 히어로 섹션 */
         .hero { padding: 80px 0 60px 0; background: linear-gradient(135deg, #E6F0FA 0%, #F4F7F9 100%); position: relative; overflow: hidden; }
         .hero::before { content: ''; position: absolute; top: -10%; left: -10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,81,161,0.1) 0%, transparent 70%); border-radius: 50%; z-index: 0; }
@@ -119,24 +148,6 @@
         
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .marquee-container:hover .marquee-content { animation-play-state: paused; }
-
-        /* 메뉴 및 인테리어 경쟁력 섹션 CSS */
-        .feature-section { padding: 100px 0; background-color: var(--pure-white); }
-        .feature-row { display: flex; align-items: center; gap: 60px; margin-bottom: 80px; }
-        .feature-row:last-child { margin-bottom: 0; }
-        .feature-row.reverse { flex-direction: row-reverse; }
-        .feature-text { flex: 1; }
-        .feature-image { flex: 1; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid rgba(0, 81, 161, 0.05); position: relative; }
-        .feature-image img { width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 4/3; transition: transform 0.5s ease; }
-        .feature-image:hover img { transform: scale(1.05); }
-        
-        .feature-label { display: inline-block; padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 700; margin-bottom: 15px; }
-        .label-blue { background-color: rgba(0, 81, 161, 0.1); color: var(--primary-color); }
-        .label-gold { background-color: rgba(245, 158, 11, 0.1); color: #D97706; }
-        
-        .feature-list { list-style: none; padding: 0; margin-top: 25px; }
-        .feature-list li { margin-bottom: 15px; font-size: 16px; color: var(--text-dark); display: flex; align-items: flex-start; gap: 12px; font-weight: 500; line-height: 1.5; }
-        .feature-list li i { color: var(--primary-color); font-size: 20px; margin-top: 2px; }
 
         /* 계산기 UI */
         .calculator-box { background-color: var(--pure-white); border-radius: 24px; padding: 50px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); border: 1px solid rgba(0, 81, 161, 0.1); width: 100%; box-sizing: border-box; overflow: hidden; position: relative;}
@@ -249,7 +260,6 @@
         }
 
         @media (max-width: 768px) {
-            /* 브랜드 스토리 텍스트 모바일 최적화 (자연스러운 줄바꿈) */
             .story-content h2 { font-size: 28px !important; }
             .story-content p { font-size: 15px !important; }
             .story-content br { display: none; }
@@ -257,6 +267,8 @@
             .nav-container > div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
             
             .brand-intro-section { padding-top: 130px !important; padding-bottom: 60px !important; }
+
+            .process-grid { grid-template-columns: 1fr; gap: 45px; margin-top: 40px; } /* 모바일에서 한 줄로 */
 
             .hero { padding: 60px 0 30px 0 !important; } 
             .hero h1 { font-size: 36px; margin-bottom: 15px; line-height: 1.4; min-height: 100px; } 
@@ -449,7 +461,7 @@
 
             <div class="feature-row reverse fade-up delay-2">
                 <div class="feature-image">
-                    <img src="1111.jpg" alt="지구커피 인테리어">
+                    <img src="2453.jpg" alt="지구커피 인테리어">
                 </div>
                 <div class="feature-text">
                     <span class="feature-label label-gold"><i class="fa-solid fa-shop"></i> INTERIOR & SPACE</span>
@@ -494,7 +506,60 @@
         </div>
     </section>
 
-    <!-- 4. 메인 히어로 (혜택 & 원두가격 돌파구) -->
+    <!-- 4. 새롭게 추가된 가맹 개설 절차 (Process) -->
+    <section class="section process-section">
+        <div class="container">
+            <div class="fade-up" style="text-align: center;">
+                <span style="display: inline-block; background-color: var(--text-dark); color: var(--pure-white); padding: 6px 18px; border-radius: 50px; font-size: 13px; font-weight: 700; margin-bottom: 15px; letter-spacing: 1px;">
+                    START-UP PROCESS
+                </span>
+                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 15px; color: var(--text-dark);">
+                    체계적이고 투명한 <span class="text-gradient">가맹 개설 절차</span>
+                </h2>
+                <p style="font-size: 18px; color: var(--text-muted);">상담부터 그랜드 오픈까지 본사 전문가가 1:1로 밀착 지원합니다.</p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-card fade-up delay-1">
+                    <div class="step-number">1</div>
+                    <h3><i class="fa-regular fa-comments"></i> 가맹 문의 및 상담</h3>
+                    <p>박람회 현장 또는 온라인 접수를 통해 창업 예산, 희망 지역 등 기본적인 1:1 맞춤 상담을 진행합니다.</p>
+                </div>
+                
+                <div class="process-card fade-up delay-2">
+                    <div class="step-number">2</div>
+                    <h3><i class="fa-solid fa-map-location-dot"></i> 상권 분석 및 점포 개발</h3>
+                    <p>본사 전문가가 데이터를 기반으로 A급 상권을 정밀 분석하여, 최적의 입지를 추천하고 수익성을 검토합니다.</p>
+                </div>
+                
+                <div class="process-card fade-up delay-3">
+                    <div class="step-number">3</div>
+                    <h3><i class="fa-solid fa-file-signature"></i> 가맹 계약 및 도면 확정</h3>
+                    <p>점포가 확정되면 본사 가맹 계약을 체결하고, 효율적인 바(Bar) 동선을 고려한 인테리어 도면을 설계합니다.</p>
+                </div>
+                
+                <div class="process-card fade-up delay-4">
+                    <div class="step-number">4</div>
+                    <h3><i class="fa-solid fa-hammer"></i> 인테리어 시공 및 세팅</h3>
+                    <p>지구커피만의 감각적인 딥블루 인테리어 시공이 시작되며, 각종 커피 장비와 머신이 완벽하게 세팅됩니다.</p>
+                </div>
+                
+                <div class="process-card fade-up delay-5">
+                    <div class="step-number">5</div>
+                    <h3><i class="fa-solid fa-chalkboard-user"></i> 본사 교육 및 실습</h3>
+                    <p>본사 교육장에서 레시피, 서비스, 매장 운영 노하우를 배우고, 실제 현장에서 완벽하게 숙달될 때까지 실습합니다.</p>
+                </div>
+                
+                <div class="process-card fade-up delay-5">
+                    <div class="step-number">6</div>
+                    <h3><i class="fa-solid fa-store"></i> 최종 점검 및 오픈</h3>
+                    <p>슈퍼바이저 파견으로 가오픈 최종 점검을 마치고, 마침내 고객을 맞이하는 그랜드 오픈 및 사후 관리가 시작됩니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 메인 히어로 (혜택 & 원두가격 돌파구) -->
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-content fade-up">
@@ -529,7 +594,7 @@
         </div>
     </div>
 
-    <!-- 5. 수익 계산기 -->
+    <!-- 6. 수익 계산기 -->
     <section class="section calc-section" style="background-color: var(--bg-cream);">
         <div class="container">
             <h2 class="fade-up" style="text-align: center; font-size: 34px; letter-spacing: -1px; margin-bottom: 15px;">
@@ -572,7 +637,7 @@
         </div>
     </section>
 
-    <!-- 6. 최종 전환 폼 (CTA) -->
+    <!-- 7. 최종 전환 폼 (CTA) -->
     <section class="section cta-section" id="apply-form">
         <div class="container">
             <h2 class="section-title fade-up" style="font-size: 30px; font-weight: 800;">선착순 마감 주의! 최대 3,000만원 창업 혜택 받기</h2>
