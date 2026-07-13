@@ -36,6 +36,7 @@
         .fade-up.visible { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.2s; }
         .delay-2 { transition-delay: 0.4s; }
+        .delay-3 { transition-delay: 0.6s; }
 
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -118,28 +119,6 @@
         
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .marquee-container:hover .marquee-content { animation-play-state: paused; }
-
-        /* 이벤트 갤러리 CSS */
-        .event-section { background-color: var(--pure-white); }
-        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 250px 250px; gap: 20px; }
-        .gallery-item { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.08); cursor: pointer; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .gallery-item:hover img { transform: scale(1.08); }
-        .gallery-item.large { grid-column: 1 / 3; grid-row: 1 / 3; }
-        .gallery-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px 25px 25px; background: linear-gradient(to top, rgba(0, 31, 63, 0.9), transparent); color: white; opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
-        .gallery-tag { font-weight: 700; font-size: 15px; background: var(--primary-color); padding: 6px 14px; border-radius: 50px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-
-        /* 네이버 리뷰 캡처 이미지 슬라이드 CSS */
-        .review-slider-wrapper { position: relative; max-width: 900px; margin: 40px auto 0; padding: 0 50px; }
-        .review-slider { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 20px; align-items: flex-start; /* 높이가 강제로 늘어나는 것 방지 */ }
-.review-slider::-webkit-scrollbar { display: none; }
-.review-slider img { flex: 0 0 calc(50% - 10px); width: 100%; height: auto; /* 비율에 맞게 원본 높이 유지 */ border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); scroll-snap-align: center; object-fit: contain; /* 이미지가 잘리지 않고 다 보이도록 변경 */ background-color: #fff; border: 1px solid #E2E8F0; transition: transform 0.3s; }
-        .review-slider img:hover { transform: translateY(-5px); }
-        .slider-btn { position: absolute; top: 45%; transform: translateY(-50%); background: var(--pure-white); color: var(--text-dark); border: 1px solid var(--border-color); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: all 0.3s; }
-        .slider-btn:hover { background: var(--primary-color); color: var(--pure-white); border-color: var(--primary-color); }
-        .slider-btn.prev { left: 0; }
-        .slider-btn.next { right: 0; }
 
         /* 메뉴 및 인테리어 경쟁력 섹션 CSS */
         .feature-section { padding: 100px 0; background-color: var(--pure-white); }
@@ -265,15 +244,12 @@
             .story-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             .story-content ul { text-align: left; }
             
-            .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 250px 250px; }
-            .gallery-item.large { grid-column: 1 / -1; grid-row: auto; height: 350px; }
-            
             .feature-row, .feature-row.reverse { flex-direction: column; gap: 40px; margin-bottom: 60px; }
             .feature-text, .feature-image { width: 100%; }
         }
 
         @media (max-width: 768px) {
-            /* 💡 브랜드 스토리 텍스트 모바일 최적화 (자연스러운 줄바꿈) */
+            /* 브랜드 스토리 텍스트 모바일 최적화 (자연스러운 줄바꿈) */
             .story-content h2 { font-size: 28px !important; }
             .story-content p { font-size: 15px !important; }
             .story-content br { display: none; }
@@ -293,11 +269,6 @@
             .section { padding: 60px 0; }
             .calc-section { padding-top: 20px; } 
             .section-subtitle { font-size: 14px; margin-bottom: 40px; line-height: 1.5; }
-            
-            .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-            .gallery-item.large { height: 300px; }
-            .gallery-item { height: 250px; }
-            .gallery-overlay { opacity: 1; background: linear-gradient(to top, rgba(0, 31, 63, 0.7), transparent); }
             
             .calculator-box { padding: 30px 20px; border-radius: 20px; }
             .slider-label { font-size: 16px; }
@@ -323,29 +294,7 @@
             .footer-links a { display: block; margin-right: 0; margin-bottom: 10px; }
 
             .fab-button { padding: 12px 20px; font-size: 14px; bottom: 20px; right: 20px; }
-            
-            /* 모바일 리뷰 슬라이드 조정 */
-            .review-slider-wrapper { padding: 0 10px; }
-            .review-slider img { flex: 0 0 85%; } 
-            .slider-btn { display: none; } 
         }
-        /* 리뷰 슬라이더 이미지 잘림 방지 (최종 덮어쓰기) */
-.review-slider {
-    align-items: flex-start !important; 
-}
-
-.review-slider img {
-    height: auto !important; 
-    object-fit: unset !important; /* 이미지를 강제로 자르는 cover 속성 무효화 */
-    max-height: 600px; /* PC에서 이미지가 세로로 너무 길어지는 것 방지 */
-}
-
-/* 모바일 환경 설정 */
-@media (max-width: 768px) {
-    .review-slider img {
-        max-height: none !important; /* 모바일에서는 화면에 맞춰 원본 전체가 다 보이도록 설정 */
-    }
-}
     </style>
 </head>
 <body>
@@ -379,7 +328,6 @@
                     THE ORIGIN OF JEEGOO
                 </span>
                 
-                <!-- 💡 타이핑 효과가 이곳(파푸아뉴기니 시그리 AA)에 적용됩니다 -->
                 <h2 style="font-size: 42px; font-weight: 900; line-height: 1.4; margin-bottom: 30px; text-shadow: 0 4px 10px rgba(0,0,0,0.3);">
                     지구 반대편에서 시작된 지구커피의 원두<br>
                     <span id="typing-text" style="color: #FBBF24;"></span><span class="cursor"></span>
@@ -469,72 +417,7 @@
         </div>
     </section>
 
-    <!-- 3. 나바코리아 현장 이벤트 -->
-    <section class="section event-section" style="background-color: var(--bg-cream);">
-        <div class="container">
-            <div class="fade-up" style="text-align: center; margin-bottom: 50px;">
-                <span style="display: inline-block; background-color: var(--text-dark); color: var(--pure-white); padding: 6px 18px; border-radius: 50px; font-size: 13px; font-weight: 700; margin-bottom: 15px; letter-spacing: 1px;">
-                    EVENT HIGHLIGHT
-                </span>
-                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 25px; line-height: 1.4; color: var(--text-dark);">
-                    압도적인 에너지의 현장,<br>
-                    <span class="text-gradient">지구커피 X 나바코리아 (NABBA)</span>
-                </h2>
-                <p style="font-size: 18px; color: var(--text-muted); max-width: 780px; margin: 0 auto; line-height: 1.7;">
-                    지구커피는 가맹점의 인지도 상승과 브랜드 파워를 위해 끊임없이 현장에서 뜁니다.<br>
-                    서울 나바코리아 대회 공식 후원사로 참여하여, 수많은 참가자와 관람객들에게 <strong>지구커피의 인지도와 커피의 맛</strong>을 각인시켰습니다.
-                </p>
-            </div>
-
-            <div class="gallery-grid fade-up delay-1">
-                <div class="gallery-item large">
-                    <img src="nabbakorea2.png" alt="나바코리아 대회 현장 메인">
-                    <div class="gallery-overlay">
-                        <span class="gallery-tag"><i class="fa-solid fa-fire"></i> 열광적인 현장 반응</span>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="coffeecar.jpg" alt="지구커피 공식 커피차">
-                    <div class="gallery-overlay">
-                        <span class="gallery-tag"><i class="fa-solid fa-truck"></i> 공식 커피차 출동</span>
-                    </div>
-                </div>
-                <div class="gallery-item" style="background-color: #F1F5F9;">
-                    <img src="nabbakorea3.jpg" alt="나바코리아 공식 스폰서" style="object-fit: contain;">
-                    <div class="gallery-overlay">
-                        <span class="gallery-tag"><i class="fa-solid fa-mug-hot"></i> 나바코리아 공식 스폰서</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. 네이버 리뷰 슬라이드 -->
-    <section class="section review-section" style="background-color: var(--pure-white);">
-        <div class="container">
-            <div class="fade-up" style="text-align: center; margin-bottom: 50px;">
-                <h2 style="font-size: 34px; font-weight: 800; margin-bottom: 15px; color: var(--text-dark);">
-                    영수증 인증이 증명하는 <span style="color: #03C75A;">실제 네이버 리뷰</span>
-                </h2>
-                <p style="font-size: 18px; color: var(--text-muted);">맛과 분위기, 굿즈까지 입소문 난 지구커피의 생생한 현장 반응입니다.</p>
-            </div>
-
-            <div class="review-slider-wrapper fade-up delay-1">
-                <button class="slider-btn prev" onclick="moveReviewSlider(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-                
-                <div class="review-slider" id="reviewSlider">
-                    <img src="review.png" alt="네이버 리뷰 1" class="zoomable-img" onclick="openImageModal(this)">
-                    <img src="review2.png" alt="네이버 리뷰 2" class="zoomable-img" onclick="openImageModal(this)">
-                    <img src="review3.png" alt="네이버 리뷰 3" class="zoomable-img" onclick="openImageModal(this)">
-                    <img src="review4.png" alt="네이버 리뷰 4" class="zoomable-img" onclick="openImageModal(this)">
-                </div>
-                
-                <button class="slider-btn next" onclick="moveReviewSlider(1)"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. 시그니처 메뉴 & 인테리어 & 굿즈 -->
+    <!-- 3. 시그니처 메뉴 & 인테리어 & 굿즈 -->
     <section class="section feature-section" style="background-color: var(--pure-white);">
         <div class="container">
             <div class="fade-up" style="text-align: center; margin-bottom: 60px;">
@@ -611,7 +494,7 @@
         </div>
     </section>
 
-    <!-- 6. 메인 히어로 (혜택 & 원두가격 돌파구) -->
+    <!-- 4. 메인 히어로 (혜택 & 원두가격 돌파구) -->
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-content fade-up">
@@ -646,7 +529,7 @@
         </div>
     </div>
 
-    <!-- 7. 수익 계산기 -->
+    <!-- 5. 수익 계산기 -->
     <section class="section calc-section" style="background-color: var(--bg-cream);">
         <div class="container">
             <h2 class="fade-up" style="text-align: center; font-size: 34px; letter-spacing: -1px; margin-bottom: 15px;">
@@ -689,7 +572,7 @@
         </div>
     </section>
 
-    <!-- 8. 최종 전환 폼 (CTA) -->
+    <!-- 6. 최종 전환 폼 (CTA) -->
     <section class="section cta-section" id="apply-form">
         <div class="container">
             <h2 class="section-title fade-up" style="font-size: 30px; font-weight: 800;">선착순 마감 주의! 최대 3,000만원 창업 혜택 받기</h2>
@@ -921,13 +804,6 @@
           const modal = document.getElementById('imageModal');
           modal.classList.remove('active');
           document.body.style.overflow = ''; 
-      }
-
-      // 8. 리뷰 슬라이드 넘기기 기능
-      function moveReviewSlider(direction) {
-          const slider = document.getElementById('reviewSlider');
-          const scrollAmount = slider.clientWidth / 2 + 10; 
-          slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
       }
     </script>
 </body>
