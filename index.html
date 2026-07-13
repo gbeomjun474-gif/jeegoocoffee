@@ -70,7 +70,7 @@
 
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 100px 0; }
-        .calc-section { padding-top: 60px; }
+        .calc-section { padding-top: 100px; }
 
         .section-title { text-align: center; font-size: 20px; font-weight: 700; margin-bottom: 15px; color: var(--accent-blue); }
         .section-subtitle { text-align: center; font-size: 18px; color: var(--text-muted); margin-bottom: 60px; }
@@ -85,35 +85,8 @@
         .logo i { color: var(--primary-color); }
         .nav-booth { background-color: var(--text-dark); color: var(--pure-white); padding: 6px 14px; border-radius: 4px; font-size: 14px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
 
-        /* 메뉴 및 인테리어 경쟁력 섹션 CSS */
-        .feature-section { padding: 100px 0; background-color: var(--pure-white); }
-        .feature-row { display: flex; align-items: center; gap: 60px; margin-bottom: 80px; }
-        .feature-row:last-child { margin-bottom: 0; }
-        .feature-row.reverse { flex-direction: row-reverse; }
-        .feature-text { flex: 1; }
-        .feature-image { flex: 1; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid rgba(0, 81, 161, 0.05); position: relative; }
-        .feature-image img { width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 4/3; transition: transform 0.5s ease; }
-        .feature-image:hover img { transform: scale(1.05); }
-        
-        .feature-label { display: inline-block; padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 700; margin-bottom: 15px; }
-        .label-blue { background-color: rgba(0, 81, 161, 0.1); color: var(--primary-color); }
-        .label-gold { background-color: rgba(245, 158, 11, 0.1); color: #D97706; }
-        
-        .feature-list { list-style: none; padding: 0; margin-top: 25px; }
-        .feature-list li { margin-bottom: 15px; font-size: 16px; color: var(--text-dark); display: flex; align-items: flex-start; gap: 12px; font-weight: 500; line-height: 1.5; }
-        .feature-list li i { color: var(--primary-color); font-size: 20px; margin-top: 2px; }
-
-        /* 가맹 개설 절차 CSS */
-        .process-section { background-color: #F8FAFC; padding: 100px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
-        .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 30px; margin-top: 60px; }
-        .process-card { background: var(--pure-white); padding: 35px 25px 25px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,81,161,0.05); position: relative; transition: all 0.3s ease; }
-        .process-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,81,161,0.1); border-color: rgba(0,81,161,0.2); }
-        .step-number { position: absolute; top: -20px; left: 30px; background: var(--gold-gradient); color: white; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 900; font-size: 20px; box-shadow: 0 6px 15px rgba(0,81,161,0.3); }
-        .process-card h3 { font-size: 20px; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .process-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; margin: 0; }
-
-        /* 히어로 섹션 */
-        .hero { padding: 80px 0 60px 0; background: linear-gradient(135deg, #E6F0FA 0%, #F4F7F9 100%); position: relative; overflow: hidden; }
+        /* 메인 히어로 섹션 */
+        .hero { padding: 160px 0 80px 0; background: linear-gradient(135deg, #E6F0FA 0%, #F4F7F9 100%); position: relative; overflow: hidden; }
         .hero::before { content: ''; position: absolute; top: -10%; left: -10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,81,161,0.1) 0%, transparent 70%); border-radius: 50%; z-index: 0; }
         .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; position: relative; z-index: 1; }
         .hero-badge { display: inline-block; background-color: var(--alert-red); color: var(--pure-white); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 16px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4); animation: pulse 2s infinite; }
@@ -121,10 +94,7 @@
         @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(230, 57, 70, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); } }
 
         .hero h1 { font-size: 54px; line-height: 1.35; font-weight: 800; color: var(--text-dark); margin-bottom: 25px; letter-spacing: -1px; min-height: 140px; }
-        .hero-highlight { background-color: var(--primary-color); color: var(--pure-white); padding: 2px 12px; border-radius: 8px; display: inline-block; margin-top: 5px; box-shadow: 0 4px 15px rgba(0, 81, 161, 0.3); }
-        .cursor { display: inline-block; width: 4px; height: 35px; background-color: #FBBF24; vertical-align: middle; margin-left: 5px; animation: blink 1s step-end infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
-
+        
         .hero p.lead { font-size: 20px; margin-bottom: 40px; font-weight: 400; color: #475569; }
         .hero-image-box { position: relative; border-radius: 30px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.15); height: 450px; border: 5px solid white; }
         .hero-image-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out; }
@@ -161,6 +131,15 @@
         .result-item.highlight { background: linear-gradient(90deg, rgba(0, 81, 161, 0.05) 0%, rgba(0, 81, 161, 0.1) 100%); padding: 25px; border-radius: 15px; border: 1px solid rgba(0, 81, 161, 0.2); box-shadow: 0 10px 20px rgba(0,81,161,0.05);}
         .result-item.highlight .label { font-size: 18px; font-weight: 700; color: var(--primary-dark); }
         .result-item.highlight .price-save { font-size: 36px; font-weight: 900; color: var(--alert-red); flex: 1 1 auto; text-align: right; white-space: nowrap; text-shadow: 0 2px 4px rgba(230, 57, 70, 0.2); }
+
+        /* 가맹 개설 절차 CSS */
+        .process-section { background-color: #F8FAFC; padding: 100px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 30px; margin-top: 60px; }
+        .process-card { background: var(--pure-white); padding: 35px 25px 25px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,81,161,0.05); position: relative; transition: all 0.3s ease; }
+        .process-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,81,161,0.1); border-color: rgba(0,81,161,0.2); }
+        .step-number { position: absolute; top: -20px; left: 30px; background: var(--gold-gradient); color: white; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 900; font-size: 20px; box-shadow: 0 6px 15px rgba(0,81,161,0.3); }
+        .process-card h3 { font-size: 20px; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .process-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; margin: 0; }
 
         /* 폼 섹션 */
         .cta-section { background: linear-gradient(135deg, var(--primary-color) 0%, #001f3f 100%); color: var(--pure-white); position: relative; overflow: hidden;}
@@ -236,22 +215,17 @@
         /* 반응형 */
         @media (max-width: 968px) {
             .hero-grid, .calc-grid, .form-row { grid-template-columns: 1fr; }
-            .hero { padding: 60px 0 40px 0; text-align: center; } 
+            .hero { padding: 120px 0 40px 0; text-align: center; } 
             .hero-image-box { height: 350px; width: 90%; margin: 0 auto; }
-            
-            .feature-row, .feature-row.reverse { flex-direction: column; gap: 40px; margin-bottom: 60px; }
-            .feature-text, .feature-image { width: 100%; }
         }
 
         @media (max-width: 768px) {
             .nav-container { height: auto; padding: 15px 0; flex-direction: column; gap: 12px; }
             .nav-container > div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
             
-            .brand-intro-section { padding-top: 130px !important; padding-bottom: 60px !important; }
+            .process-grid { grid-template-columns: 1fr; gap: 45px; margin-top: 40px; } 
 
-            .process-grid { grid-template-columns: 1fr; gap: 45px; margin-top: 40px; } /* 모바일에서 한 줄로 */
-
-            .hero { padding: 60px 0 30px 0 !important; } 
+            .hero { padding: 120px 0 30px 0 !important; } 
             .hero h1 { font-size: 36px; margin-bottom: 15px; line-height: 1.4; min-height: 100px; } 
 
             .hero p.lead { font-size: 16px; margin-bottom: 30px; }
@@ -260,7 +234,7 @@
             .marquee-content span { font-size: 15px; margin-right: 30px; } 
 
             .section { padding: 60px 0; }
-            .calc-section { padding-top: 20px; } 
+            .calc-section { padding-top: 60px; } 
             .section-subtitle { font-size: 14px; margin-bottom: 40px; line-height: 1.5; }
             
             .calculator-box { padding: 30px 20px; border-radius: 20px; }
@@ -308,117 +282,80 @@
         </div>
     </header>
 
-    <!-- 1. 최상단 웰컴 브랜드 스토리 -->
-    <section class="section brand-intro-section" style="position: relative; overflow: hidden; padding-top: 160px; padding-bottom: 100px; text-align: center; color: var(--pure-white);">
-        
-        <img src="2352.jpg" alt="지구커피 본" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(0, 58, 117, 0.85) 100%); z-index: 1;"></div>
-        <div style="position: absolute; top: -50%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 2;"></div>
-        
-        <div class="container relative" style="position: relative; z-index: 10;">
-            <div class="fade-up">
-                <span style="display: inline-block; padding: 6px 18px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; font-size: 13px; font-weight: 700; letter-spacing: 2px; margin-bottom: 25px; color: #E2E8F0; background: rgba(0,0,0,0.2);">
-                    THE ORIGIN OF JEEGOO
-                </span>
+    <!-- 1. 메인 히어로 (혜택 & 원두가격 돌파구) -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content fade-up">
+                <span class="hero-badge">🚨 박람회 한정: 창업 비용 최대 3,000만원 지원</span>
                 
-                <h2 style="font-size: 42px; font-weight: 900; line-height: 1.4; margin-bottom: 30px; text-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-                    지구 반대편에서 시작된 지구커피의 원두<br>
-                    <span id="typing-text" style="color: #FBBF24;"></span><span class="cursor"></span>
-                </h2>
+                <h1>치솟는 원두 가격 돌파구,<br>
+                    <span class="highlight-pen">본사 마진 없는 최고등급 원두</span>
+                </h1>
                 
-                <p style="font-size: 18px; color: rgba(255,255,255,0.8); max-width: 700px; margin: 0 auto 50px; line-height: 1.8; font-weight: 400; word-break: keep-all;">
-                    커피의 본질은 결국 '원두'에 있습니다.<br>
-                    해발 1,500m 청정 고산지대에서 재배된 싱글오리진 원두.<br>
-                    묵직한 바디감과 부드러운 단맛 깔끔한 후미의 완벽한 밸런스를 지구커피에서 만나보세요.
-                </p>
-                
-                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                    <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); padding: 15px 25px; border-radius: 12px; font-weight: 700; border: 1px solid rgba(255,255,255,0.05); color: var(--pure-white);">
-                        <i class="fa-solid fa-mountain-sun" style="color: #FBBF24; margin-right: 8px;"></i> 해발 1,500m 청정구역
-                    </div>
-                    <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); padding: 15px 25px; border-radius: 12px; font-weight: 700; border: 1px solid rgba(255,255,255,0.05); color: var(--pure-white);">
-                        <i class="fa-solid fa-medal" style="color: #FBBF24; margin-right: 8px;"></i> 블루마운틴 싱글오리진 원두
-                    </div>
-                    <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); padding: 15px 25px; border-radius: 12px; font-weight: 700; border: 1px solid rgba(255,255,255,0.05); color: var(--pure-white);">
-                        <i class="fa-solid fa-ship" style="color: #FBBF24; margin-right: 8px;"></i> 본사 직접 유통
-                    </div>
-                </div>
+                <p class="lead">"지구커피"만의 물류시스템으로 프리미엄 원두 타사 원두보다 더 합리적인 금액에 안정적으로 공급합니다.</p>
+                <a href="#apply-form" class="btn btn-shine" style="background-color: var(--alert-red);"><i class="fa-solid fa-gift"></i> 3,000만원 혜택 선점하기</a>
+            </div>
+            
+            <div class="hero-image-box floating-element fade-up delay-1">
+                <img src="shop3.jpg" alt="지구커피 매장 1" class="active">
+                <img src="shop5.jpg" alt="지구커피 매장 2">
+                <img src="dudu.jpg" alt="파푸아뉴기니 현장">
             </div>
         </div>
     </section>
 
-    <!-- 2. 시그니처 메뉴 & 인테리어 & 굿즈 -->
-    <section class="section feature-section" style="background-color: var(--pure-white);">
+    <!-- 무한 롤링 배너 -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span><i class="fa-solid fa-handshake"></i> 박람회 한정 가맹비 전액 면제</span>
+            <span><i class="fa-solid fa-gift"></i> 선착순 3,000만원 창업 지원</span>
+            <span><i class="fa-solid fa-mug-hot"></i> 프리미엄 시그리 AA등급 원두</span>
+            <span><i class="fa-solid fa-coins"></i> 월 평균 원가 150만원 절감</span>
+            <span><i class="fa-solid fa-handshake"></i> 박람회 한정 가맹비 전액 면제</span>
+            <span><i class="fa-solid fa-gift"></i> 선착순 3,000만원 창업 지원</span>
+            <span><i class="fa-solid fa-mug-hot"></i> 프리미엄 시그리 AA등급 원두</span>
+            <span><i class="fa-solid fa-coins"></i> 월 평균 원가 150만원 절감</span>
+        </div>
+    </div>
+
+    <!-- 2. 수익 계산기 -->
+    <section class="section calc-section" style="background-color: var(--bg-cream);">
         <div class="container">
-            <div class="fade-up" style="text-align: center; margin-bottom: 60px;">
-                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 15px; color: var(--text-dark);">
-                    고객의 발길을 끄는 <span class="text-gradient">확실한 무기</span>
-                </h2>
-                <p style="font-size: 18px; color: var(--text-muted);">탄탄한 수익 구조는 매력적인 메뉴와 효율적인 공간에서 시작됩니다.</p>
-            </div>
-
-            <div class="feature-row fade-up delay-1">
-                <div class="feature-image" style="background-color: #F8FAFC;">
-                    <img src="signature.png" alt="지구커피 시그니처 메뉴" style="object-fit: contain;">
-                </div>
-                <div class="feature-text">
-                    <span class="feature-label label-blue"><i class="fa-solid fa-utensils"></i> SIGNATURE MENU</span>
-                    <h3 style="font-size: 30px; font-weight: 800; margin-bottom: 20px; line-height: 1.4;">
-                        한 번 맛보면 단골이 되는<br>독보적인 시그니처 라떼
-                    </h3>
-                    <p style="font-size: 16px; color: var(--text-muted); line-height: 1.7;">
-                        프리미엄 시그리 원두의 풍미를 극대화한 메뉴 구성으로 객단가를 높였습니다. 초보자도 쉽게 만들 수 있는 시스템을 도입해 인건비 부담을 줄였습니다.
-                    </p>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-check"></i> <strong>높은 마진율:</strong> 객단가를 끌어올리는 화려한 비주얼과 압도적인 맛</li>
-                        <li><i class="fa-solid fa-check"></i> <strong>쉬운 제조 공정:</strong> 본사 특제 레시피 원팩화로 초보 알바생도 3분 컷 제조</li>
-                        <li><i class="fa-solid fa-check"></i> <strong>트렌드 선도:</strong> 시즌별 지속적인 신메뉴 개발 및 무상 교육 지원</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="feature-row reverse fade-up delay-2">
-                <div class="feature-image">
-                    <img src="1111.jpg" alt="지구커피 인테리어">
-                </div>
-                <div class="feature-text">
-                    <span class="feature-label label-gold"><i class="fa-solid fa-shop"></i> INTERIOR & SPACE</span>
-                    <h3 style="font-size: 30px; font-weight: 800; margin-bottom: 20px; line-height: 1.4;">
-                        비용은 가볍게, 분위기는 고급스럽게<br>동선을 최적화한 공간 설계
-                    </h3>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-check"></i> <strong>창업 비용 절감:</strong> 거품 없는 실비 창업 및 자체 시공(감리) 허용</li>
-                        <li><i class="fa-solid fa-check"></i> <strong>포토존 특화:</strong> 고객들이 자발적으로 SNS에 올리는 세련된 딥블루 톤 디자인</li>
-                        <li><i class="fa-solid fa-check"></i> <strong>효율적인 바(Bar) 동선:</strong> 최소 인원으로 최대 매출을 뽑아내는 과학적인 주방 설계</li>
-                    </ul>
-                </div>
-            </div>
+            <h2 class="fade-up" style="text-align: center; font-size: 34px; letter-spacing: -1px; margin-bottom: 15px;">
+                <span class="text-gradient">우리 매장은 월 얼마를 더 벌 수 있을까?</span>
+            </h2>
+            <p class="section-subtitle fade-up delay-1">월간 소모량을 조절하여 한눈에 원가 차이를 확인해 보세요.</p>
             
-            <div class="feature-row fade-up delay-3" style="margin-top: 80px;">
-                <div class="feature-image" style="background-color: #F8FAFC; display: flex; align-items: center; justify-content: center;">
-                    <div style="flex: 1; padding: 30px 20px; border-right: 1px dashed #CBD5E1; text-align: center;">
-                        <img src="2293.jpg" alt="지구커피 시그니처 키링" class="zoomable-img" onclick="openImageModal(this)" style="width: 100%; height: auto; object-fit: contain; aspect-ratio: 1/1;">
-                        <span style="display: inline-block; background-color: var(--primary-color); color: white; padding: 4px 12px; border-radius: 50px; font-size: 13px; font-weight: 700; margin-top: 15px;"># 시그니처 키링</span>
+            <div class="calculator-box fade-up delay-2">
+                <div class="calc-grid">
+                    <div class="calc-inputs">
+                        <div class="slider-group" style="margin-bottom: 0;">
+                            <div class="slider-label">
+                                <span>월간 예상 원두 소모량</span>
+                                <span class="val" id="sales-volume-txt">150 kg</span>
+                            </div>
+                            <input type="range" id="sales-volume" class="range-slider" min="50" max="150" step="1" value="150">
+                        </div>
                     </div>
-                    <div style="flex: 1; padding: 30px 20px; text-align: center;">
-                        <img src="dripbag.png" alt="지구커피 드립백" class="zoomable-img" onclick="openImageModal(this)" style="width: 100%; height: auto; object-fit: contain; aspect-ratio: 1/1;">
-                        <span style="display: inline-block; background-color: var(--primary-color); color: white; padding: 4px 12px; border-radius: 50px; font-size: 13px; font-weight: 700; margin-top: 15px;"># 지구커피 드립백</span>
+                    
+                    <div class="result-panel">
+                        <div class="result-item">
+                            <span class="label">월간 아메리카노 판매 분량 (1kg=50잔)</span>
+                            <span class="price" id="total-cups-txt" style="color: var(--primary-color);">7,500 잔</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">타사 브랜드 원두 비용 (30,000원/1kg)</span>
+                            <span class="price" id="competitor-total-txt">4,500,000 원</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">지구카페 원두 비용 (19,800원/1kg)</span>
+                            <span class="price" id="earth-total-txt">2,970,000 원</span>
+                        </div>
+                        <div class="result-item highlight">
+                            <span class="label">타사 대비 월 절감액 (순수익 증가)</span>
+                            <span class="price-save" id="save-total-txt">1,530,000 원</span>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="feature-text">
-                    <span class="feature-label" style="background-color: rgba(30, 41, 59, 0.1); color: var(--text-dark);"><i class="fa-solid fa-bag-shopping"></i> BRAND GOODS</span>
-                    <h3 style="font-size: 30px; font-weight: 800; margin-bottom: 20px; line-height: 1.4;">
-                        가만히 있어도 팔리는<br>매력적인 추가 수익원
-                    </h3>
-                    <p style="font-size: 16px; color: var(--text-muted); line-height: 1.7;">
-                        지구커피만의 귀여운 아이덴티티를 담은 <strong>'시그니처 키링'</strong>과 실용적인 <strong>'리유저블 텀블러'</strong>. 음료 판매에만 의존하지 않고 객단가를 확실하게 끌어올려주는 효자 아이템입니다.
-                    </p>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-check"></i> <strong>부가 수익 창출:</strong> 계산대 앞 소장 욕구를 자극하여 자연스러운 추가 구매 유도</li>
-                        <li><i class="fa-solid fa-check"></i> <strong>친환경 트렌드 공략:</strong> MZ세대가 선호하는 리유저블 텀블러로 가치 소비 촉진</li>
-                        <li><i class="fa-solid fa-check"></i> <strong>걸어다니는 홍보 효과:</strong> 고객의 일상(가방, 사무실 등) 속에 스며들어 자연스럽게 브랜드 노출</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -477,85 +414,7 @@
         </div>
     </section>
 
-    <!-- 4. 메인 히어로 (혜택 & 원두가격 돌파구) -->
-    <section class="hero">
-        <div class="container hero-grid">
-            <div class="hero-content fade-up">
-                <span class="hero-badge">🚨 박람회 한정: 창업 비용 최대 3,000만원 지원</span>
-                
-                <h1>치솟는 원두 가격 돌파구,<br>
-                    <span class="highlight-pen">본사 마진 없는 최고등급 원두</span>
-                </h1>
-                
-                <p class="lead">"지구커피"만의 물류시스템으로 프리미엄 원두 타사 원두보다 더 합리적인 금액에 안정적으로 공급합니다.</p>
-                <a href="#apply-form" class="btn btn-shine" style="background-color: var(--alert-red);"><i class="fa-solid fa-gift"></i> 3,000만원 혜택 선점하기</a>
-            </div>
-            
-            <div class="hero-image-box floating-element fade-up delay-1">
-                <img src="shop3.jpg" alt="지구커피 매장 1" class="active">
-                <img src="shop5.jpg" alt="지구커피 매장 2">
-                <img src="dudu.jpg" alt="파푸아뉴기니 현장">
-            </div>
-        </div>
-    </section>
-
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <span><i class="fa-solid fa-handshake"></i> 박람회 한정 가맹비 전액 면제</span>
-            <span><i class="fa-solid fa-gift"></i> 선착순 3,000만원 창업 지원</span>
-            <span><i class="fa-solid fa-mug-hot"></i> 프리미엄 시그리 AA등급 원두</span>
-            <span><i class="fa-solid fa-coins"></i> 월 평균 원가 150만원 절감</span>
-            <span><i class="fa-solid fa-handshake"></i> 박람회 한정 가맹비 전액 면제</span>
-            <span><i class="fa-solid fa-gift"></i> 선착순 3,000만원 창업 지원</span>
-            <span><i class="fa-solid fa-mug-hot"></i> 프리미엄 시그리 AA등급 원두</span>
-            <span><i class="fa-solid fa-coins"></i> 월 평균 원가 150만원 절감</span>
-        </div>
-    </div>
-
-    <!-- 5. 수익 계산기 -->
-    <section class="section calc-section" style="background-color: var(--bg-cream);">
-        <div class="container">
-            <h2 class="fade-up" style="text-align: center; font-size: 34px; letter-spacing: -1px; margin-bottom: 15px;">
-                <span class="text-gradient">우리 매장은 월 얼마를 더 벌 수 있을까?</span>
-            </h2>
-            <p class="section-subtitle fade-up delay-1">월간 소모량을 조절하여 한눈에 원가 차이를 확인해 보세요.</p>
-            
-            <div class="calculator-box fade-up delay-2">
-                <div class="calc-grid">
-                    <div class="calc-inputs">
-                        <div class="slider-group" style="margin-bottom: 0;">
-                            <div class="slider-label">
-                                <span>월간 예상 원두 소모량</span>
-                                <span class="val" id="sales-volume-txt">150 kg</span>
-                            </div>
-                            <input type="range" id="sales-volume" class="range-slider" min="50" max="150" step="1" value="150">
-                        </div>
-                    </div>
-                    
-                    <div class="result-panel">
-                        <div class="result-item">
-                            <span class="label">월간 아메리카노 판매 분량 (1kg=50잔)</span>
-                            <span class="price" id="total-cups-txt" style="color: var(--primary-color);">7,500 잔</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="label">타사 브랜드 원두 비용 (30,000원/1kg)</span>
-                            <span class="price" id="competitor-total-txt">4,500,000 원</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="label">지구카페 원두 비용 (19,800원/1kg)</span>
-                            <span class="price" id="earth-total-txt">2,970,000 원</span>
-                        </div>
-                        <div class="result-item highlight">
-                            <span class="label">타사 대비 월 절감액 (순수익 증가)</span>
-                            <span class="price-save" id="save-total-txt">1,530,000 원</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. 최종 전환 폼 (CTA) -->
+    <!-- 4. 최종 전환 폼 (CTA) -->
     <section class="section cta-section" id="apply-form">
         <div class="container">
             <h2 class="section-title fade-up" style="font-size: 30px; font-weight: 800;">선착순 마감 주의! 최대 3,000만원 창업 혜택 받기</h2>
@@ -656,26 +515,7 @@
       }
       window.scrollTo(0, 0);
 
-      // 1. 타이핑 효과 (최상단 브랜드 스토리 문구로 변경)
-      const textToType = "파푸아뉴기니 시그리(Sigri) AA";
-      const typingElement = document.getElementById("typing-text");
-      let charIndex = 0;
-
-      function typeWriter() {
-          if (charIndex < textToType.length) {
-              typingElement.innerHTML += textToType.charAt(charIndex);
-              charIndex++;
-              setTimeout(typeWriter, 120); 
-          } else {
-              document.querySelector('.cursor').style.display = 'none';
-          }
-      }
-        
-      document.addEventListener("DOMContentLoaded", () => {
-          setTimeout(typeWriter, 500); 
-      });
-
-      // 2. 계산기 스크립트
+      // 1. 계산기 스크립트
       const salesSlider = document.getElementById('sales-volume');
       const updateCalculator = () => {
           const monthlyKg = parseInt(salesSlider.value);
@@ -695,7 +535,7 @@
       salesSlider.addEventListener('input', updateCalculator);
       updateCalculator();
 
-      // 3. 스크롤 애니메이션
+      // 2. 스크롤 애니메이션
       const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
       const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -707,7 +547,7 @@
       }, observerOptions);
       document.querySelectorAll('.fade-up').forEach((el) => { observer.observe(el); });
 
-      // 4. 약관 모달 팝업
+      // 3. 약관 모달 팝업
       const termsData = {
           'privacy': { title: "개인정보처리방침", content: "지구커피는 가맹 상담을 위해 성함, 연락처, 지역을 수집하며 마케팅 활용(세미나 안내 등)에 동의한 것으로 간주합니다." },
           'terms': { title: "서비스 이용약관", content: "본 사이트는 지구커피 창업 정보를 제공하며, 이용자가 남긴 정보는 상담 목적으로만 성실히 사용됩니다." },
@@ -727,7 +567,7 @@
           document.body.style.overflow = ''; 
       }
 
-      // 5. 구글 시트 연동
+      // 4. 구글 시트 연동
       const scriptURL = 'https://script.google.com/macros/s/AKfycbzeqacPKg1WXQWme5TRn5MZk0m_yHOrWEJgCNVLuR4WFjy_fwvfxqRuo_9rjIUVeiwuDg/exec'; 
       
       const form = document.forms['submit-to-google-sheet'];
@@ -763,7 +603,7 @@
               });
       });
 
-      // 6. 메인 사진 자동 슬라이드
+      // 5. 메인 사진 자동 슬라이드
       const heroSlides = document.querySelectorAll('.hero-image-box img');
       if (heroSlides.length > 1) {
           let currentSlide = 0;
@@ -774,7 +614,7 @@
           }, 3000);
       }
 
-      // 7. 이미지 클릭 시 확대(라이트박스) 기능
+      // 6. 이미지 클릭 시 확대(라이트박스) 기능
       function openImageModal(imgElement) {
           const modal = document.getElementById('imageModal');
           const modalImg = document.getElementById('expandedImg');
