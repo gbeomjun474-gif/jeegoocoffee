@@ -292,10 +292,6 @@
                 <img src="shop3.jpg" alt="지구커피 매장 2" class="active">
                 <img src="2222.jpg" alt="지구커피 매장 3">   
                 <img src="shop5.jpg" alt="지구커피 매장 4">
-                
-                <!-- 추가 사진을 넣으시려면 아래처럼 img 태그를 복사해서 붙여넣으세요 -->
-                <!-- <img src="추가할사진1.jpg" alt="설명"> -->
-                <!-- <img src="추가할사진2.jpg" alt="설명"> -->
             </div>
         </div>
     </section>
@@ -328,28 +324,29 @@
                         <div class="slider-group" style="margin-bottom: 0;">
                             <div class="slider-label">
                                 <span>월간 예상 원두 소모량</span>
-                                <span class="val" id="sales-volume-txt">150 kg</span>
+                                <span class="val" id="sales-volume-txt">300 kg</span>
                             </div>
-                            <input type="range" id="sales-volume" class="range-slider" min="50" max="150" step="1" value="150">
+                            <!-- 최대값을 300으로 변경 -->
+                            <input type="range" id="sales-volume" class="range-slider" min="50" max="300" step="1" value="300">
                         </div>
                     </div>
                     
                     <div class="result-panel">
                         <div class="result-item">
                             <span class="label">월간 아메리카노 판매 분량 (1kg=50잔)</span>
-                            <span class="price" id="total-cups-txt" style="color: var(--primary-color);">7,500 잔</span>
+                            <span class="price" id="total-cups-txt" style="color: var(--primary-color);">15,000 잔</span>
                         </div>
                         <div class="result-item">
                             <span class="label">타사 브랜드 원두 비용 (30,000원/1kg)</span>
-                            <span class="price" id="competitor-total-txt">4,500,000 원</span>
+                            <span class="price" id="competitor-total-txt">9,000,000 원</span>
                         </div>
                         <div class="result-item">
                             <span class="label">지구카페 원두 비용 (19,800원/1kg)</span>
-                            <span class="price" id="earth-total-txt">2,970,000 원</span>
+                            <span class="price" id="earth-total-txt">5,940,000 원</span>
                         </div>
                         <div class="result-item highlight">
                             <span class="label">타사 대비 월 절감액 (순수익 증가)</span>
-                            <span class="price-save" id="save-total-txt">1,530,000 원</span>
+                            <span class="price-save" id="save-total-txt">3,060,000 원</span>
                         </div>
                     </div>
                 </div>
